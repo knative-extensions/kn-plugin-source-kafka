@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Copyright 2020 The Knative Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,14 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# ===============================================
-# Add you integration tests here
-
 source $(dirname $0)/common.sh
+
+# Add local dir to have access to built kn
+export PATH=$PATH:${REPO_ROOT_DIR}
 
 # Will create and delete this namespace (used for all tests, modify if you want a different one used)
 export KN_E2E_NAMESPACE=kne2etests
-export PATH=$PATH:${REPO_ROOT_DIR}
 
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.17.0.yaml"
@@ -40,8 +41,6 @@ readonly KAFKA_CRD_CONFIG_DIR="$(mktemp -d)"
 readonly KAFKA_SOURCE_CRD_YAML="https://github.com/knative/eventing-contrib/releases/download/v0.17.1/kafka-source.yaml"
 
 run() {
-  echo "repo root dir: ${REPO_ROOT_DIR}"
-
   # Create cluster
   initialize $@
 
@@ -54,7 +53,7 @@ run() {
   success
 }
 
-function integration_test() {
+integration_test() {
   header "Running plugin kn-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
 
   go_test_e2e -timeout=45m ./test/e2e || fail_test
