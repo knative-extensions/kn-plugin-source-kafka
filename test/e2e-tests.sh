@@ -16,11 +16,15 @@
 
 source $(dirname $0)/common.sh
 
+
 # Add local dir to have access to built kn
 export PATH=$PATH:${REPO_ROOT_DIR}
 
 # Will create and delete this namespace (used for all tests, modify if you want a different one used)
 export KN_E2E_NAMESPACE=kne2etests
+
+export KNATIVE_EVENTING_VERSION="0.17.1"
+export KNATIVE_SERVING_VERSION="0.17.1"
 
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.17.0.yaml"
@@ -56,7 +60,7 @@ run() {
 integration_test() {
   header "Running plugin kn-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
 
-  go_test_e2e -timeout=45m ./test/e2e || fail_test
+  go_test_e2e -timeout=45m ./test/e2e || return 1
 }
 
 # Fire up
