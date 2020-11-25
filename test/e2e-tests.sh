@@ -15,14 +15,11 @@
 # ===============================================
 # Add you integration tests here
 
-source $TEST_INFRA_SCRIPTS/e2e-tests.sh
+source $(dirname $0)/common.sh
 
-export PATH=$PWD:$PATH
+# Add local dir to have access to built kn binary
+export PATH=$PATH:${REPO_ROOT_DIR}
 
-dir=$(dirname "${BASH_SOURCE[0]}")
-base=$(cd "$dir/.." && pwd)
-
-echo "TEST_INFRA_SCRIPTS: $TEST_INFRA_SCRIPTS"
 echo "Testing kn-source-kafka"
 cd ${REPO_ROOT_DIR}
 
