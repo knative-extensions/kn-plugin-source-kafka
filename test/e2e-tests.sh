@@ -15,21 +15,19 @@
 # ===============================================
 # Add you integration tests here
 
-source $(dirname $0)/common.sh
 
-# Add local dir to have access to built kn binary
+source $(dirname $0)/../vendor/knative.dev/hack/e2e-tests.sh
 export PATH=$PATH:${REPO_ROOT_DIR}
 
-echo "Testing kn-source-kafka"
-cd ${REPO_ROOT_DIR}
+echo "Testing kn-source-kafka: ${REPO_ROOT_DIR}"
 
 # Strimzi installation config template used for starting up Kafka clusters.
-readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="test/config/100-strimzi-cluster-operator-0.17.0.yaml"
+readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.17.0.yaml"
 # Strimzi installation config.
 readonly STRIMZI_INSTALLATION_CONFIG="$(mktemp)"
 # Kafka cluster CR config file.
-readonly KAFKA_INSTALLATION_CONFIG="test/config/100-kafka-ephemeral-triple-2.4.0.yaml"
-readonly KAFKA_TOPIC_INSTALLATION_CONFIG="test/config/100-kafka-topic.yaml"
+readonly KAFKA_INSTALLATION_CONFIG="${REPO_ROOT_DIR}/test/config/100-kafka-ephemeral-triple-2.4.0.yaml"
+readonly KAFKA_TOPIC_INSTALLATION_CONFIG="${REPO_ROOT_DIR}/test/config/100-kafka-topic.yaml"
 # Kafka cluster URL for our installation
 readonly KAFKA_CLUSTER_URL="my-cluster-kafka-bootstrap.kafka:9092"
 # Kafka channel CRD config template directory.
@@ -45,7 +43,7 @@ function kafka_setup() {
   echo "Installing Kafka cluster"
   kubectl create namespace kafka || return 1
   sed 's/namespace: .*/namespace: kafka/' ${STRIMZI_INSTALLATION_CONFIG_TEMPLATE} > ${STRIMZI_INSTALLATION_CONFIG}
-  kubectl apply -f "${STRIMZI_INSTALLATION_CONFIG}" -n kafka
+  kubectl apply -f ${STRIMZI_INSTALLATION_CONFIG} -n kafka
   kubectl apply -f ${KAFKA_INSTALLATION_CONFIG} -n kafka
   kubectl apply -f ${KAFKA_TOPIC_INSTALLATION_CONFIG} -n kafka
   wait_until_pods_running kafka || fail_test "Failed to start up a Kafka cluster"
@@ -82,8 +80,12 @@ function uninstall_sources_crds() {
   kubectl delete -f ${KAFKA_SOURCE_CRD_YAML}
 }
 
-run() {
+function build_plugin() {
+  header "Building client"
+  ${REPO_ROOT_DIR}/hack/build.sh -f || return 1
+}
 
+run() {
   header "Running plugin kn-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
 
   # Will create and delete this namespace (used for all tests, modify if you want a different one used)
@@ -92,11 +94,11 @@ run() {
   echo "🧪  Setup"
   plugin_test_setup
   echo "🧪  Build"
-  ./hack/build.sh -f
+  build_plugin
   echo "🧪  Testing"
   go_test_e2e -timeout=45m ./test/e2e || fail_test
-  echo "🧪  Teardown"
-  plugin_test_teardown
+  # echo "🧪  Teardown"
+  # plugin_test_teardown
   success
 }
 
