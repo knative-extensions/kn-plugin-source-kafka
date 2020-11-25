@@ -22,23 +22,10 @@
 # not strong enough
 export DISABLE_MD_LINTING=1
 export DISABLE_MD_LINK_CHECK=1
-
 export PRESUBMIT_TEST_FAIL_FAST=1
 export GO111MODULE=on
-
-# Use predefined tests
-source $TEST_INFRA_SCRIPTS/presubmit-tests.sh
-
-# Run cross platform build to ensure kn compiles for Linux, macOS and Windows
-function post_build_tests() {
-  local failed=0
-  header "Ensuring cross platform build"
-  ./hack/build.sh -x || failed=1
-  if (( failed )); then
-    results_banner "Cross platform build" ${failed}
-    exit ${failed}
-  fi
-}
+source $(dirname $0)/../vendor/knative.dev/hack/presubmit-tests.sh
+source $(dirname $0)/common.sh
 
 # Run the unit tests with an additional flag '-mod=vendor' to avoid
 # downloading the deps in unit tests CI job
