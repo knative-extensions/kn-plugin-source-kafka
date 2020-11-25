@@ -15,11 +15,11 @@
 # ===============================================
 # Add you integration tests here
 
+source $(dirname $0)/common.sh
 
-source $(dirname $0)/../vendor/knative.dev/hack/e2e-tests.sh
+# Will create and delete this namespace (used for all tests, modify if you want a different one used)
+export KN_E2E_NAMESPACE=kne2etests
 export PATH=$PATH:${REPO_ROOT_DIR}
-
-echo "Testing kn-source-kafka: ${REPO_ROOT_DIR}"
 
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.17.0.yaml"
@@ -39,67 +39,25 @@ readonly KAFKA_CRD_CONFIG_DIR="$(mktemp -d)"
 # Kafka channel CRD config template directory.
 readonly KAFKA_SOURCE_CRD_YAML="https://github.com/knative/eventing-contrib/releases/download/v0.17.1/kafka-source.yaml"
 
-function kafka_setup() {
-  echo "Installing Kafka cluster"
-  kubectl create namespace kafka || return 1
-  sed 's/namespace: .*/namespace: kafka/' ${STRIMZI_INSTALLATION_CONFIG_TEMPLATE} > ${STRIMZI_INSTALLATION_CONFIG}
-  kubectl apply -f ${STRIMZI_INSTALLATION_CONFIG} -n kafka
-  kubectl apply -f ${KAFKA_INSTALLATION_CONFIG} -n kafka
-  kubectl apply -f ${KAFKA_TOPIC_INSTALLATION_CONFIG} -n kafka
-  wait_until_pods_running kafka || fail_test "Failed to start up a Kafka cluster"
-}
-
-function kafka_teardown() {
-  echo "Uninstalling Kafka cluster"
-  kubectl delete -f ${KAFKA_TOPIC_INSTALLATION_CONFIG} -n kafka
-  kubectl delete -f ${KAFKA_INSTALLATION_CONFIG} -n kafka
-  kubectl delete -f "${STRIMZI_INSTALLATION_CONFIG}" -n kafka
-  kubectl delete namespace kafka
-}
-
-function plugin_test_setup() {
-  kafka_setup || return 1
-  install_sources_crds || return 1
-}
-
-function plugin_test_teardown() {
-  kafka_teardown
-  uninstall_sources_crds
-}
-
-function install_sources_crds() {
-  echo "Installing Kafka Source CRD"
-  kubectl apply -f ${KAFKA_SOURCE_CRD_YAML}
-
-  # wait_until_pods_running knative-eventing || fail_test "Failed to install the Kafka Source CRD"
-  wait_until_pods_running knative-sources || fail_test "Failed to install the Kafka Source CRD"
-}
-
-function uninstall_sources_crds() {
-  echo "Uninstalling Kafka Source CRD"
-  kubectl delete -f ${KAFKA_SOURCE_CRD_YAML}
-}
-
-function build_plugin() {
-  header "Building client"
-  ${REPO_ROOT_DIR}/hack/build.sh -f || return 1
-}
-
 run() {
+  echo "repo root dir: ${REPO_ROOT_DIR}"
+
+  # Create cluster
+  initialize $@
+
+  # Kafka setup
+  eval plugin_test_setup || fail_test
+
+  # Integration tests
+  eval integration_test || fail_test
+
+  success
+}
+
+function integration_test() {
   header "Running plugin kn-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
 
-  # Will create and delete this namespace (used for all tests, modify if you want a different one used)
-  export KN_E2E_NAMESPACE=kne2etests
-
-  echo "🧪  Setup"
-  plugin_test_setup
-  echo "🧪  Build"
-  build_plugin
-  echo "🧪  Testing"
   go_test_e2e -timeout=45m ./test/e2e || fail_test
-  # echo "🧪  Teardown"
-  # plugin_test_teardown
-  success
 }
 
 # Fire up
