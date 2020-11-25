@@ -101,7 +101,7 @@ codegen() {
   source_format
 
   # Check for license headers
-  check_license
+  # check_license
 
   # Auto generate cli docs
   generate_docs
