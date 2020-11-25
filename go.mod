@@ -1,4 +1,4 @@
-module knative.dev/client-contrib/plugins/source-kafka
+module knative.dev/kn-plugin-source-kafka
 
 go 1.14
 
