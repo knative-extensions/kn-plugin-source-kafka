@@ -603,6 +603,9 @@ knative.dev/eventing-contrib/kafka/source/pkg/apis/sources/v1beta1
 knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/typed/sources/v1alpha1
 knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake
+# knative.dev/hack v0.0.0-20201120192952-353db687ec5b
+## explicit
+knative.dev/hack
 # knative.dev/networking v0.0.0-20200812200006-4d518e76538a
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1

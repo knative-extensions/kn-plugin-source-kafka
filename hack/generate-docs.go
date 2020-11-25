@@ -20,7 +20,7 @@ import (
 
 	"github.com/maximilien/kn-source-pkg/pkg/core"
 	"github.com/maximilien/kn-source-pkg/pkg/util"
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/factories"
+	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )
 
 func main() {

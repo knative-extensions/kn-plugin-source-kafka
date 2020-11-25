@@ -18,7 +18,7 @@ import (
 	"testing"
 
 	"gotest.tools/assert"
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/types"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
 func TestNewKafkaSourceCommandFactory(t *testing.T) {

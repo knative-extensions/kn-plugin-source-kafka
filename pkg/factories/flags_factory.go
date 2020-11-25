@@ -18,7 +18,7 @@ import (
 	sourcefactories "github.com/maximilien/kn-source-pkg/pkg/factories"
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/types"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	"github.com/spf13/pflag"
 )

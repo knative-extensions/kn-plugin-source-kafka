@@ -20,8 +20,8 @@ import (
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"github.com/maximilien/kn-source-pkg/pkg/types/typesfakes"
 	client_testing "k8s.io/client-go/testing"
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/types"
 	"knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
 // NewFakeKafkaSourceClient is to create a fake KafkaSourceClient to test
