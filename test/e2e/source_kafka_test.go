@@ -61,9 +61,9 @@ func TestSourceKafka(t *testing.T) {
 
 	e2eTest := newE2ETest(t)
 	assert.Assert(t, e2eTest != nil)
-	//defer func() {
-	//	assert.NilError(t, e2eTest.it.KnTest().Teardown())
-	//}()
+	defer func() {
+		assert.NilError(t, e2eTest.it.KnTest().Teardown())
+	}()
 
 	r := test.NewKnRunResultCollector(t, e2eTest.it.KnTest())
 	defer r.DumpIfFailed()
@@ -82,8 +82,8 @@ func TestSourceKafka(t *testing.T) {
 	t.Log("test kn-source-kafka delete source-name")
 	e2eTest.knSourceKafkaDelete(t, r, "mykafka1")
 
-	//err = e2eTest.it.KnPlugin().Uninstall()
-	//assert.NilError(t, err)
+	err = e2eTest.it.KnPlugin().Uninstall()
+	assert.NilError(t, err)
 }
 
 // Private
