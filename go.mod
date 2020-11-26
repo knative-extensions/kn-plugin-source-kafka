@@ -9,12 +9,10 @@ require (
 	gotest.tools v2.2.0+incompatible
 	k8s.io/apimachinery v0.19.0
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
-	k8s.io/code-generator v0.18.6
 	knative.dev/client v0.17.0
 	knative.dev/eventing-contrib v0.17.1
 	knative.dev/hack v0.0.0-20201120192952-353db687ec5b
 	knative.dev/pkg v0.0.0-20200828200807-2335e4d84a05
-	knative.dev/serving v0.17.1
 	knative.dev/test-infra v0.0.0-20200828171708-f68cb78c80a9
 )
 
