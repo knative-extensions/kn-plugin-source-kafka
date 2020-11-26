@@ -96,6 +96,7 @@ github.com/maximilien/kn-source-pkg/pkg/core
 github.com/maximilien/kn-source-pkg/pkg/factories
 github.com/maximilien/kn-source-pkg/pkg/types
 github.com/maximilien/kn-source-pkg/pkg/types/typesfakes
+github.com/maximilien/kn-source-pkg/pkg/util
 github.com/maximilien/kn-source-pkg/test/e2e
 # github.com/mitchellh/go-homedir v1.1.0
 github.com/mitchellh/go-homedir
@@ -661,39 +662,18 @@ k8s.io/utils/trace
 # knative.dev/client v0.17.0
 ## explicit
 knative.dev/client/lib/test
-knative.dev/client/pkg/apis/client
-knative.dev/client/pkg/apis/client/v1alpha1
 knative.dev/client/pkg/dynamic
 knative.dev/client/pkg/errors
 knative.dev/client/pkg/eventing/v1beta1
 knative.dev/client/pkg/kn/commands
-knative.dev/client/pkg/kn/commands/broker
-knative.dev/client/pkg/kn/commands/channel
-knative.dev/client/pkg/kn/commands/completion
 knative.dev/client/pkg/kn/commands/flags
-knative.dev/client/pkg/kn/commands/options
-knative.dev/client/pkg/kn/commands/plugin
-knative.dev/client/pkg/kn/commands/revision
-knative.dev/client/pkg/kn/commands/route
-knative.dev/client/pkg/kn/commands/service
-knative.dev/client/pkg/kn/commands/source
-knative.dev/client/pkg/kn/commands/source/apiserver
-knative.dev/client/pkg/kn/commands/source/binding
-knative.dev/client/pkg/kn/commands/source/duck
-knative.dev/client/pkg/kn/commands/source/ping
-knative.dev/client/pkg/kn/commands/trigger
-knative.dev/client/pkg/kn/commands/version
 knative.dev/client/pkg/kn/config
 knative.dev/client/pkg/kn/flags
-knative.dev/client/pkg/kn/plugin
-knative.dev/client/pkg/kn/root
-knative.dev/client/pkg/kn/traffic
 knative.dev/client/pkg/messaging/v1beta1
 knative.dev/client/pkg/printers
 knative.dev/client/pkg/serving
 knative.dev/client/pkg/serving/v1
 knative.dev/client/pkg/sources/v1alpha2
-knative.dev/client/pkg/templates
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
