@@ -16,64 +16,24 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
-	"path/filepath"
-	"strconv"
-	"strings"
 
-	"github.com/spf13/cobra/doc"
-	"knative.dev/client/pkg/kn/root"
+	"github.com/maximilien/kn-source-pkg/pkg/core"
+	"github.com/maximilien/kn-source-pkg/pkg/util"
+	"knative.dev/client-contrib/plugins/source-kafka/pkg/factories"
 )
 
 func main() {
-	rootCmd, err := root.NewRootCommand(nil)
-	if err != nil {
-		log.Panicf("can not create root command: %v", err)
-	}
+	kafkaSourceFactory := factories.NewKafkaSourceFactory()
 
-	dir := "."
-	if len(os.Args) > 1 {
-		dir = os.Args[1]
-	}
-	var withFrontMatter bool
-	if len(os.Args) > 2 {
-		withFrontMatter, err = strconv.ParseBool(os.Args[2])
-		if err != nil {
-			log.Panicf("invalid argument %s, has to be boolean to switch on/off generation of frontmatter (%v)", os.Args[2], err)
-		}
-	}
-	prependFunc := emptyString
-	if withFrontMatter {
-		prependFunc = addFrontMatter
-	}
-	err = doc.GenMarkdownTreeCustom(rootCmd, dir+"/docs/cmd/", prependFunc, identity)
+	kafkaCommandFactory := factories.NewKafkaSourceCommandFactory(kafkaSourceFactory)
+	kafkaFlagsFactory := factories.NewKafkaSourceFlagsFactory(kafkaSourceFactory)
+	kafkaRunEFactory := factories.NewKafkaSourceRunEFactory(kafkaSourceFactory)
+
+	rootCmd := core.NewKnSourceCommand(kafkaSourceFactory, kafkaCommandFactory, kafkaFlagsFactory, kafkaRunEFactory)
+	err := util.ReadmeGenerator(rootCmd)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		fmt.Fprintln(os.Stdout, err)
 		os.Exit(1)
 	}
-}
-
-func emptyString(filename string) string {
-	return ""
-}
-
-func addFrontMatter(fileName string) string {
-	// Convert to a title
-	title := filepath.Base(fileName)
-	title = title[0 : len(title)-len(filepath.Ext(title))]
-	title = strings.ReplaceAll(title, "_", " ")
-	ret := `
----
-title: "%s"
-#linkTitle: "OPTIONAL_ALTERNATE_NAV_TITLE"
-weight: 5
-type: "docs"
----
-`
-	return fmt.Sprintf(ret, title)
-}
-
-func identity(s string) string {
-	return s
 }
