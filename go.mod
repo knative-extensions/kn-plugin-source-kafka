@@ -1,4 +1,4 @@
-module knative.dev/client-contrib/plugins/source-kafka
+module knative.dev/kn-plugin-source-kafka
 
 go 1.14
 
@@ -11,6 +11,7 @@ require (
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
 	knative.dev/client v0.17.0
 	knative.dev/eventing-contrib v0.17.1
+	knative.dev/hack v0.0.0-20201120192952-353db687ec5b
 	knative.dev/pkg v0.0.0-20200828200807-2335e4d84a05
 	knative.dev/test-infra v0.0.0-20200828171708-f68cb78c80a9
 )

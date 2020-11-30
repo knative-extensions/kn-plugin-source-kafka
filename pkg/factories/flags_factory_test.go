@@ -17,7 +17,7 @@ package factories
 import (
 	"testing"
 
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/types"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	"gotest.tools/assert"
 )

@@ -21,7 +21,7 @@ import (
 	"github.com/maximilien/kn-source-pkg/pkg/core"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/factories"
+	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )
 
 func main() {

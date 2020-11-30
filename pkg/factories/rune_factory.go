@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"strings"
 
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/client"
-	"knative.dev/client-contrib/plugins/source-kafka/pkg/types"
 	v1alpha1 "knative.dev/eventing-contrib/kafka/source/pkg/apis/sources/v1alpha1"
+	"knative.dev/kn-plugin-source-kafka/pkg/client"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 
