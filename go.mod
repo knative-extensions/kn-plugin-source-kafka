@@ -14,7 +14,6 @@ require (
 	knative.dev/eventing-contrib v0.18.0
 	knative.dev/hack v0.0.0-20201120192952-353db687ec5b
 	knative.dev/pkg v0.0.0-20200922164940-4bf40ad82aab
-	knative.dev/test-infra v0.0.0-20200921012245-37f1a12adbd3
 )
 
 // Temporary pinning certain libraries. Please check periodically, whether these are still needed

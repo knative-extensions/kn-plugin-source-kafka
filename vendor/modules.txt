@@ -651,9 +651,6 @@ knative.dev/serving/pkg/autoscaler/config/autoscalerconfig
 knative.dev/serving/pkg/client/clientset/versioned/scheme
 knative.dev/serving/pkg/client/clientset/versioned/typed/serving/v1
 knative.dev/serving/pkg/client/clientset/versioned/typed/serving/v1/fake
-# knative.dev/test-infra v0.0.0-20200921012245-37f1a12adbd3
-## explicit
-knative.dev/test-infra/scripts
 # sigs.k8s.io/kustomize v2.0.3+incompatible
 sigs.k8s.io/kustomize/pkg/commands/build
 sigs.k8s.io/kustomize/pkg/constants
