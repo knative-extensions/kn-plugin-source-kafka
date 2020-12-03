@@ -339,9 +339,6 @@ if $(has_flag --debug); then
     set -x
 fi
 
-# Shared funcs with CI
-source $(basedir)/hack/build-flags.sh
-
 # Fixe emoji labels for certain terminals
 apply_emoji_fixes
 
