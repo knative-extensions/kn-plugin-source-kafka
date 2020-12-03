@@ -73,13 +73,13 @@ func TestSourceKafka(t *testing.T) {
 
 	serviceCreate(r, "sinksvc")
 
-	t.Log("test kn-source-kafka create source-name")
+	t.Log("test kn-plugin-source-kafka create source-name")
 	e2eTest.knSourceKafkaCreate(t, r, "mykafka1", "sinksvc")
 
-	t.Log("test kn-source-kafka describe source-name")
+	t.Log("test kn-plugin-source-kafka describe source-name")
 	e2eTest.knSourceKafkaDescribe(t, r, "mykafka1", "sinksvc")
 
-	t.Log("test kn-source-kafka delete source-name")
+	t.Log("test kn-plugin-source-kafka delete source-name")
 	e2eTest.knSourceKafkaDelete(t, r, "mykafka1")
 
 	err = e2eTest.it.KnPlugin().Uninstall()

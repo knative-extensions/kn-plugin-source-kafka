@@ -58,7 +58,7 @@ run() {
 }
 
 integration_test() {
-  header "Running plugin kn-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
+  header "Running kn-plugin-source-kafka e2e tests for Knative Serving $KNATIVE_SERVING_VERSION and Eventing $KNATIVE_EVENTING_VERSION"
 
   go_test_e2e -timeout=45m ./test/e2e || return 1
 }
