@@ -26,28 +26,32 @@ func init() {
 	plugin.InternalPlugins = append(plugin.InternalPlugins, &sourceKafkaPlugin{})
 }
 
-type sourceKafkaPlugin struct {}
+type sourceKafkaPlugin struct{}
 
+// Name is a plugin's name
 func (l *sourceKafkaPlugin) Name() string {
 	return "kn-source-kafka"
 }
 
+// Execute represents the plugin's entrypoint when called through kn
 func (l *sourceKafkaPlugin) Execute(args []string) error {
 	cmd := root.NewSourceKafkaCommand()
 	oldArgs := os.Args
 	defer (func() {
 		os.Args = oldArgs
 	})()
-	os.Args = append([]string { "kn-source-kafka" }, args...)
+	os.Args = append([]string{"kn-source-kafka"}, args...)
 	return cmd.Execute()
 }
 
+// Description is displayed in kn's plugin section
 func (l *sourceKafkaPlugin) Description() (string, error) {
 	return "Manage Kafka event source", nil
 }
 
+// CommandParts defines for plugin is executed from kn
 func (l *sourceKafkaPlugin) CommandParts() []string {
-	return []string{ "source", "kafka" }
+	return []string{"source", "kafka"}
 }
 
 // Path is empty because its an internal plugins

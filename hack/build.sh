@@ -18,7 +18,7 @@ set -o pipefail
 
 PLUGIN="kn-source-kafka"
 
-source_dirs="cmd pkg test"
+source_dirs="cmd pkg test plugin"
 
 # Store for later
 if [ -z "$1" ]; then
