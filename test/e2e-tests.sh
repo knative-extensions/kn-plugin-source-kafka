@@ -24,7 +24,7 @@ export PATH=$PATH:${REPO_ROOT_DIR}
 export KN_E2E_NAMESPACE=kne2etests
 
 export KNATIVE_EVENTING_VERSION="0.18.6"
-export KNATIVE_SERVING_VERSION="0.18.3"
+export KNATIVE_SERVING_VERSION="0.18.1"
 
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.17.0.yaml"
