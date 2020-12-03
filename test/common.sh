@@ -68,7 +68,7 @@ function knative_setup() {
 }
 
 function kafka_setup() {
-  subheader "Installing Kafka"
+  subheader "Installing Kafka 2.6.0 using strimzi 0.20.0"
   kubectl create namespace kafka || return 1
   sed 's/namespace: .*/namespace: kafka/' ${STRIMZI_INSTALLATION_CONFIG_TEMPLATE} > ${STRIMZI_INSTALLATION_CONFIG}
   kubectl apply -f ${STRIMZI_INSTALLATION_CONFIG} -n kafka
