@@ -15,6 +15,7 @@
 package flags
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
@@ -32,17 +33,22 @@ type SinkFlags struct {
 	sink string
 }
 
-func (i *SinkFlags) Add(cmd *cobra.Command) {
-	cmd.Flags().StringVarP(&i.sink,
-		"sink",
-		"s",
-		"",
-		"Addressable sink for events. "+
-			"You can specify a broker, Knative service or URI. "+
-			"Examples: '--sink broker:nest' for a broker 'nest', "+
-			"'--sink https://event.receiver.uri' for an URI with an 'http://' or 'https://' schema, "+
-			"'--sink 'ksvc:receiver' or simply '--sink receiver' for a Knative service 'receiver'. "+
-			"If prefix is not provided, it is considered as a Knative service.")
+// AddWithFlagName configures sink flag with given flag name and a short flag name
+// pass empty short flag name if you dont want to set one
+func (i *SinkFlags) AddWithFlagName(cmd *cobra.Command, fname, short string) {
+	flag := "--" + fname
+	if short == "" {
+		cmd.Flags().StringVar(&i.sink, fname, "", "")
+	} else {
+		cmd.Flags().StringVarP(&i.sink, fname, short, "", "")
+	}
+	cmd.Flag(fname).Usage = "Addressable sink for events. " +
+		"You can specify a broker, channel, Knative service or URI. " +
+		"Examples: '" + flag + " broker:nest' for a broker 'nest', " +
+		"'" + flag + " channel:pipe' for a channel 'pipe', " +
+		"'" + flag + " https://event.receiver.uri' for an URI with an 'http://' or 'https://' schema, " +
+		"'" + flag + " ksvc:receiver' or simply '" + flag + " receiver' for a Knative service 'receiver'. " +
+		"If a prefix is not provided, it is considered as a Knative service."
 
 	for _, p := range config.GlobalConfig.SinkMappings() {
 		//user configration might override the default configuration
@@ -52,6 +58,11 @@ func (i *SinkFlags) Add(cmd *cobra.Command) {
 			Version:  p.Version,
 		}
 	}
+}
+
+// Add configures sink flag with name 'sink' amd short name 's'
+func (i *SinkFlags) Add(cmd *cobra.Command) {
+	i.AddWithFlagName(cmd, "sink", "s")
 }
 
 // sinkPrefixes maps prefixes used for sinks to their GroupVersionResources.
@@ -66,6 +77,11 @@ var sinkMappings = map[string]schema.GroupVersionResource{
 		Resource: "services",
 		Group:    "serving.knative.dev",
 		Version:  "v1",
+	},
+	"channel": {
+		Resource: "channels",
+		Group:    "messaging.knative.dev",
+		Version:  "v1beta1",
 	},
 }
 
@@ -93,7 +109,7 @@ func (i *SinkFlags) ResolveSink(knclient clientdynamic.KnDynamicClient, namespac
 		}
 		return nil, fmt.Errorf("unsupported sink prefix: '%s'", prefix)
 	}
-	obj, err := client.Resource(typ).Namespace(namespace).Get(name, metav1.GetOptions{})
+	obj, err := client.Resource(typ).Namespace(namespace).Get(context.TODO(), name, metav1.GetOptions{})
 	if err != nil {
 		return nil, err
 	}

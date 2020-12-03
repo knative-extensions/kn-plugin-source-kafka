@@ -47,7 +47,7 @@ github.com/google/go-cmp/cmp/internal/diff
 github.com/google/go-cmp/cmp/internal/flags
 github.com/google/go-cmp/cmp/internal/function
 github.com/google/go-cmp/cmp/internal/value
-# github.com/google/go-containerregistry v0.1.2
+# github.com/google/go-containerregistry v0.1.3
 github.com/google/go-containerregistry/pkg/name
 # github.com/google/gofuzz v1.1.0
 github.com/google/gofuzz
@@ -129,7 +129,7 @@ github.com/spf13/afero
 github.com/spf13/afero/mem
 # github.com/spf13/cast v1.3.1
 github.com/spf13/cast
-# github.com/spf13/cobra v1.0.1-0.20200715031239-b95db644ed1c => github.com/chmouel/cobra v0.0.0-20191021105835-a78788917390
+# github.com/spf13/cobra v1.0.1-0.20200715031239-b95db644ed1c
 ## explicit
 github.com/spf13/cobra
 github.com/spf13/cobra/doc
@@ -172,8 +172,9 @@ go.uber.org/zap/internal/color
 go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
 # golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
+## explicit
 golang.org/x/crypto/ssh/terminal
-# golang.org/x/net v0.0.0-20200822124328-c89045814202
+# golang.org/x/net v0.0.0-20200904194848-62affa334b73
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
 golang.org/x/net/http/httpguts
@@ -186,7 +187,7 @@ golang.org/x/oauth2/google
 golang.org/x/oauth2/internal
 golang.org/x/oauth2/jws
 golang.org/x/oauth2/jwt
-# golang.org/x/sys v0.0.0-20200828081204-131dc92a58d5
+# golang.org/x/sys v0.0.0-20200905004654-be1d3432aa8f
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
@@ -263,7 +264,7 @@ gotest.tools/assert/cmp
 gotest.tools/internal/difflib
 gotest.tools/internal/format
 gotest.tools/internal/source
-# k8s.io/api v0.18.7-rc.0
+# k8s.io/api v0.18.8
 k8s.io/api/admissionregistration/v1
 k8s.io/api/admissionregistration/v1beta1
 k8s.io/api/apps/v1
@@ -304,7 +305,7 @@ k8s.io/api/settings/v1alpha1
 k8s.io/api/storage/v1
 k8s.io/api/storage/v1alpha1
 k8s.io/api/storage/v1beta1
-# k8s.io/apimachinery v0.19.0 => k8s.io/apimachinery v0.17.6
+# k8s.io/apimachinery v0.19.0 => k8s.io/apimachinery v0.18.8
 ## explicit
 k8s.io/apimachinery/pkg/api/apitesting/fuzzer
 k8s.io/apimachinery/pkg/api/equality
@@ -354,7 +355,7 @@ k8s.io/apimachinery/pkg/version
 k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/third_party/forked/golang/json
 k8s.io/apimachinery/third_party/forked/golang/reflect
-# k8s.io/cli-runtime v0.17.6
+# k8s.io/cli-runtime v0.18.8
 k8s.io/cli-runtime/pkg/genericclioptions
 k8s.io/cli-runtime/pkg/kustomize
 k8s.io/cli-runtime/pkg/kustomize/k8sdeps
@@ -367,7 +368,7 @@ k8s.io/cli-runtime/pkg/kustomize/k8sdeps/transformer/patch
 k8s.io/cli-runtime/pkg/kustomize/k8sdeps/validator
 k8s.io/cli-runtime/pkg/printers
 k8s.io/cli-runtime/pkg/resource
-# k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible => k8s.io/client-go v0.17.6
+# k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible => k8s.io/client-go v0.18.8
 ## explicit
 k8s.io/client-go/discovery
 k8s.io/client-go/discovery/cached/disk
@@ -536,7 +537,7 @@ k8s.io/client-go/util/flowcontrol
 k8s.io/client-go/util/homedir
 k8s.io/client-go/util/jsonpath
 k8s.io/client-go/util/keyutil
-k8s.io/client-go/util/retry
+k8s.io/client-go/util/workqueue
 # k8s.io/klog v1.0.0
 k8s.io/klog
 # k8s.io/klog/v2 v2.0.0
@@ -548,7 +549,7 @@ k8s.io/kube-openapi/pkg/util/proto
 k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/trace
-# knative.dev/client v0.17.0
+# knative.dev/client v0.18.4
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/dynamic
@@ -566,7 +567,7 @@ knative.dev/client/pkg/sources/v1alpha2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.17.3-0.20200831120208-4051c5d96eda
+# knative.dev/eventing v0.18.0
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/configs
 knative.dev/eventing/pkg/apis/configs/v1alpha1
@@ -592,8 +593,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/eventing/v1beta1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1beta1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1alpha2
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1alpha2/fake
-knative.dev/eventing/pkg/logging
-# knative.dev/eventing-contrib v0.17.1
+# knative.dev/eventing-contrib v0.18.0
 ## explicit
 knative.dev/eventing-contrib/kafka/source/pkg/apis/bindings
 knative.dev/eventing-contrib/kafka/source/pkg/apis/bindings/v1alpha1
@@ -606,10 +606,11 @@ knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/typed/s
 # knative.dev/hack v0.0.0-20201120192952-353db687ec5b
 ## explicit
 knative.dev/hack
-# knative.dev/networking v0.0.0-20200812200006-4d518e76538a
+# knative.dev/networking v0.0.0-20200922180040-a71b40c69b15
+knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
-# knative.dev/pkg v0.0.0-20200828200807-2335e4d84a05
+# knative.dev/pkg v0.0.0-20200922164940-4bf40ad82aab
 ## explicit
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
@@ -637,7 +638,7 @@ knative.dev/pkg/tracing/propagation
 knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.17.1
+# knative.dev/serving v0.18.0
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
 knative.dev/serving/pkg/apis/config
@@ -646,12 +647,10 @@ knative.dev/serving/pkg/apis/serving/v1
 knative.dev/serving/pkg/apis/serving/v1alpha1
 knative.dev/serving/pkg/apis/serving/v1beta1
 knative.dev/serving/pkg/autoscaler/config
+knative.dev/serving/pkg/autoscaler/config/autoscalerconfig
 knative.dev/serving/pkg/client/clientset/versioned/scheme
 knative.dev/serving/pkg/client/clientset/versioned/typed/serving/v1
 knative.dev/serving/pkg/client/clientset/versioned/typed/serving/v1/fake
-# knative.dev/test-infra v0.0.0-20200828171708-f68cb78c80a9
-## explicit
-knative.dev/test-infra/scripts
 # sigs.k8s.io/kustomize v2.0.3+incompatible
 sigs.k8s.io/kustomize/pkg/commands/build
 sigs.k8s.io/kustomize/pkg/constants
@@ -675,8 +674,9 @@ sigs.k8s.io/kustomize/pkg/transformers
 sigs.k8s.io/kustomize/pkg/transformers/config
 sigs.k8s.io/kustomize/pkg/transformers/config/defaultconfig
 sigs.k8s.io/kustomize/pkg/types
+# sigs.k8s.io/structured-merge-diff/v3 v3.0.1-0.20200706213357-43c19bbb7fba
+sigs.k8s.io/structured-merge-diff/v3/value
 # sigs.k8s.io/yaml v1.2.0
 sigs.k8s.io/yaml
-# github.com/spf13/cobra => github.com/chmouel/cobra v0.0.0-20191021105835-a78788917390
-# k8s.io/apimachinery => k8s.io/apimachinery v0.17.6
-# k8s.io/client-go => k8s.io/client-go v0.17.6
+# k8s.io/apimachinery => k8s.io/apimachinery v0.18.8
+# k8s.io/client-go => k8s.io/client-go v0.18.8

@@ -107,11 +107,6 @@ codegen() {
   generate_docs
 }
 
-go_fmt() {
-  echo "🧹 ${S}Format"
-  find $(echo $source_dirs) -name "*.go" -print0 | xargs -0 gofmt -s -w
-}
-
 # Run a go tool, get it first if necessary.
 run_go_tool() {
   local tool=$2

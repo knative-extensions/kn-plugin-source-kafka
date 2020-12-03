@@ -15,6 +15,8 @@
 package client
 
 import (
+	"context"
+
 	sourceclient "github.com/maximilien/kn-source-pkg/pkg/client"
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	knerrors "knative.dev/client/pkg/errors"
@@ -65,7 +67,7 @@ func (c *kafkaSourceClient) KafkaSourceParams() *types.KafkaSourceParams {
 
 //CreateKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource) error {
-	_, err := c.client.KafkaSources(c.namespace).Create(kafkaSource)
+	_, err := c.client.KafkaSources(c.namespace).Create(context.TODO(), kafkaSource, metav1.CreateOptions{})
 	if err != nil {
 		return knerrors.GetError(err)
 	}
@@ -75,7 +77,7 @@ func (c *kafkaSourceClient) CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource)
 
 //DeleteKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) DeleteKafkaSource(name string) error {
-	err := c.client.KafkaSources(c.namespace).Delete(name, &metav1.DeleteOptions{})
+	err := c.client.KafkaSources(c.namespace).Delete(context.TODO(), name, metav1.DeleteOptions{})
 	if err != nil {
 		return knerrors.GetError(err)
 	}
@@ -85,7 +87,7 @@ func (c *kafkaSourceClient) DeleteKafkaSource(name string) error {
 
 //GetKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) GetKafkaSource(name string) (*v1alpha1.KafkaSource, error) {
-	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(name, metav1.GetOptions{})
+	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(context.TODO(), name, metav1.GetOptions{})
 	if err != nil {
 		return nil, knerrors.GetError(err)
 	}
