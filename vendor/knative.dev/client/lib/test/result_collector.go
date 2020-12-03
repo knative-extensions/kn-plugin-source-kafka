@@ -98,8 +98,13 @@ func (c *KnRunResultCollector) AddDump(kind string, name string, namespace strin
 // DumpIfFailed logs if collector failed
 func (c *KnRunResultCollector) DumpIfFailed() {
 	if c.t.Failed() {
-		c.t.Log(c.errorDetails())
+		c.Dump()
 	}
+}
+
+// Dump prints out the collected output and logs
+func (c *KnRunResultCollector) Dump() {
+	c.t.Log(c.errorDetails())
 }
 
 // Private
@@ -118,7 +123,7 @@ func (c *KnRunResultCollector) errorDetails() string {
 	dumpInfos = append(dumpInfos, c.extraDumps...)
 	for _, d := range dumpInfos {
 		fmt.Fprintln(&out, "--------------------------[[DUMP]]-------------------------------")
-		fmt.Fprintf(&out, d)
+		fmt.Fprint(&out, d)
 	}
 
 	fmt.Fprintln(&out, "=================================================================")
