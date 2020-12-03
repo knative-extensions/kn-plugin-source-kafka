@@ -40,8 +40,7 @@ func (source *KafkaBinding) ConvertTo(ctx context.Context, obj apis.Convertible)
 			BindingSpec:   source.Spec.BindingSpec,
 			KafkaAuthSpec: kafkaAuthSpec,
 		}
-		sink.Status.Status = source.Status.Status
-		source.Status.Status.ConvertTo(ctx, &sink.Status.Status)
+		source.Status.Status.DeepCopyInto(&sink.Status.Status)
 		return nil
 	default:
 		return fmt.Errorf("Unknown conversion, got: %T", sink)
@@ -63,8 +62,7 @@ func (sink *KafkaBinding) ConvertFrom(ctx context.Context, obj apis.Convertible)
 			BindingSpec:   source.Spec.BindingSpec,
 			KafkaAuthSpec: kafkaAuthSpec,
 		}
-		sink.Status.Status = source.Status.Status
-		source.Status.Status.ConvertTo(ctx, &source.Status.Status)
+		source.Status.Status.DeepCopyInto(&sink.Status.Status)
 		return nil
 	default:
 		return fmt.Errorf("Unknown conversion, got: %T", source)
@@ -85,6 +83,9 @@ func (source *KafkaAuthSpec) ConvertTo(_ context.Context, obj apis.Convertible) 
 				},
 				Password: bindingsv1beta1.SecretValueFromSource{
 					SecretKeyRef: source.Net.SASL.Password.SecretKeyRef},
+				Type: bindingsv1beta1.SecretValueFromSource{
+					SecretKeyRef: source.Net.SASL.Type.SecretKeyRef,
+				},
 			},
 			TLS: bindingsv1beta1.KafkaTLSSpec{
 				Enable: source.Net.TLS.Enable,
@@ -119,6 +120,9 @@ func (sink *KafkaAuthSpec) ConvertFrom(_ context.Context, obj apis.Convertible) 
 				},
 				Password: SecretValueFromSource{
 					SecretKeyRef: source.Net.SASL.Password.SecretKeyRef},
+				Type: SecretValueFromSource{
+					SecretKeyRef: source.Net.SASL.Type.SecretKeyRef,
+				},
 			},
 			TLS: KafkaTLSSpec{
 				Enable: source.Net.TLS.Enable,

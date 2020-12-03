@@ -139,7 +139,7 @@ generate_docs() {
 
 go_build() {
   echo "🚧 Compile"
-  go build -mod=vendor -ldflags "$(build_flags $(basedir))" -o $PLUGIN ./cmd/...
+  go build -mod=vendor -o $PLUGIN ./cmd/...
 }
 
 go_test() {
@@ -262,18 +262,17 @@ has_flag() {
 
 cross_build() {
   local basedir=$(basedir)
-  local ld_flags="$(build_flags $basedir)"
   local failed=0
 
   echo "⚔️ ${S}Compile"
 
   export CGO_ENABLED=0
   echo "   🐧 ${PLUGIN}-linux-amd64"
-  GOOS=linux GOARCH=amd64 go build -ldflags "${ld_flags}" -o ./${PLUGIN}-linux-amd64 ./cmd/... || failed=1
+  GOOS=linux GOARCH=amd64 go build -o ./${PLUGIN}-linux-amd64 ./cmd/... || failed=1
   echo "   🍏 ${PLUGIN}-darwin-amd64"
-  GOOS=darwin GOARCH=amd64 go build -ldflags "${ld_flags}" -o ./${PLUGIN}-darwin-amd64 ./cmd/... || failed=1
+  GOOS=darwin GOARCH=amd64 go build -o ./${PLUGIN}-darwin-amd64 ./cmd/... || failed=1
   echo "   🎠 ${PLUGIN}-windows-amd64.exe"
-  GOOS=windows GOARCH=amd64 go build -ldflags "${ld_flags}" -o ./${PLUGIN}-windows-amd64.exe ./cmd/... || failed=1
+  GOOS=windows GOARCH=amd64 go build -o ./${PLUGIN}-windows-amd64.exe ./cmd/... || failed=1
 
   return ${failed}
 }
@@ -339,9 +338,6 @@ if $(has_flag --debug); then
     export PS4='+($(basename ${BASH_SOURCE[0]}):${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
     set -x
 fi
-
-# Shared funcs with CI
-source $(basedir)/hack/build-flags.sh
 
 # Fixe emoji labels for certain terminals
 apply_emoji_fixes
