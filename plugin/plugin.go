@@ -46,7 +46,7 @@ func (l *sourceKafkaPlugin) Execute(args []string) error {
 
 // Description is displayed in kn's plugin section
 func (l *sourceKafkaPlugin) Description() (string, error) {
-	return "Manage Kafka event source", nil
+	return "Manage Kafka sources", nil
 }
 
 // CommandParts defines for plugin is executed from kn
