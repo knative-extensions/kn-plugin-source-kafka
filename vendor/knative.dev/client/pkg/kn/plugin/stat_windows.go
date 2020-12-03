@@ -1,4 +1,4 @@
-// Copyright © 2018 The Knative Authors
+// Copyright © 2019 The Knative Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,24 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+package plugin
 
 import (
-	"fmt"
 	"os"
-
-	pkg "knative.dev/kn-plugin-source-kafka/pkg/root"
-
-	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
-	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
 )
 
-func main() {
-	err := pkg.NewSourceKafkaCommand().Execute()
-	if err != nil {
-		if err.Error() != "subcommand is required" {
-			fmt.Fprintln(os.Stderr, err)
-		}
-		os.Exit(1)
-	}
+// statFileOwner is a no-op on windows
+func statFileOwner(fileInfo os.FileInfo) (uint32, uint32, error) {
+	return 0, 0, nil
 }
