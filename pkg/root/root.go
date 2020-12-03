@@ -21,6 +21,7 @@ import (
 	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )
 
+// NewSourceKafkaCommand represents the plugin's entrypoint
 func NewSourceKafkaCommand() *cobra.Command {
 	kafkaSourceFactory := factories.NewKafkaSourceFactory()
 
