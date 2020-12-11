@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"strings"
 
-	v1alpha1 "knative.dev/eventing-contrib/kafka/source/pkg/apis/sources/v1alpha1"
+	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
