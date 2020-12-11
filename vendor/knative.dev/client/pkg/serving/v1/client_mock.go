@@ -104,6 +104,16 @@ func (c *MockKnServingClient) UpdateServiceWithRetry(name string, updateFunc Ser
 	return updateServiceWithRetry(c, name, updateFunc, maxRetry)
 }
 
+// Update the given service
+func (sr *ServingRecorder) ApplyService(service interface{}, hasChanged bool, err error) {
+	sr.r.Add("ApplyService", []interface{}{service}, []interface{}{hasChanged, err})
+}
+
+func (c *MockKnServingClient) ApplyService(service *servingv1.Service) (bool, error) {
+	call := c.recorder.r.VerifyCall("ApplyService", service)
+	return call.Result[0].(bool), mock.ErrorOrNil(call.Result[1])
+}
+
 // Delete a service by name
 func (sr *ServingRecorder) DeleteService(name, timeout interface{}, err error) {
 	sr.r.Add("DeleteService", []interface{}{name, timeout}, []interface{}{err})
@@ -181,7 +191,7 @@ func (sr *ServingRecorder) GetConfiguration(name string, config *servingv1.Confi
 
 }
 
-// Check for the base reviision
+// GetBaseRevision returns the base revision
 func (c *MockKnServingClient) GetBaseRevision(service *servingv1.Service) (*servingv1.Revision, error) {
 	return getBaseRevision(c, service)
 }
@@ -190,6 +200,28 @@ func (c *MockKnServingClient) GetBaseRevision(service *servingv1.Service) (*serv
 func (c *MockKnServingClient) GetConfiguration(name string) (*servingv1.Configuration, error) {
 	call := c.recorder.r.VerifyCall("GetConfiguration", name)
 	return call.Result[0].(*servingv1.Configuration), mock.ErrorOrNil(call.Result[1])
+}
+
+// CreateRevision records a call CreateRevision
+func (sr *ServingRecorder) CreateRevision(revision interface{}, err error) {
+	sr.r.Add("CreateRevision", []interface{}{revision}, []interface{}{err})
+}
+
+// CreateRevision creates a new revision
+func (c *MockKnServingClient) CreateRevision(revision *servingv1.Revision) error {
+	call := c.recorder.r.VerifyCall("CreateRevision", revision)
+	return mock.ErrorOrNil(call.Result[0])
+}
+
+// UpdateRevision records a call UpdateRevision
+func (sr *ServingRecorder) UpdateRevision(revision interface{}, err error) {
+	sr.r.Add("UpdateRevision", []interface{}{revision}, []interface{}{err})
+}
+
+// UpdateRevision updates given revision
+func (c *MockKnServingClient) UpdateRevision(revision *servingv1.Revision) error {
+	call := c.recorder.r.VerifyCall("UpdateRevision", revision)
+	return mock.ErrorOrNil(call.Result[0])
 }
 
 // Check that every recorded method has been called

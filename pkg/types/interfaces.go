@@ -15,7 +15,7 @@
 package types
 
 import (
-	v1alpha1 "knative.dev/eventing-contrib/kafka/source/pkg/apis/sources/v1alpha1"
+	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"k8s.io/client-go/rest"

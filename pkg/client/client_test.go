@@ -18,7 +18,7 @@ import (
 	"testing"
 
 	"gotest.tools/assert"
-	v1alpha1 "knative.dev/eventing-contrib/kafka/source/pkg/apis/sources/v1alpha1"
+	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 )
 
 func TestKafkaSourceClient(t *testing.T) {

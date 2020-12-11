@@ -16,6 +16,7 @@ package v1
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
@@ -68,6 +69,17 @@ type KnServingClient interface {
 	// place.
 	UpdateServiceWithRetry(name string, updateFunc ServiceUpdateFunc, nrRetries int) error
 
+	// Apply a service's definition to the cluster. The full service declaration needs to be provided,
+	// which is different to UpdateService which can also do a partial update. If the given
+	// service does not already exists (identified by name) then the service is create.
+	// If the service exists, then a three-way merge will be performed between the original
+	// configuration given (from the last "apply" operation), the new configuration as given ]
+	// here and the current configuration as found on the cluster.
+	// The returned bool indicates whether the service has been changed or whether this operation
+	// was a no-op
+	// An error can indicate a general error or a conflict that occurred during the three way merge.
+	ApplyService(service *servingv1.Service) (bool, error)
+
 	// Delete a service by name
 	DeleteService(name string, timeout time.Duration) error
 
@@ -84,6 +96,12 @@ type KnServingClient interface {
 	// Get the "base" revision for a Service; the one that corresponds to the
 	// current template.
 	GetBaseRevision(service *servingv1.Service) (*servingv1.Revision, error)
+
+	// Create revision
+	CreateRevision(revision *servingv1.Revision) error
+
+	// Update revision
+	UpdateRevision(revision *servingv1.Revision) error
 
 	// List revisions
 	ListRevisions(opts ...ListConfig) (*servingv1.RevisionList, error)
@@ -267,6 +285,32 @@ func updateServiceWithRetry(cl KnServingClient, name string, updateFunc ServiceU
 	}
 }
 
+// ApplyService applies a service definition that contains the service's targer state
+func (cl *knServingClient) ApplyService(modifiedService *servingv1.Service) (bool, error) {
+	currentService, err := cl.GetService(modifiedService.Name)
+	if err != nil && !apierrors.IsNotFound(err) {
+		return false, err
+	}
+
+	containers := modifiedService.Spec.Template.Spec.Containers
+	if len(containers) == 0 || containers[0].Image == "" && currentService != nil {
+		return false, errors.New("'service apply' requires the image name to run provided with the --image option")
+	}
+
+	// No current service --> create a new service
+	if currentService == nil {
+		err := updateLastAppliedAnnotation(modifiedService)
+		if err != nil {
+			return false, err
+		}
+		return true, cl.CreateService(modifiedService)
+	}
+
+	// Merge with existing service
+	uOriginalService := getOriginalConfiguration(currentService)
+	return cl.patch(modifiedService, currentService, uOriginalService)
+}
+
 // Delete a service by name
 // Param `timeout` represents a duration to wait for a delete op to finish.
 // For `timeout == 0` delete is performed async without any wait.
@@ -393,6 +437,24 @@ func getBaseRevision(cl KnServingClient, service *servingv1.Service) (*servingv1
 		return latestCreated, nil
 	}
 	return nil, noBaseRevisionError
+}
+
+// Create a revision
+func (cl *knServingClient) CreateRevision(revision *servingv1.Revision) error {
+	rev, err := cl.client.Revisions(cl.namespace).Create(context.TODO(), revision, v1.CreateOptions{})
+	if err != nil {
+		return clienterrors.GetError(err)
+	}
+	return updateServingGvk(rev)
+}
+
+// Update the given service
+func (cl *knServingClient) UpdateRevision(revision *servingv1.Revision) error {
+	_, err := cl.client.Revisions(cl.namespace).Update(context.TODO(), revision, v1.UpdateOptions{})
+	if err != nil {
+		return err
+	}
+	return updateServingGvk(revision)
 }
 
 // Delete a revision by name

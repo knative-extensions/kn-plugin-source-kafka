@@ -16,7 +16,7 @@ package types
 
 import (
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
-	clientv1alpha1 "knative.dev/eventing-contrib/kafka/source/pkg/client/clientset/versioned/typed/sources/v1alpha1"
+	clientv1alpha1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1"
 )
 
 type KafkaSourceParams struct {
