@@ -21,8 +21,8 @@ import (
 
 type KafkaSourceParams struct {
 	KnSourceParams   *sourcetypes.KnSourceParams
-	BootstrapServers string
-	Topics           string
+	BootstrapServers []string
+	Topics           []string
 	ConsumerGroup    string
 }
 

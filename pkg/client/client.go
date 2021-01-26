@@ -120,16 +120,14 @@ func NewKafkaSourceBuilderFromExisting(kSource *v1alpha1.KafkaSource) *KafkaSour
 }
 
 // BootstrapServers to set the value of BootstrapServers
-func (b *KafkaSourceBuilder) BootstrapServers(server string) *KafkaSourceBuilder {
-	// TODO: fix on the CLI level to accept multiple servers
-	b.kafkaSource.Spec.BootstrapServers = []string{server}
+func (b *KafkaSourceBuilder) BootstrapServers(servers []string) *KafkaSourceBuilder {
+	b.kafkaSource.Spec.BootstrapServers = servers
 	return b
 }
 
 // Topics to set the value of Topics
-func (b *KafkaSourceBuilder) Topics(topics string) *KafkaSourceBuilder {
-	// TODO: fix on the CLI level to accept multiple topics
-	b.kafkaSource.Spec.Topics = []string{topics}
+func (b *KafkaSourceBuilder) Topics(topics []string) *KafkaSourceBuilder {
+	b.kafkaSource.Spec.Topics = topics
 	return b
 }
 

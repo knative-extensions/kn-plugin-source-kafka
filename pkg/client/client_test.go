@@ -52,10 +52,21 @@ func TestDeleteKafka(t *testing.T) {
 	assert.NilError(t, err)
 }
 
+func TestCreateKafkaMultipleTopicsServers(t *testing.T) {
+	cli := NewFakeKafkaSourceClient("fake-namespace")
+	objNew := NewKafkaSourceBuilder("samplekafka").
+		BootstrapServers([]string{"test.server.org", "foo.server.org"}).
+		Topics([]string{"foo", "bar"}).
+		ConsumerGroup("mygroup").
+		Build()
+	err := cli.CreateKafkaSource(objNew)
+	assert.NilError(t, err)
+}
+
 func newKafkaSource(name string) *v1alpha1.KafkaSource {
 	return NewKafkaSourceBuilder(name).
-		BootstrapServers("test.server.org").
-		Topics("topic").
+		BootstrapServers([]string{"test.server.org"}).
+		Topics([]string{"topic"}).
 		ConsumerGroup("mygroup").
 		Build()
 }
