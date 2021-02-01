@@ -61,10 +61,6 @@ Manage Knative kafka eventing sources
 
 Create a kafka source
 
-#### Synopsis
-
-Create a kafka source
-
 ```
 kafka create NAME --servers SERVERS --topics TOPICS --consumergroup GROUP --sink SINK [flags]
 ```
@@ -96,10 +92,6 @@ kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc
 
 Delete a kafka source
 
-#### Synopsis
-
-Delete a kafka source
-
 ```
 kafka delete NAME [flags]
 ```
@@ -124,10 +116,6 @@ kn source kafka delete mykafkasrc
 * [kafka](#kafka)	 - Knative eventing kafka source plugin
 
 ### kafka describe
-
-Describe a kafka source
-
-#### Synopsis
 
 Describe a kafka source
 

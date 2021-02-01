@@ -87,13 +87,6 @@ func WithCreationTimestamp(t time.Time) RevisionOption {
 	}
 }
 
-// WithLastPinned updates the "last pinned" annotation to the provided timestamp.
-func WithLastPinned(t time.Time) RevisionOption {
-	return func(rev *v1.Revision) {
-		rev.SetLastPinned(t)
-	}
-}
-
 // WithRevisionPreserveAnnotation updates the annotation with preserve key.
 func WithRevisionPreserveAnnotation() RevisionOption {
 	return func(rev *v1.Revision) {
@@ -115,9 +108,9 @@ func WithRoutingStateModified(t time.Time) RevisionOption {
 }
 
 // WithRoutingState updates the annotation to the provided timestamp.
-func WithRoutingState(s v1.RoutingState) RevisionOption {
+func WithRoutingState(s v1.RoutingState, c clock.Clock) RevisionOption {
 	return func(rev *v1.Revision) {
-		rev.SetRoutingState(s, clock.RealClock{})
+		rev.SetRoutingState(s, c)
 	}
 }
 
