@@ -60,7 +60,6 @@ function local_kafka_teardown() {
 
 function local_plugin_test_setup() {
   local_kafka_setup || return 1
-  sleep 30
   local_install_sources_crds || return 1
   return 0
 }
@@ -75,7 +74,6 @@ function local_install_sources_crds() {
   kubectl apply -f ${LOCAL_KAFKA_SOURCE_CRD_YAML}
 
   wait_until_pods_running knative-eventing || fail_test "Failed to install the Kafka Source CRD"
-  # wait_until_pods_running knative-sources || fail_test "Failed to install the Kafka Source CRD"
 }
 
 function local_uninstall_sources_crds() {
@@ -89,6 +87,6 @@ export KN_E2E_NAMESPACE=kne2etests
 echo "🧪  Setup"
 local_plugin_test_setup
 echo "🧪  Testing"
-#go test ${base}/test/e2e/ -timeout=45m -test.v -tags "e2e ${E2E_TAGS}" "$@"
+go test ${base}/test/e2e/ -timeout=45m -test.v -tags "e2e ${E2E_TAGS}" "$@"
 echo "🧪  Teardown"
-#local_plugin_test_teardown
+local_plugin_test_teardown

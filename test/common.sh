@@ -81,13 +81,11 @@ function install_sources_crds() {
   subheader "Installing Kafka Source CRD"
   kubectl apply -f ${KAFKA_SOURCE_CRD_YAML}
   wait_until_pods_running knative-eventing || fail_test "Failed to install the Kafka Source CRD"
-  # wait_until_pods_running knative-sources || fail_test "Failed to install the Kafka Source CRD"
 }
 
 function plugin_test_setup() {
   header "🧪  Setup Kafka and source CRDs"
   kafka_setup || return 1
-  sleep 30
   install_sources_crds || return 1
 }
 
