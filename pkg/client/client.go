@@ -95,6 +95,16 @@ func (c *kafkaSourceClient) GetKafkaSource(name string) (*v1alpha1.KafkaSource, 
 	return kafkaSource, nil
 }
 
+//GetKafkaSources is used to get all available instance of KafkaSource
+func (c *kafkaSourceClient) GetKafkaSources() (*v1alpha1.KafkaSourceList, error) {
+	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(context.TODO(), metav1.ListOptions{})
+	if err != nil {
+		return nil, knerrors.GetError(err)
+	}
+
+	return kafkaSourceList, nil
+}
+
 // Return the client's namespace
 func (c *kafkaSourceClient) Namespace() string {
 	return c.namespace

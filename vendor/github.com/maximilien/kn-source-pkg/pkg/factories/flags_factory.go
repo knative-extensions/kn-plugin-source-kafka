@@ -31,6 +31,12 @@ func NewDefaultFlagsFactory(knSourceFactory types.KnSourceFactory) types.FlagsFa
 	}
 }
 
+func (f *DefautFlagsFactory) ListFlags() *pflag.FlagSet {
+	flagSet := pflag.NewFlagSet("list", pflag.ExitOnError)
+	f.addNamespaceFlag(flagSet)
+	return flagSet
+}
+
 func (f *DefautFlagsFactory) CreateFlags() *pflag.FlagSet {
 	flagSet := pflag.NewFlagSet("create", pflag.ExitOnError)
 	f.addNamespaceFlag(flagSet)

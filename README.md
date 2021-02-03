@@ -56,6 +56,7 @@ Manage Knative kafka eventing sources
 * [kafka create](#kafka-create)	 - Create a kafka source
 * [kafka delete](#kafka-delete)	 - Delete a kafka source
 * [kafka describe](#kafka-describe)	 - Describe a kafka source
+* [kafka list](#kafka-list)	 - List kafka sources
 
 ### kafka create
 
@@ -135,6 +136,33 @@ kn source kafka describe kafka-name
 ```
   -A, --all-namespaces     If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
   -h, --help               help for describe
+  -n, --namespace string   Specify the namespace to operate in.
+```
+
+#### SEE ALSO
+
+* [kafka](#kafka)	 - Knative eventing kafka source plugin
+
+### kafka list
+
+List kafka sources
+
+```
+kafka list [flags]
+```
+
+#### Examples
+
+```
+# List the available kafka sources
+kn source kafka list
+```
+
+#### Options
+
+```
+  -A, --all-namespaces     If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
+  -h, --help               help for list
   -n, --namespace string   Specify the namespace to operate in.
 ```
 

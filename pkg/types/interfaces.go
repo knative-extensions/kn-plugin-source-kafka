@@ -27,6 +27,7 @@ type KafkaSourceClient interface {
 	CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource) error
 	DeleteKafkaSource(name string) error
 	GetKafkaSource(name string) (*v1alpha1.KafkaSource, error)
+	GetKafkaSources() (*v1alpha1.KafkaSourceList, error)
 }
 
 type KafkaSourceFactory interface {

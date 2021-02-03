@@ -15,10 +15,15 @@
 package factories
 
 import (
+	"fmt"
 	"testing"
 
 	"gotest.tools/assert"
 	"k8s.io/client-go/rest"
+	"knative.dev/client/pkg/printers"
+	"knative.dev/client/pkg/util"
+	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
+	"knative.dev/kn-plugin-source-kafka/pkg/client"
 )
 
 func TestNewKafkaSourceRunEFactory(t *testing.T) {
@@ -65,4 +70,35 @@ func TestDescribeRunE(t *testing.T) {
 	runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
 	function := runEFactory.DescribeRunE()
 	assert.Assert(t, function != nil)
+}
+
+func TestListRunE(t *testing.T) {
+	runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
+	function := runEFactory.ListRunE()
+	assert.Assert(t, function != nil)
+}
+
+func TestPrintKafkaSource(t *testing.T) {
+	obj := newKafkaSource("foo")
+	row := printKafkaSource(obj, printers.PrintOptions{})
+	assert.Assert(t, len(row) == 1)
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "foo", "test.server.org", "topic", "mygroup"))
+}
+
+func TestPrintKafkaSourceList(t *testing.T) {
+	kafkaSource1 := newKafkaSource("foo")
+	kafkaSource2 := newKafkaSource("bar")
+	obj := &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSource1, *kafkaSource2}}
+	row := printKafkaSourceList(obj, printers.PrintOptions{})
+	assert.Assert(t, len(row) == 2)
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "bar", "test.server.org", "topic", "mygroup"))
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[1].Cells), "foo", "test.server.org", "topic", "mygroup"))
+}
+
+func newKafkaSource(name string) *v1alpha1.KafkaSource {
+	return client.NewKafkaSourceBuilder(name).
+		BootstrapServers([]string{"test.server.org"}).
+		Topics([]string{"topic"}).
+		ConsumerGroup("mygroup").
+		Build()
 }

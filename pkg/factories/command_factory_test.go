@@ -51,6 +51,11 @@ func TestDescribeCommand(t *testing.T) {
 	assert.Assert(t, commandFactory.DescribeCommand() != nil)
 }
 
+func TestListCommand(t *testing.T) {
+	commandFactory := createKafkaSourceCommandFactory()
+	assert.Assert(t, commandFactory.ListCommand() != nil)
+}
+
 // Private
 
 func createKafkaSourceCommandFactory() types.KafkaSourceCommandFactory {

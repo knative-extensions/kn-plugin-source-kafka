@@ -3,7 +3,7 @@ module knative.dev/kn-plugin-source-kafka
 go 1.14
 
 require (
-	github.com/maximilien/kn-source-pkg v0.6.0
+	github.com/maximilien/kn-source-pkg v0.6.1
 	github.com/spf13/cobra v1.1.1
 	github.com/spf13/pflag v1.0.5
 	gotest.tools v2.2.0+incompatible
