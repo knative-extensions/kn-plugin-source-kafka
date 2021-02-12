@@ -80,7 +80,8 @@ func TestListRunE(t *testing.T) {
 
 func TestPrintKafkaSource(t *testing.T) {
 	obj := newKafkaSource("foo")
-	row := printKafkaSource(obj, printers.PrintOptions{})
+	row, err := printKafkaSource(obj, printers.PrintOptions{})
+	assert.NilError(t, err)
 	assert.Assert(t, len(row) == 1)
 	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "foo", "test.server.org", "topic", "mygroup"))
 }
@@ -89,7 +90,8 @@ func TestPrintKafkaSourceList(t *testing.T) {
 	kafkaSource1 := newKafkaSource("foo")
 	kafkaSource2 := newKafkaSource("bar")
 	obj := &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSource1, *kafkaSource2}}
-	row := printKafkaSourceList(obj, printers.PrintOptions{})
+	row, err := printKafkaSourceList(obj, printers.PrintOptions{})
+	assert.NilError(t, err)
 	assert.Assert(t, len(row) == 2)
 	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "bar", "test.server.org", "topic", "mygroup"))
 	assert.Check(t, util.ContainsAll(fmt.Sprint(row[1].Cells), "foo", "test.server.org", "topic", "mygroup"))

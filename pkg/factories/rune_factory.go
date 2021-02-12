@@ -299,7 +299,7 @@ func writeKafkaSource(dw printers.PrefixWriter, source *v1alpha1.KafkaSource) {
 }
 
 // printKafkaSource populates a single row of kafka source list table
-func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintOptions) []metav1.TableRow {
+func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintOptions) ([]metav1.TableRow, error) {
 	row := metav1.TableRow{
 		Object: runtime.RawExtension{Object: kafkaSource},
 	}
@@ -315,19 +315,22 @@ func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintO
 		strings.Join(kafkaSource.Spec.Topics, ""),
 		kafkaSource.Spec.ConsumerGroup,
 	)
-	return []metav1.TableRow{row}
+	return []metav1.TableRow{row}, nil
 }
 
 // printKafkaSourceList populates the kafka source list table rows
-func printKafkaSourceList(sourceList *v1alpha1.KafkaSourceList, options printers.PrintOptions) []metav1.TableRow {
+func printKafkaSourceList(sourceList *v1alpha1.KafkaSourceList, options printers.PrintOptions) ([]metav1.TableRow, error) {
 	rows := make([]metav1.TableRow, 0, len(sourceList.Items))
 
 	sort.SliceStable(sourceList.Items, func(i, j int) bool {
 		return sourceList.Items[i].ObjectMeta.Name < sourceList.Items[j].ObjectMeta.Name
 	})
 	for _, source := range sourceList.Items {
-		row := printKafkaSource(&source, options)
+		row, err := printKafkaSource(&source, options)
+		if err != nil {
+			return nil, err
+		}
 		rows = append(rows, row...)
 	}
-	return rows
+	return rows, nil
 }
