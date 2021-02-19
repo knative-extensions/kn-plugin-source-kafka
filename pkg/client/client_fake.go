@@ -19,25 +19,22 @@ import (
 
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"github.com/maximilien/kn-source-pkg/pkg/types/typesfakes"
-	client_testing "k8s.io/client-go/testing"
 	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
 // NewFakeKafkaSourceClient is to create a fake KafkaSourceClient to test
-func NewFakeKafkaSourceClient(ns string) types.KafkaSourceClient {
+func NewFakeKafkaSourceClient(fakeClientTest *fake.FakeSourcesV1alpha1, ns string) types.KafkaSourceClient {
 	kafkaParams := NewFakeKafkaSourceParams()
 	knFakeSourceClient := &typesfakes.FakeKnSourceClient{}
 	knFakeSourceClient.KnSourceParamsReturns(kafkaParams.KnSourceParams)
 	knFakeSourceClient.NamespaceReturns(ns)
 	knFakeSourceClient.RestConfigReturns(&rest.Config{})
 
-	fakeClientTest := fake.FakeSourcesV1alpha1{Fake: &client_testing.Fake{}}
-
 	return &kafkaSourceClient{
 		namespace:         ns,
 		kafkaSourceParams: kafkaParams,
-		client:            &fakeClientTest,
+		client:            fakeClientTest,
 		knSourceClient:    knFakeSourceClient,
 	}
 }

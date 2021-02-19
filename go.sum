@@ -581,8 +581,8 @@ github.com/matttproud/golang_protobuf_extensions v1.0.1 h1:4hp9jkHxhMHkqkrB3Ix0j
 github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod h1:D8He9yQNgCq6Z5Ld7szi9bcBfOoFv/3dc6xSMkL2PC0=
 github.com/maxbrunsfeld/counterfeiter/v6 v6.2.2/go.mod h1:eD9eIE7cdwcMi9rYluz88Jz2VyhSmden33/aXg4oVIY=
 github.com/maxbrunsfeld/counterfeiter/v6 v6.3.0/go.mod h1:fcEyUyXZXoV4Abw8DX0t7wyL8mCDxXyU4iAFZfT3IHw=
-github.com/maximilien/kn-source-pkg v0.6.0 h1:UmltvVctLtQJqJqEGbRdtJPjh6qa+XPNULbryIw370w=
-github.com/maximilien/kn-source-pkg v0.6.0/go.mod h1:iClJtsxJvCRD/f8U6budJxKlB625fgTiWVyTCNOZJ0Y=
+github.com/maximilien/kn-source-pkg v0.6.1 h1:QyL3U7WOJqR5aznNmXSID2excPyM2bEQlMhrjLtw4gs=
+github.com/maximilien/kn-source-pkg v0.6.1/go.mod h1:iClJtsxJvCRD/f8U6budJxKlB625fgTiWVyTCNOZJ0Y=
 github.com/miekg/dns v1.0.14/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nrg=
 github.com/miekg/dns v1.1.17/go.mod h1:WgzbA6oji13JREwiNsRDNfl7jYdPnmz+VEuLrA+/48M=
 github.com/miekg/dns v1.1.29/go.mod h1:KNUDUusw/aVsxyTYZM1oqvCicbwhgbNgztCETuNZ7xM=

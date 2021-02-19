@@ -42,6 +42,29 @@ func TestCreateFlags(t *testing.T) {
 	assert.Assert(t, flags.Lookup("topics") != nil)
 }
 
+func TestDeleteFlags(t *testing.T) {
+	flagsFactory := createKafkaSourceFlagsFactory()
+	flags := flagsFactory.DeleteFlags()
+	assert.Assert(t, flags != nil)
+}
+
+func TestDescribeFlags(t *testing.T) {
+	flagsFactory := createKafkaSourceFlagsFactory()
+	flags := flagsFactory.DescribeFlags()
+	assert.Assert(t, flags != nil)
+}
+
+func TestUpdateFlags(t *testing.T) {
+	flagsFactory := createKafkaSourceFlagsFactory()
+	flags := flagsFactory.UpdateFlags()
+	assert.Assert(t, flags != nil)
+}
+func TestListFlags(t *testing.T) {
+	flagsFactory := createKafkaSourceFlagsFactory()
+	flags := flagsFactory.ListFlags()
+	assert.Assert(t, flags != nil)
+}
+
 // Private
 
 func createKafkaSourceFlagsFactory() types.KafkaSourceFlagsFactory {

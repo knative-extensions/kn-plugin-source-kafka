@@ -15,10 +15,16 @@
 package factories
 
 import (
+	"fmt"
 	"testing"
 
 	"gotest.tools/assert"
 	"k8s.io/client-go/rest"
+	"knative.dev/client/pkg/printers"
+	"knative.dev/client/pkg/util"
+	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
+	"knative.dev/kn-plugin-source-kafka/pkg/client"
+	v1 "knative.dev/pkg/apis/duck/v1"
 )
 
 func TestNewKafkaSourceRunEFactory(t *testing.T) {
@@ -65,4 +71,48 @@ func TestDescribeRunE(t *testing.T) {
 	runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
 	function := runEFactory.DescribeRunE()
 	assert.Assert(t, function != nil)
+}
+
+func TestListRunE(t *testing.T) {
+	runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
+	function := runEFactory.ListRunE()
+	assert.Assert(t, function != nil)
+}
+
+func TestPrintKafkaSource(t *testing.T) {
+	obj := newKafkaSource("foo")
+	row, err := printKafkaSource(obj, printers.PrintOptions{})
+	assert.NilError(t, err)
+	assert.Assert(t, len(row) == 1)
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "foo", "ksvc:mysvc", "test.server.org"))
+}
+
+func TestPrintKafkaSourceList(t *testing.T) {
+	kafkaSource1 := newKafkaSource("foo")
+	kafkaSource2 := newKafkaSource("bar")
+	obj := &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSource1, *kafkaSource2}}
+	row, err := printKafkaSourceList(obj, printers.PrintOptions{})
+	assert.NilError(t, err)
+	assert.Assert(t, len(row) == 2)
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "bar", "ksvc:mysvc", "test.server.org"))
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[1].Cells), "foo", "ksvc:mysvc", "test.server.org"))
+}
+
+func TestTrunc(t *testing.T) {
+	str := "my-cluster-kafka-bootstrap.kafka.svc:9092,my-cluster1-kafka-bootstrap.kafka.svc:9092"
+	truncStr := trunc(str)
+	assert.Assert(t, len(truncStr) == 50)
+	assert.Check(t, util.ContainsAll(truncStr, "my-cluster-kafka-bootstrap.kafka.svc:9092,my-c ..."))
+	str = "mykafkasrc"
+	truncStr = trunc(str)
+	assert.Check(t, util.ContainsAll(truncStr, str))
+}
+
+func newKafkaSource(name string) *v1alpha1.KafkaSource {
+	return client.NewKafkaSourceBuilder(name).
+		BootstrapServers([]string{"test.server.org"}).
+		Topics([]string{"topic"}).
+		ConsumerGroup("mygroup").
+		Sink(&v1.Destination{Ref: &v1.KReference{Name: "mysvc", Kind: "Service"}}).
+		Build()
 }

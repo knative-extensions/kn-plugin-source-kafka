@@ -79,6 +79,9 @@ func TestSourceKafka(t *testing.T) {
 	t.Log("test kn-plugin-source-kafka describe source-name")
 	e2eTest.knSourceKafkaDescribe(t, r, "mykafka1", "sinksvc")
 
+	t.Log("test kn-plugin-source-kafka list")
+	e2eTest.knSourceKafkaList(t, r, "mykafka1")
+
 	t.Log("test kn-plugin-source-kafka delete source-name")
 	e2eTest.knSourceKafkaDelete(t, r, "mykafka1")
 
@@ -110,4 +113,10 @@ func serviceCreate(r *test.KnRunResultCollector, serviceName string) {
 	out := r.KnTest().Kn().Run("service", "create", serviceName, "--image", "gcr.io/knative-samples/helloworld-go")
 	r.AssertNoError(out)
 	assert.Check(r.T(), util.ContainsAllIgnoreCase(out.Stdout, "service", serviceName, "creating", "namespace", r.KnTest().Kn().Namespace(), "ready"))
+}
+
+func (et *e2eTest) knSourceKafkaList(t *testing.T, r *test.KnRunResultCollector, sourceName string) {
+	out := et.it.KnPlugin().Run("list")
+	r.AssertNoError(out)
+	assert.Check(t, util.ContainsAll(out.Stdout, "NAME", "AGE", "SINK", "BOOTSTRAPSERVERS", sourceName))
 }

@@ -81,3 +81,12 @@ func (f *kafkaSourceCommandFactory) DescribeCommand() *cobra.Command {
 kn source kafka describe kafka-name`
 	return describeCmd
 }
+
+func (f *kafkaSourceCommandFactory) ListCommand() *cobra.Command {
+	listCmd := f.defaultCommandFactory.ListCommand()
+	listCmd.Use = "list"
+	listCmd.Short = "List kafka sources"
+	listCmd.Example = `# List the available kafka sources
+kn source kafka list`
+	return listCmd
+}

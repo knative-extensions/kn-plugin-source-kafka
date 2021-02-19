@@ -32,6 +32,26 @@ func NewDefaultRunEFactory(knSourceFactory types.KnSourceFactory) types.RunEFact
 	}
 }
 
+func (f *DefautRunEFactory) ListRunE() types.RunE {
+	return func(cmd *cobra.Command, args []string) error {
+		namespace, err := f.KnSourceFactory().KnSourceParams().GetNamespace(cmd)
+		if err != nil {
+			return err
+		}
+
+		restConfig, err := f.KnSourceFactory().KnSourceParams().KnParams.RestConfig()
+		if err != nil {
+			return err
+		}
+
+		knSourceClient := f.KnSourceClient(restConfig, namespace)
+
+		fmt.Printf("%s RunE called: args: %#v, client: %#v, sink: %s\n", cmd.Name(), args, knSourceClient, knSourceClient.KnSourceParams().SinkFlag)
+
+		return nil
+	}
+}
+
 func (f *DefautRunEFactory) CreateRunE() types.RunE {
 	return func(cmd *cobra.Command, args []string) error {
 		namespace, err := f.KnSourceFactory().KnSourceParams().GetNamespace(cmd)

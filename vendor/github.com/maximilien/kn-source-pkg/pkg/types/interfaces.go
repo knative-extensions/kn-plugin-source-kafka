@@ -48,6 +48,7 @@ type KnSourceFactory interface {
 type CommandFactory interface {
 	SourceCommand() *cobra.Command
 
+	ListCommand() *cobra.Command
 	CreateCommand() *cobra.Command
 	DeleteCommand() *cobra.Command
 	UpdateCommand() *cobra.Command
@@ -59,6 +60,7 @@ type CommandFactory interface {
 // FlagsFactory is the factory for pflag.FlagSet objects
 //counterfeiter:generate . FlagsFactory
 type FlagsFactory interface {
+	ListFlags() *pflag.FlagSet
 	CreateFlags() *pflag.FlagSet
 	DeleteFlags() *pflag.FlagSet
 	UpdateFlags() *pflag.FlagSet
@@ -70,6 +72,7 @@ type FlagsFactory interface {
 // RunEFactory is the factory for RunE objects
 //counterfeiter:generate . RunEFactory
 type RunEFactory interface {
+	ListRunE() RunE
 	CreateRunE() RunE
 	DeleteRunE() RunE
 	UpdateRunE() RunE

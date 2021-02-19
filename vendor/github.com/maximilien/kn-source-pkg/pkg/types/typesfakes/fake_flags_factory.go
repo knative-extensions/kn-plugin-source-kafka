@@ -49,6 +49,16 @@ type FakeFlagsFactory struct {
 	knSourceFactoryReturnsOnCall map[int]struct {
 		result1 types.KnSourceFactory
 	}
+	ListFlagsStub        func() *pflag.FlagSet
+	listFlagsMutex       sync.RWMutex
+	listFlagsArgsForCall []struct {
+	}
+	listFlagsReturns struct {
+		result1 *pflag.FlagSet
+	}
+	listFlagsReturnsOnCall map[int]struct {
+		result1 *pflag.FlagSet
+	}
 	UpdateFlagsStub        func() *pflag.FlagSet
 	updateFlagsMutex       sync.RWMutex
 	updateFlagsArgsForCall []struct {
@@ -68,15 +78,16 @@ func (fake *FakeFlagsFactory) CreateFlags() *pflag.FlagSet {
 	ret, specificReturn := fake.createFlagsReturnsOnCall[len(fake.createFlagsArgsForCall)]
 	fake.createFlagsArgsForCall = append(fake.createFlagsArgsForCall, struct {
 	}{})
+	stub := fake.CreateFlagsStub
+	fakeReturns := fake.createFlagsReturns
 	fake.recordInvocation("CreateFlags", []interface{}{})
 	fake.createFlagsMutex.Unlock()
-	if fake.CreateFlagsStub != nil {
-		return fake.CreateFlagsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.createFlagsReturns
 	return fakeReturns.result1
 }
 
@@ -120,15 +131,16 @@ func (fake *FakeFlagsFactory) DeleteFlags() *pflag.FlagSet {
 	ret, specificReturn := fake.deleteFlagsReturnsOnCall[len(fake.deleteFlagsArgsForCall)]
 	fake.deleteFlagsArgsForCall = append(fake.deleteFlagsArgsForCall, struct {
 	}{})
+	stub := fake.DeleteFlagsStub
+	fakeReturns := fake.deleteFlagsReturns
 	fake.recordInvocation("DeleteFlags", []interface{}{})
 	fake.deleteFlagsMutex.Unlock()
-	if fake.DeleteFlagsStub != nil {
-		return fake.DeleteFlagsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.deleteFlagsReturns
 	return fakeReturns.result1
 }
 
@@ -172,15 +184,16 @@ func (fake *FakeFlagsFactory) DescribeFlags() *pflag.FlagSet {
 	ret, specificReturn := fake.describeFlagsReturnsOnCall[len(fake.describeFlagsArgsForCall)]
 	fake.describeFlagsArgsForCall = append(fake.describeFlagsArgsForCall, struct {
 	}{})
+	stub := fake.DescribeFlagsStub
+	fakeReturns := fake.describeFlagsReturns
 	fake.recordInvocation("DescribeFlags", []interface{}{})
 	fake.describeFlagsMutex.Unlock()
-	if fake.DescribeFlagsStub != nil {
-		return fake.DescribeFlagsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.describeFlagsReturns
 	return fakeReturns.result1
 }
 
@@ -224,15 +237,16 @@ func (fake *FakeFlagsFactory) KnSourceFactory() types.KnSourceFactory {
 	ret, specificReturn := fake.knSourceFactoryReturnsOnCall[len(fake.knSourceFactoryArgsForCall)]
 	fake.knSourceFactoryArgsForCall = append(fake.knSourceFactoryArgsForCall, struct {
 	}{})
+	stub := fake.KnSourceFactoryStub
+	fakeReturns := fake.knSourceFactoryReturns
 	fake.recordInvocation("KnSourceFactory", []interface{}{})
 	fake.knSourceFactoryMutex.Unlock()
-	if fake.KnSourceFactoryStub != nil {
-		return fake.KnSourceFactoryStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.knSourceFactoryReturns
 	return fakeReturns.result1
 }
 
@@ -271,20 +285,74 @@ func (fake *FakeFlagsFactory) KnSourceFactoryReturnsOnCall(i int, result1 types.
 	}{result1}
 }
 
+func (fake *FakeFlagsFactory) ListFlags() *pflag.FlagSet {
+	fake.listFlagsMutex.Lock()
+	ret, specificReturn := fake.listFlagsReturnsOnCall[len(fake.listFlagsArgsForCall)]
+	fake.listFlagsArgsForCall = append(fake.listFlagsArgsForCall, struct {
+	}{})
+	stub := fake.ListFlagsStub
+	fakeReturns := fake.listFlagsReturns
+	fake.recordInvocation("ListFlags", []interface{}{})
+	fake.listFlagsMutex.Unlock()
+	if stub != nil {
+		return stub()
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	return fakeReturns.result1
+}
+
+func (fake *FakeFlagsFactory) ListFlagsCallCount() int {
+	fake.listFlagsMutex.RLock()
+	defer fake.listFlagsMutex.RUnlock()
+	return len(fake.listFlagsArgsForCall)
+}
+
+func (fake *FakeFlagsFactory) ListFlagsCalls(stub func() *pflag.FlagSet) {
+	fake.listFlagsMutex.Lock()
+	defer fake.listFlagsMutex.Unlock()
+	fake.ListFlagsStub = stub
+}
+
+func (fake *FakeFlagsFactory) ListFlagsReturns(result1 *pflag.FlagSet) {
+	fake.listFlagsMutex.Lock()
+	defer fake.listFlagsMutex.Unlock()
+	fake.ListFlagsStub = nil
+	fake.listFlagsReturns = struct {
+		result1 *pflag.FlagSet
+	}{result1}
+}
+
+func (fake *FakeFlagsFactory) ListFlagsReturnsOnCall(i int, result1 *pflag.FlagSet) {
+	fake.listFlagsMutex.Lock()
+	defer fake.listFlagsMutex.Unlock()
+	fake.ListFlagsStub = nil
+	if fake.listFlagsReturnsOnCall == nil {
+		fake.listFlagsReturnsOnCall = make(map[int]struct {
+			result1 *pflag.FlagSet
+		})
+	}
+	fake.listFlagsReturnsOnCall[i] = struct {
+		result1 *pflag.FlagSet
+	}{result1}
+}
+
 func (fake *FakeFlagsFactory) UpdateFlags() *pflag.FlagSet {
 	fake.updateFlagsMutex.Lock()
 	ret, specificReturn := fake.updateFlagsReturnsOnCall[len(fake.updateFlagsArgsForCall)]
 	fake.updateFlagsArgsForCall = append(fake.updateFlagsArgsForCall, struct {
 	}{})
+	stub := fake.UpdateFlagsStub
+	fakeReturns := fake.updateFlagsReturns
 	fake.recordInvocation("UpdateFlags", []interface{}{})
 	fake.updateFlagsMutex.Unlock()
-	if fake.UpdateFlagsStub != nil {
-		return fake.UpdateFlagsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.updateFlagsReturns
 	return fakeReturns.result1
 }
 
@@ -334,6 +402,8 @@ func (fake *FakeFlagsFactory) Invocations() map[string][][]interface{} {
 	defer fake.describeFlagsMutex.RUnlock()
 	fake.knSourceFactoryMutex.RLock()
 	defer fake.knSourceFactoryMutex.RUnlock()
+	fake.listFlagsMutex.RLock()
+	defer fake.listFlagsMutex.RUnlock()
 	fake.updateFlagsMutex.RLock()
 	defer fake.updateFlagsMutex.RUnlock()
 	copiedInvocations := map[string][][]interface{}{}

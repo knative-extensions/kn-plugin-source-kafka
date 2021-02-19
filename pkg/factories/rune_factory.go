@@ -17,6 +17,7 @@ package factories
 import (
 	"errors"
 	"fmt"
+	"sort"
 	"strings"
 
 	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
@@ -26,11 +27,17 @@ import (
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 
 	"github.com/spf13/cobra"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
 	"knative.dev/client/pkg/kn/commands"
+	"knative.dev/client/pkg/kn/commands/flags"
 	"knative.dev/client/pkg/printers"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 )
+
+// Max column size
+const listColumnMaxLength = 50
 
 type kafkaSourceRunEFactory struct {
 	kafkaSourceClient  types.KafkaSourceClient
@@ -220,6 +227,57 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 	}
 }
 
+func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
+	return func(cmd *cobra.Command, args []string) error {
+		var err error
+		namespace, err := f.KnSourceParams().GetNamespace(cmd)
+		if err != nil {
+			return err
+		}
+		restConfig, err := f.KnSourceParams().KnParams.RestConfig()
+		if err != nil {
+			return err
+		}
+
+		f.kafkaSourceClient, err = f.KafkaSourceClient(restConfig, namespace)
+		if err != nil {
+			return err
+		}
+
+		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources()
+
+		if err != nil {
+			return fmt.Errorf(
+				"cannot list KafkaSources in namespace '%s' "+
+					"because: %s", f.kafkaSourceClient.Namespace(), err)
+		}
+		if len(kafkaSourceList.Items) == 0 {
+			return fmt.Errorf("no kafka source found in namespace '%s'", f.kafkaSourceClient.Namespace())
+		}
+
+		printer := printers.NewTableGenerator()
+		kafkaSourceListColumnDefinitions := []metav1.TableColumnDefinition{
+			{Name: "Name", Type: "string", Description: "Name of the created kafka source", Priority: 1},
+			{Name: "Age", Type: "string", Description: "Age of the kafka source", Priority: 1},
+			{Name: "Sink", Type: "string", Description: "Sink of the kafka source", Priority: 1},
+			{Name: "BootstrapServers", Type: "string", Description: "Kafka bootstrap server", Priority: 1},
+		}
+		err = printer.TableHandler(kafkaSourceListColumnDefinitions, printKafkaSource)
+		if err != nil {
+			return err
+		}
+		err = printer.TableHandler(kafkaSourceListColumnDefinitions, printKafkaSourceList)
+		if err != nil {
+			return err
+		}
+		err = printer.PrintObj(kafkaSourceList, cmd.OutOrStdout())
+		if err != nil {
+			return err
+		}
+		return nil
+	}
+}
+
 func writeSink(dw printers.PrefixWriter, sink *duckv1.Destination) {
 	subWriter := dw.WriteAttribute("Sink", "")
 	ref := sink.Ref
@@ -241,4 +299,47 @@ func writeKafkaSource(dw printers.PrefixWriter, source *v1alpha1.KafkaSource) {
 	dw.WriteAttribute("BootstrapServers", strings.Join(source.Spec.BootstrapServers, ", "))
 	dw.WriteAttribute("Topics", strings.Join(source.Spec.Topics, ","))
 	dw.WriteAttribute("ConsumerGroup", source.Spec.ConsumerGroup)
+}
+
+// printKafkaSource populates a single row of kafka source list table
+func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintOptions) ([]metav1.TableRow, error) {
+	row := metav1.TableRow{
+		Object: runtime.RawExtension{Object: kafkaSource},
+	}
+
+	if options.AllNamespaces {
+		row.Cells = append(row.Cells, kafkaSource.ObjectMeta.Namespace)
+	}
+
+	row.Cells = append(row.Cells,
+		trunc(kafkaSource.ObjectMeta.Name),
+		commands.Age(kafkaSource.ObjectMeta.CreationTimestamp.Time),
+		trunc(flags.SinkToString(*kafkaSource.Spec.Sink)),
+		trunc(strings.Join(kafkaSource.Spec.BootstrapServers, ",")),
+	)
+	return []metav1.TableRow{row}, nil
+}
+
+// printKafkaSourceList populates the kafka source list table rows
+func printKafkaSourceList(sourceList *v1alpha1.KafkaSourceList, options printers.PrintOptions) ([]metav1.TableRow, error) {
+	rows := make([]metav1.TableRow, 0, len(sourceList.Items))
+
+	sort.SliceStable(sourceList.Items, func(i, j int) bool {
+		return sourceList.Items[i].ObjectMeta.Name < sourceList.Items[j].ObjectMeta.Name
+	})
+	for _, source := range sourceList.Items {
+		row, err := printKafkaSource(&source, options)
+		if err != nil {
+			return nil, err
+		}
+		rows = append(rows, row...)
+	}
+	return rows, nil
+}
+
+func trunc(txt string) string {
+	if len(txt) <= listColumnMaxLength {
+		return txt
+	}
+	return txt[:listColumnMaxLength-4] + " ..."
 }

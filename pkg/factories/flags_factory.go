@@ -63,3 +63,7 @@ func (f *kafkaSourceFlagsFactory) UpdateFlags() *pflag.FlagSet {
 func (f *kafkaSourceFlagsFactory) DescribeFlags() *pflag.FlagSet {
 	return pflag.NewFlagSet("describe", pflag.ExitOnError)
 }
+
+func (f *kafkaSourceFlagsFactory) ListFlags() *pflag.FlagSet {
+	return pflag.NewFlagSet("list", pflag.ExitOnError)
+}

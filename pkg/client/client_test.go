@@ -17,34 +17,46 @@ package client
 import (
 	"testing"
 
+	client_testing "k8s.io/client-go/testing"
+
 	"gotest.tools/assert"
+	"k8s.io/apimachinery/pkg/runtime"
 	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
+	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
+	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
+var testNamespace = "fake-namespace"
+
+func setup() (fake.FakeSourcesV1alpha1, types.KafkaSourceClient) {
+	fakeClient := fake.FakeSourcesV1alpha1{Fake: &client_testing.Fake{}}
+	knSourceClient := NewFakeKafkaSourceClient(&fakeClient, testNamespace)
+	return fakeClient, knSourceClient
+}
 func TestKafkaSourceClient(t *testing.T) {
-	knSourceClient := NewFakeKafkaSourceClient("fake-namespace")
+	_, knSourceClient := setup()
 	assert.Assert(t, knSourceClient != nil)
 }
 
 func TestClient_KnSourceParams(t *testing.T) {
-	knSourceClient := NewFakeKafkaSourceClient("fake-namespace")
+	_, knSourceClient := setup()
 	fakeKafkaParams := knSourceClient.KafkaSourceParams()
 	assert.Equal(t, knSourceClient.KnSourceParams(), fakeKafkaParams.KnSourceParams)
 }
 
 func TestNamespace(t *testing.T) {
-	knSourceClient := NewFakeKafkaSourceClient("fake-namespace")
-	assert.Equal(t, knSourceClient.Namespace(), "fake-namespace")
+	_, knSourceClient := setup()
+	assert.Equal(t, knSourceClient.Namespace(), testNamespace)
 }
 func TestCreateKafka(t *testing.T) {
-	cli := NewFakeKafkaSourceClient("fake-namespace")
+	_, cli := setup()
 	objNew := newKafkaSource("samplekafka")
 	err := cli.CreateKafkaSource(objNew)
 	assert.NilError(t, err)
 }
 
 func TestDeleteKafka(t *testing.T) {
-	cli := NewFakeKafkaSourceClient("fake-namespace")
+	_, cli := setup()
 	objNew := newKafkaSource("samplekafka")
 	err := cli.CreateKafkaSource(objNew)
 	assert.NilError(t, err)
@@ -53,7 +65,7 @@ func TestDeleteKafka(t *testing.T) {
 }
 
 func TestCreateKafkaMultipleTopicsServers(t *testing.T) {
-	cli := NewFakeKafkaSourceClient("fake-namespace")
+	_, cli := setup()
 	objNew := NewKafkaSourceBuilder("samplekafka").
 		BootstrapServers([]string{"test.server.org", "foo.server.org"}).
 		Topics([]string{"foo", "bar"}).
@@ -61,6 +73,19 @@ func TestCreateKafkaMultipleTopicsServers(t *testing.T) {
 		Build()
 	err := cli.CreateKafkaSource(objNew)
 	assert.NilError(t, err)
+}
+
+func TestGetKafkaSources(t *testing.T) {
+	fakeClient, cli := setup()
+	fakeClient.AddReactor("list", "kafkasources",
+		func(action client_testing.Action) (handled bool, ret runtime.Object, err error) {
+			kafkaSrc1 := newKafkaSource("foo")
+			kafkaSrc2 := newKafkaSource("bar")
+			return true, &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSrc1, *kafkaSrc2}}, err
+		})
+	sources, err := cli.ListKafkaSources()
+	assert.NilError(t, err)
+	assert.Assert(t, len(sources.Items) == 2)
 }
 
 func newKafkaSource(name string) *v1alpha1.KafkaSource {
