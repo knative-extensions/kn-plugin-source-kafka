@@ -65,8 +65,10 @@ func (cs *ConfigurationSpec) Validate(ctx context.Context) *apis.FieldError {
 func (c *Configuration) validateLabels() (errs *apis.FieldError) {
 	for key, val := range c.GetLabels() {
 		switch key {
-		case serving.RouteLabelKey, serving.VisibilityLabelKeyObsolete:
-			// Known valid labels.
+		case serving.RouteLabelKey,
+			serving.ConfigurationUIDLabelKey,
+			serving.ServiceUIDLabelKey:
+			// Known valid labels - so just skip them
 		case serving.ServiceLabelKey:
 			errs = errs.Also(verifyLabelOwnerRef(val, serving.ServiceLabelKey, "Service", c.GetOwnerReferences()))
 		default:
@@ -75,15 +77,15 @@ func (c *Configuration) validateLabels() (errs *apis.FieldError) {
 			}
 		}
 	}
-	return
+	return errs
 }
 
 // verifyLabelOwnerRef function verifies the owner references of resource with label key has val value.
 func verifyLabelOwnerRef(val, label, resource string, ownerRefs []metav1.OwnerReference) (errs *apis.FieldError) {
 	for _, ref := range ownerRefs {
-		if ref.Kind == resource && val == ref.Name {
-			return
+		if ref.Kind == resource && ref.Name == val {
+			return nil
 		}
 	}
-	return errs.Also(apis.ErrMissingField(label))
+	return apis.ErrMissingField(label)
 }

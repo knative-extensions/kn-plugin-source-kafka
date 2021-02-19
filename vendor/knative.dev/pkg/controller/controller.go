@@ -152,6 +152,13 @@ func FilterControllerGK(gk schema.GroupKind) func(obj interface{}) bool {
 	}
 }
 
+// FilterController makes it simple to create FilterFunc's for use with
+// cache.FilteringResourceEventHandler that filter based on the
+// controlling resource.
+func FilterController(r kmeta.OwnerRefable) func(obj interface{}) bool {
+	return FilterControllerGK(r.GetGroupVersionKind().GroupKind())
+}
+
 // FilterWithName makes it simple to create FilterFunc's for use with
 // cache.FilteringResourceEventHandler that filter based on a name.
 func FilterWithName(name string) func(obj interface{}) bool {
@@ -514,7 +521,7 @@ func (c *Impl) processNextWorkItem() bool {
 
 	// Embed the key into the logger and attach that to the context we pass
 	// to the Reconciler.
-	logger := c.logger.With(zap.String(logkey.TraceID, uuid.New().String()), zap.String(logkey.Key, keyStr))
+	logger := c.logger.With(zap.String(logkey.TraceID, uuid.NewString()), zap.String(logkey.Key, keyStr))
 	ctx := logging.WithLogger(context.Background(), logger)
 
 	// Run Reconcile, passing it the namespace/name string of the
