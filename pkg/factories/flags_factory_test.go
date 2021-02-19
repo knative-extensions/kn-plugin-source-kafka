@@ -19,7 +19,7 @@ import (
 
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
-	"gotest.tools/assert"
+	"gotest.tools/v3/assert"
 )
 
 func TestNewKafkaSourceFlagsFactory(t *testing.T) {

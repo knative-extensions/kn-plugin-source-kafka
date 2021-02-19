@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"testing"
 
-	"gotest.tools/assert"
+	"gotest.tools/v3/assert"
 	"k8s.io/client-go/rest"
 	"knative.dev/client/pkg/printers"
 	"knative.dev/client/pkg/util"
