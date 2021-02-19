@@ -83,7 +83,7 @@ func TestGetKafkaSources(t *testing.T) {
 			kafkaSrc2 := newKafkaSource("bar")
 			return true, &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSrc1, *kafkaSrc2}}, err
 		})
-	sources, err := cli.GetKafkaSources()
+	sources, err := cli.ListKafkaSources()
 	assert.NilError(t, err)
 	assert.Assert(t, len(sources.Items) == 2)
 }

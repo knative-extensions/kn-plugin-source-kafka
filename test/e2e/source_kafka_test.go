@@ -118,5 +118,5 @@ func serviceCreate(r *test.KnRunResultCollector, serviceName string) {
 func (et *e2eTest) knSourceKafkaList(t *testing.T, r *test.KnRunResultCollector, sourceName string) {
 	out := et.it.KnPlugin().Run("list")
 	r.AssertNoError(out)
-	assert.Check(t, util.ContainsAll(out.Stdout, "NAME", "AGE", "BOOTSTRAPSERVERS", "TOPICS", "CONSUMERGROUP", sourceName))
+	assert.Check(t, util.ContainsAll(out.Stdout, "NAME", "AGE", "SINK", "BOOTSTRAPSERVERS", sourceName))
 }

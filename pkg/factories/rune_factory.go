@@ -31,9 +31,13 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
 	"knative.dev/client/pkg/kn/commands"
+	"knative.dev/client/pkg/kn/commands/flags"
 	"knative.dev/client/pkg/printers"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 )
+
+// Max column size
+const listColumnMaxLength = 50
 
 type kafkaSourceRunEFactory struct {
 	kafkaSourceClient  types.KafkaSourceClient
@@ -240,7 +244,7 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 			return err
 		}
 
-		kafkaSourceList, err := f.kafkaSourceClient.GetKafkaSources()
+		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources()
 
 		if err != nil {
 			return fmt.Errorf(
@@ -255,9 +259,8 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 		kafkaSourceListColumnDefinitions := []metav1.TableColumnDefinition{
 			{Name: "Name", Type: "string", Description: "Name of the created kafka source", Priority: 1},
 			{Name: "Age", Type: "string", Description: "Age of the kafka source", Priority: 1},
+			{Name: "Sink", Type: "string", Description: "Sink of the kafka source", Priority: 1},
 			{Name: "BootstrapServers", Type: "string", Description: "Kafka bootstrap server", Priority: 1},
-			{Name: "Topics", Type: "string", Description: "Topics to consume messages from", Priority: 1},
-			{Name: "ConsumerGroup", Type: "string", Description: "Consumer group id", Priority: 1},
 		}
 		err = printer.TableHandler(kafkaSourceListColumnDefinitions, printKafkaSource)
 		if err != nil {
@@ -309,11 +312,10 @@ func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintO
 	}
 
 	row.Cells = append(row.Cells,
-		kafkaSource.ObjectMeta.Name,
+		trunc(kafkaSource.ObjectMeta.Name),
 		commands.Age(kafkaSource.ObjectMeta.CreationTimestamp.Time),
-		strings.Join(kafkaSource.Spec.BootstrapServers, ""),
-		strings.Join(kafkaSource.Spec.Topics, ""),
-		kafkaSource.Spec.ConsumerGroup,
+		trunc(flags.SinkToString(*kafkaSource.Spec.Sink)),
+		trunc(strings.Join(kafkaSource.Spec.BootstrapServers, ",")),
 	)
 	return []metav1.TableRow{row}, nil
 }
@@ -333,4 +335,11 @@ func printKafkaSourceList(sourceList *v1alpha1.KafkaSourceList, options printers
 		rows = append(rows, row...)
 	}
 	return rows, nil
+}
+
+func trunc(txt string) string {
+	if len(txt) <= listColumnMaxLength {
+		return txt
+	}
+	return txt[:listColumnMaxLength-4] + " ..."
 }

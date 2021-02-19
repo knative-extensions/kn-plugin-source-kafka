@@ -24,6 +24,7 @@ import (
 	"knative.dev/client/pkg/util"
 	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
+	v1 "knative.dev/pkg/apis/duck/v1"
 )
 
 func TestNewKafkaSourceRunEFactory(t *testing.T) {
@@ -83,7 +84,7 @@ func TestPrintKafkaSource(t *testing.T) {
 	row, err := printKafkaSource(obj, printers.PrintOptions{})
 	assert.NilError(t, err)
 	assert.Assert(t, len(row) == 1)
-	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "foo", "test.server.org", "topic", "mygroup"))
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "foo", "ksvc:mysvc", "test.server.org"))
 }
 
 func TestPrintKafkaSourceList(t *testing.T) {
@@ -93,8 +94,18 @@ func TestPrintKafkaSourceList(t *testing.T) {
 	row, err := printKafkaSourceList(obj, printers.PrintOptions{})
 	assert.NilError(t, err)
 	assert.Assert(t, len(row) == 2)
-	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "bar", "test.server.org", "topic", "mygroup"))
-	assert.Check(t, util.ContainsAll(fmt.Sprint(row[1].Cells), "foo", "test.server.org", "topic", "mygroup"))
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[0].Cells), "bar", "ksvc:mysvc", "test.server.org"))
+	assert.Check(t, util.ContainsAll(fmt.Sprint(row[1].Cells), "foo", "ksvc:mysvc", "test.server.org"))
+}
+
+func TestTrunc(t *testing.T) {
+	str := "my-cluster-kafka-bootstrap.kafka.svc:9092,my-cluster1-kafka-bootstrap.kafka.svc:9092"
+	truncStr := trunc(str)
+	assert.Assert(t, len(truncStr) == 50)
+	assert.Check(t, util.ContainsAll(truncStr, "my-cluster-kafka-bootstrap.kafka.svc:9092,my-c ..."))
+	str = "mykafkasrc"
+	truncStr = trunc(str)
+	assert.Check(t, util.ContainsAll(truncStr, str))
 }
 
 func newKafkaSource(name string) *v1alpha1.KafkaSource {
@@ -102,5 +113,6 @@ func newKafkaSource(name string) *v1alpha1.KafkaSource {
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).
 		ConsumerGroup("mygroup").
+		Sink(&v1.Destination{Ref: &v1.KReference{Name: "mysvc", Kind: "Service"}}).
 		Build()
 }
