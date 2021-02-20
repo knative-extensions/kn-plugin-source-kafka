@@ -117,11 +117,8 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 					"because: %s", name, f.kafkaSourceClient.Namespace(), err)
 		}
 
-		if err == nil {
-			fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' created in namespace '%s'.\n", args[0], f.kafkaSourceClient.Namespace())
-		}
-
-		return err
+		fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' created in namespace '%s'.\n", name, f.kafkaSourceClient.Namespace())
+		return nil
 	}
 }
 
@@ -156,11 +153,8 @@ func (f *kafkaSourceRunEFactory) DeleteRunE() sourcetypes.RunE {
 					"because: %s", name, f.kafkaSourceClient.Namespace(), err)
 		}
 
-		if err == nil {
-			fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' deleted in namespace '%s'.\n", args[0], f.kafkaSourceClient.Namespace())
-		}
-
-		return err
+		fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' deleted in namespace '%s'.\n", name, f.kafkaSourceClient.Namespace())
+		return nil
 	}
 }
 
