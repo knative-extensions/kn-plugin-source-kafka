@@ -19,7 +19,7 @@ import (
 
 	client_testing "k8s.io/client-go/testing"
 
-	"gotest.tools/assert"
+	"gotest.tools/v3/assert"
 	"k8s.io/apimachinery/pkg/runtime"
 	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
