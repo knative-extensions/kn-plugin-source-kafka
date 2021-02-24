@@ -40,6 +40,12 @@ func NewKnSourceCommand(knSourceFactory types.KnSourceFactory,
 		rootCmd.SetOutput(knSourceParams.Output)
 	}
 
+	listCmd := commandFactory.ListCommand()
+	addCommonFlags(knSourceParams, listCmd)
+	listCmd.Flags().AddFlagSet(flagsFactory.ListFlags())
+	listCmd.RunE = runEFactory.ListRunE()
+	rootCmd.AddCommand(listCmd)
+
 	createCmd := commandFactory.CreateCommand()
 	addCommonFlags(knSourceParams, createCmd)
 	addCreateUpdateFlags(knSourceParams, createCmd)

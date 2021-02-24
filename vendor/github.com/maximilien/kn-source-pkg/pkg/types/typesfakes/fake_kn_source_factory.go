@@ -52,15 +52,16 @@ func (fake *FakeKnSourceFactory) CreateKnSourceClient(arg1 *rest.Config, arg2 st
 		arg1 *rest.Config
 		arg2 string
 	}{arg1, arg2})
+	stub := fake.CreateKnSourceClientStub
+	fakeReturns := fake.createKnSourceClientReturns
 	fake.recordInvocation("CreateKnSourceClient", []interface{}{arg1, arg2})
 	fake.createKnSourceClientMutex.Unlock()
-	if fake.CreateKnSourceClientStub != nil {
-		return fake.CreateKnSourceClientStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.createKnSourceClientReturns
 	return fakeReturns.result1
 }
 
@@ -111,15 +112,16 @@ func (fake *FakeKnSourceFactory) CreateKnSourceParams() *types.KnSourceParams {
 	ret, specificReturn := fake.createKnSourceParamsReturnsOnCall[len(fake.createKnSourceParamsArgsForCall)]
 	fake.createKnSourceParamsArgsForCall = append(fake.createKnSourceParamsArgsForCall, struct {
 	}{})
+	stub := fake.CreateKnSourceParamsStub
+	fakeReturns := fake.createKnSourceParamsReturns
 	fake.recordInvocation("CreateKnSourceParams", []interface{}{})
 	fake.createKnSourceParamsMutex.Unlock()
-	if fake.CreateKnSourceParamsStub != nil {
-		return fake.CreateKnSourceParamsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.createKnSourceParamsReturns
 	return fakeReturns.result1
 }
 
@@ -163,15 +165,16 @@ func (fake *FakeKnSourceFactory) KnSourceParams() *types.KnSourceParams {
 	ret, specificReturn := fake.knSourceParamsReturnsOnCall[len(fake.knSourceParamsArgsForCall)]
 	fake.knSourceParamsArgsForCall = append(fake.knSourceParamsArgsForCall, struct {
 	}{})
+	stub := fake.KnSourceParamsStub
+	fakeReturns := fake.knSourceParamsReturns
 	fake.recordInvocation("KnSourceParams", []interface{}{})
 	fake.knSourceParamsMutex.Unlock()
-	if fake.KnSourceParamsStub != nil {
-		return fake.KnSourceParamsStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.knSourceParamsReturns
 	return fakeReturns.result1
 }
 

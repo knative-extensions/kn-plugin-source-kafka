@@ -35,6 +35,10 @@ func (f *DefautCommandFactory) SourceCommand() *cobra.Command {
 	return source.NewSourceCommand(f.knSourceFactory.KnSourceParams())
 }
 
+func (f *DefautCommandFactory) ListCommand() *cobra.Command {
+	return source.NewListCommand(f.knSourceFactory.KnSourceParams())
+}
+
 func (f *DefautCommandFactory) CreateCommand() *cobra.Command {
 	return source.NewCreateCommand(f.knSourceFactory.KnSourceParams())
 }

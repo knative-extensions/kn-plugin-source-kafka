@@ -62,6 +62,16 @@ type FakeRunEFactory struct {
 	knSourceFactoryReturnsOnCall map[int]struct {
 		result1 types.KnSourceFactory
 	}
+	ListRunEStub        func() func(cmd *cobra.Command, args []string) error
+	listRunEMutex       sync.RWMutex
+	listRunEArgsForCall []struct {
+	}
+	listRunEReturns struct {
+		result1 func(cmd *cobra.Command, args []string) error
+	}
+	listRunEReturnsOnCall map[int]struct {
+		result1 func(cmd *cobra.Command, args []string) error
+	}
 	UpdateRunEStub        func() func(cmd *cobra.Command, args []string) error
 	updateRunEMutex       sync.RWMutex
 	updateRunEArgsForCall []struct {
@@ -81,15 +91,16 @@ func (fake *FakeRunEFactory) CreateRunE() func(cmd *cobra.Command, args []string
 	ret, specificReturn := fake.createRunEReturnsOnCall[len(fake.createRunEArgsForCall)]
 	fake.createRunEArgsForCall = append(fake.createRunEArgsForCall, struct {
 	}{})
+	stub := fake.CreateRunEStub
+	fakeReturns := fake.createRunEReturns
 	fake.recordInvocation("CreateRunE", []interface{}{})
 	fake.createRunEMutex.Unlock()
-	if fake.CreateRunEStub != nil {
-		return fake.CreateRunEStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.createRunEReturns
 	return fakeReturns.result1
 }
 
@@ -133,15 +144,16 @@ func (fake *FakeRunEFactory) DeleteRunE() func(cmd *cobra.Command, args []string
 	ret, specificReturn := fake.deleteRunEReturnsOnCall[len(fake.deleteRunEArgsForCall)]
 	fake.deleteRunEArgsForCall = append(fake.deleteRunEArgsForCall, struct {
 	}{})
+	stub := fake.DeleteRunEStub
+	fakeReturns := fake.deleteRunEReturns
 	fake.recordInvocation("DeleteRunE", []interface{}{})
 	fake.deleteRunEMutex.Unlock()
-	if fake.DeleteRunEStub != nil {
-		return fake.DeleteRunEStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.deleteRunEReturns
 	return fakeReturns.result1
 }
 
@@ -185,15 +197,16 @@ func (fake *FakeRunEFactory) DescribeRunE() func(cmd *cobra.Command, args []stri
 	ret, specificReturn := fake.describeRunEReturnsOnCall[len(fake.describeRunEArgsForCall)]
 	fake.describeRunEArgsForCall = append(fake.describeRunEArgsForCall, struct {
 	}{})
+	stub := fake.DescribeRunEStub
+	fakeReturns := fake.describeRunEReturns
 	fake.recordInvocation("DescribeRunE", []interface{}{})
 	fake.describeRunEMutex.Unlock()
-	if fake.DescribeRunEStub != nil {
-		return fake.DescribeRunEStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.describeRunEReturns
 	return fakeReturns.result1
 }
 
@@ -239,15 +252,16 @@ func (fake *FakeRunEFactory) KnSourceClient(arg1 *rest.Config, arg2 string) type
 		arg1 *rest.Config
 		arg2 string
 	}{arg1, arg2})
+	stub := fake.KnSourceClientStub
+	fakeReturns := fake.knSourceClientReturns
 	fake.recordInvocation("KnSourceClient", []interface{}{arg1, arg2})
 	fake.knSourceClientMutex.Unlock()
-	if fake.KnSourceClientStub != nil {
-		return fake.KnSourceClientStub(arg1, arg2)
+	if stub != nil {
+		return stub(arg1, arg2)
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.knSourceClientReturns
 	return fakeReturns.result1
 }
 
@@ -298,15 +312,16 @@ func (fake *FakeRunEFactory) KnSourceFactory() types.KnSourceFactory {
 	ret, specificReturn := fake.knSourceFactoryReturnsOnCall[len(fake.knSourceFactoryArgsForCall)]
 	fake.knSourceFactoryArgsForCall = append(fake.knSourceFactoryArgsForCall, struct {
 	}{})
+	stub := fake.KnSourceFactoryStub
+	fakeReturns := fake.knSourceFactoryReturns
 	fake.recordInvocation("KnSourceFactory", []interface{}{})
 	fake.knSourceFactoryMutex.Unlock()
-	if fake.KnSourceFactoryStub != nil {
-		return fake.KnSourceFactoryStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.knSourceFactoryReturns
 	return fakeReturns.result1
 }
 
@@ -345,20 +360,74 @@ func (fake *FakeRunEFactory) KnSourceFactoryReturnsOnCall(i int, result1 types.K
 	}{result1}
 }
 
+func (fake *FakeRunEFactory) ListRunE() func(cmd *cobra.Command, args []string) error {
+	fake.listRunEMutex.Lock()
+	ret, specificReturn := fake.listRunEReturnsOnCall[len(fake.listRunEArgsForCall)]
+	fake.listRunEArgsForCall = append(fake.listRunEArgsForCall, struct {
+	}{})
+	stub := fake.ListRunEStub
+	fakeReturns := fake.listRunEReturns
+	fake.recordInvocation("ListRunE", []interface{}{})
+	fake.listRunEMutex.Unlock()
+	if stub != nil {
+		return stub()
+	}
+	if specificReturn {
+		return ret.result1
+	}
+	return fakeReturns.result1
+}
+
+func (fake *FakeRunEFactory) ListRunECallCount() int {
+	fake.listRunEMutex.RLock()
+	defer fake.listRunEMutex.RUnlock()
+	return len(fake.listRunEArgsForCall)
+}
+
+func (fake *FakeRunEFactory) ListRunECalls(stub func() func(cmd *cobra.Command, args []string) error) {
+	fake.listRunEMutex.Lock()
+	defer fake.listRunEMutex.Unlock()
+	fake.ListRunEStub = stub
+}
+
+func (fake *FakeRunEFactory) ListRunEReturns(result1 func(cmd *cobra.Command, args []string) error) {
+	fake.listRunEMutex.Lock()
+	defer fake.listRunEMutex.Unlock()
+	fake.ListRunEStub = nil
+	fake.listRunEReturns = struct {
+		result1 func(cmd *cobra.Command, args []string) error
+	}{result1}
+}
+
+func (fake *FakeRunEFactory) ListRunEReturnsOnCall(i int, result1 func(cmd *cobra.Command, args []string) error) {
+	fake.listRunEMutex.Lock()
+	defer fake.listRunEMutex.Unlock()
+	fake.ListRunEStub = nil
+	if fake.listRunEReturnsOnCall == nil {
+		fake.listRunEReturnsOnCall = make(map[int]struct {
+			result1 func(cmd *cobra.Command, args []string) error
+		})
+	}
+	fake.listRunEReturnsOnCall[i] = struct {
+		result1 func(cmd *cobra.Command, args []string) error
+	}{result1}
+}
+
 func (fake *FakeRunEFactory) UpdateRunE() func(cmd *cobra.Command, args []string) error {
 	fake.updateRunEMutex.Lock()
 	ret, specificReturn := fake.updateRunEReturnsOnCall[len(fake.updateRunEArgsForCall)]
 	fake.updateRunEArgsForCall = append(fake.updateRunEArgsForCall, struct {
 	}{})
+	stub := fake.UpdateRunEStub
+	fakeReturns := fake.updateRunEReturns
 	fake.recordInvocation("UpdateRunE", []interface{}{})
 	fake.updateRunEMutex.Unlock()
-	if fake.UpdateRunEStub != nil {
-		return fake.UpdateRunEStub()
+	if stub != nil {
+		return stub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
-	fakeReturns := fake.updateRunEReturns
 	return fakeReturns.result1
 }
 
@@ -410,6 +479,8 @@ func (fake *FakeRunEFactory) Invocations() map[string][][]interface{} {
 	defer fake.knSourceClientMutex.RUnlock()
 	fake.knSourceFactoryMutex.RLock()
 	defer fake.knSourceFactoryMutex.RUnlock()
+	fake.listRunEMutex.RLock()
+	defer fake.listRunEMutex.RUnlock()
 	fake.updateRunEMutex.RLock()
 	defer fake.updateRunEMutex.RUnlock()
 	copiedInvocations := map[string][][]interface{}{}
