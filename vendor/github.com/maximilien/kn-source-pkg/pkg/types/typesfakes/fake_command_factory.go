@@ -49,16 +49,6 @@ type FakeCommandFactory struct {
 	knSourceFactoryReturnsOnCall map[int]struct {
 		result1 types.KnSourceFactory
 	}
-	ListCommandStub        func() *cobra.Command
-	listCommandMutex       sync.RWMutex
-	listCommandArgsForCall []struct {
-	}
-	listCommandReturns struct {
-		result1 *cobra.Command
-	}
-	listCommandReturnsOnCall map[int]struct {
-		result1 *cobra.Command
-	}
 	SourceCommandStub        func() *cobra.Command
 	sourceCommandMutex       sync.RWMutex
 	sourceCommandArgsForCall []struct {
@@ -88,16 +78,15 @@ func (fake *FakeCommandFactory) CreateCommand() *cobra.Command {
 	ret, specificReturn := fake.createCommandReturnsOnCall[len(fake.createCommandArgsForCall)]
 	fake.createCommandArgsForCall = append(fake.createCommandArgsForCall, struct {
 	}{})
-	stub := fake.CreateCommandStub
-	fakeReturns := fake.createCommandReturns
 	fake.recordInvocation("CreateCommand", []interface{}{})
 	fake.createCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.CreateCommandStub != nil {
+		return fake.CreateCommandStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.createCommandReturns
 	return fakeReturns.result1
 }
 
@@ -141,16 +130,15 @@ func (fake *FakeCommandFactory) DeleteCommand() *cobra.Command {
 	ret, specificReturn := fake.deleteCommandReturnsOnCall[len(fake.deleteCommandArgsForCall)]
 	fake.deleteCommandArgsForCall = append(fake.deleteCommandArgsForCall, struct {
 	}{})
-	stub := fake.DeleteCommandStub
-	fakeReturns := fake.deleteCommandReturns
 	fake.recordInvocation("DeleteCommand", []interface{}{})
 	fake.deleteCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.DeleteCommandStub != nil {
+		return fake.DeleteCommandStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.deleteCommandReturns
 	return fakeReturns.result1
 }
 
@@ -194,16 +182,15 @@ func (fake *FakeCommandFactory) DescribeCommand() *cobra.Command {
 	ret, specificReturn := fake.describeCommandReturnsOnCall[len(fake.describeCommandArgsForCall)]
 	fake.describeCommandArgsForCall = append(fake.describeCommandArgsForCall, struct {
 	}{})
-	stub := fake.DescribeCommandStub
-	fakeReturns := fake.describeCommandReturns
 	fake.recordInvocation("DescribeCommand", []interface{}{})
 	fake.describeCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.DescribeCommandStub != nil {
+		return fake.DescribeCommandStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.describeCommandReturns
 	return fakeReturns.result1
 }
 
@@ -247,16 +234,15 @@ func (fake *FakeCommandFactory) KnSourceFactory() types.KnSourceFactory {
 	ret, specificReturn := fake.knSourceFactoryReturnsOnCall[len(fake.knSourceFactoryArgsForCall)]
 	fake.knSourceFactoryArgsForCall = append(fake.knSourceFactoryArgsForCall, struct {
 	}{})
-	stub := fake.KnSourceFactoryStub
-	fakeReturns := fake.knSourceFactoryReturns
 	fake.recordInvocation("KnSourceFactory", []interface{}{})
 	fake.knSourceFactoryMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.KnSourceFactoryStub != nil {
+		return fake.KnSourceFactoryStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.knSourceFactoryReturns
 	return fakeReturns.result1
 }
 
@@ -295,74 +281,20 @@ func (fake *FakeCommandFactory) KnSourceFactoryReturnsOnCall(i int, result1 type
 	}{result1}
 }
 
-func (fake *FakeCommandFactory) ListCommand() *cobra.Command {
-	fake.listCommandMutex.Lock()
-	ret, specificReturn := fake.listCommandReturnsOnCall[len(fake.listCommandArgsForCall)]
-	fake.listCommandArgsForCall = append(fake.listCommandArgsForCall, struct {
-	}{})
-	stub := fake.ListCommandStub
-	fakeReturns := fake.listCommandReturns
-	fake.recordInvocation("ListCommand", []interface{}{})
-	fake.listCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
-	}
-	if specificReturn {
-		return ret.result1
-	}
-	return fakeReturns.result1
-}
-
-func (fake *FakeCommandFactory) ListCommandCallCount() int {
-	fake.listCommandMutex.RLock()
-	defer fake.listCommandMutex.RUnlock()
-	return len(fake.listCommandArgsForCall)
-}
-
-func (fake *FakeCommandFactory) ListCommandCalls(stub func() *cobra.Command) {
-	fake.listCommandMutex.Lock()
-	defer fake.listCommandMutex.Unlock()
-	fake.ListCommandStub = stub
-}
-
-func (fake *FakeCommandFactory) ListCommandReturns(result1 *cobra.Command) {
-	fake.listCommandMutex.Lock()
-	defer fake.listCommandMutex.Unlock()
-	fake.ListCommandStub = nil
-	fake.listCommandReturns = struct {
-		result1 *cobra.Command
-	}{result1}
-}
-
-func (fake *FakeCommandFactory) ListCommandReturnsOnCall(i int, result1 *cobra.Command) {
-	fake.listCommandMutex.Lock()
-	defer fake.listCommandMutex.Unlock()
-	fake.ListCommandStub = nil
-	if fake.listCommandReturnsOnCall == nil {
-		fake.listCommandReturnsOnCall = make(map[int]struct {
-			result1 *cobra.Command
-		})
-	}
-	fake.listCommandReturnsOnCall[i] = struct {
-		result1 *cobra.Command
-	}{result1}
-}
-
 func (fake *FakeCommandFactory) SourceCommand() *cobra.Command {
 	fake.sourceCommandMutex.Lock()
 	ret, specificReturn := fake.sourceCommandReturnsOnCall[len(fake.sourceCommandArgsForCall)]
 	fake.sourceCommandArgsForCall = append(fake.sourceCommandArgsForCall, struct {
 	}{})
-	stub := fake.SourceCommandStub
-	fakeReturns := fake.sourceCommandReturns
 	fake.recordInvocation("SourceCommand", []interface{}{})
 	fake.sourceCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.SourceCommandStub != nil {
+		return fake.SourceCommandStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.sourceCommandReturns
 	return fakeReturns.result1
 }
 
@@ -406,16 +338,15 @@ func (fake *FakeCommandFactory) UpdateCommand() *cobra.Command {
 	ret, specificReturn := fake.updateCommandReturnsOnCall[len(fake.updateCommandArgsForCall)]
 	fake.updateCommandArgsForCall = append(fake.updateCommandArgsForCall, struct {
 	}{})
-	stub := fake.UpdateCommandStub
-	fakeReturns := fake.updateCommandReturns
 	fake.recordInvocation("UpdateCommand", []interface{}{})
 	fake.updateCommandMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.UpdateCommandStub != nil {
+		return fake.UpdateCommandStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.updateCommandReturns
 	return fakeReturns.result1
 }
 
@@ -465,8 +396,6 @@ func (fake *FakeCommandFactory) Invocations() map[string][][]interface{} {
 	defer fake.describeCommandMutex.RUnlock()
 	fake.knSourceFactoryMutex.RLock()
 	defer fake.knSourceFactoryMutex.RUnlock()
-	fake.listCommandMutex.RLock()
-	defer fake.listCommandMutex.RUnlock()
 	fake.sourceCommandMutex.RLock()
 	defer fake.sourceCommandMutex.RUnlock()
 	fake.updateCommandMutex.RLock()

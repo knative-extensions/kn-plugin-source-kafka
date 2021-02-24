@@ -48,16 +48,15 @@ func (fake *FakeKnSourceClient) KnSourceParams() *types.KnSourceParams {
 	ret, specificReturn := fake.knSourceParamsReturnsOnCall[len(fake.knSourceParamsArgsForCall)]
 	fake.knSourceParamsArgsForCall = append(fake.knSourceParamsArgsForCall, struct {
 	}{})
-	stub := fake.KnSourceParamsStub
-	fakeReturns := fake.knSourceParamsReturns
 	fake.recordInvocation("KnSourceParams", []interface{}{})
 	fake.knSourceParamsMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.KnSourceParamsStub != nil {
+		return fake.KnSourceParamsStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.knSourceParamsReturns
 	return fakeReturns.result1
 }
 
@@ -101,16 +100,15 @@ func (fake *FakeKnSourceClient) Namespace() string {
 	ret, specificReturn := fake.namespaceReturnsOnCall[len(fake.namespaceArgsForCall)]
 	fake.namespaceArgsForCall = append(fake.namespaceArgsForCall, struct {
 	}{})
-	stub := fake.NamespaceStub
-	fakeReturns := fake.namespaceReturns
 	fake.recordInvocation("Namespace", []interface{}{})
 	fake.namespaceMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.NamespaceStub != nil {
+		return fake.NamespaceStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.namespaceReturns
 	return fakeReturns.result1
 }
 
@@ -154,16 +152,15 @@ func (fake *FakeKnSourceClient) RestConfig() *rest.Config {
 	ret, specificReturn := fake.restConfigReturnsOnCall[len(fake.restConfigArgsForCall)]
 	fake.restConfigArgsForCall = append(fake.restConfigArgsForCall, struct {
 	}{})
-	stub := fake.RestConfigStub
-	fakeReturns := fake.restConfigReturns
 	fake.recordInvocation("RestConfig", []interface{}{})
 	fake.restConfigMutex.Unlock()
-	if stub != nil {
-		return stub()
+	if fake.RestConfigStub != nil {
+		return fake.RestConfigStub()
 	}
 	if specificReturn {
 		return ret.result1
 	}
+	fakeReturns := fake.restConfigReturns
 	return fakeReturns.result1
 }
 
