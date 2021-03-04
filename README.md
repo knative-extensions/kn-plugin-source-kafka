@@ -1,12 +1,12 @@
 # kn-plugin-source-kafka
 
-`kn-plugin-source-kafka` is a plugin of Knative Client, for management of kafka event
-source interactively from the command line.
+`kn-plugin-source-kafka` is a plugin of Knative Client, for management of kafka
+event source interactively from the command line.
 
 ## Description
 
-`kn-plugin-source-kafka` is a plugin of Knative Client. You can create, describe and
-delete kafka event sources. Go to
+`kn-plugin-source-kafka` is a plugin of Knative Client. You can create, describe
+and delete kafka event sources. Go to
 [Knative Eventing document](https://knative.dev/docs/eventing/samples/kafka/source/)
 to understand more about kafka event sources.
 
@@ -18,8 +18,9 @@ before you build `kn-plugin-source-kafka`.
 
 **Building:**
 
-Once you've set up your development environment, let's build `kn-plugin-source-kafka`.
-Run below command under the root directory of this repository.
+Once you've set up your development environment, let's build
+`kn-plugin-source-kafka`. Run below command under the root directory of this
+repository.
 
 ```sh
 $ hack/build.sh
@@ -31,9 +32,9 @@ You will get an executable file `kn-plugin-source-kafka` under the directory of
 `client-contrib/plugins/source-kafka` after you run the build command. Then
 let's install it to become a Knative Client `kn` plugin.
 
-Install the plugin by simply copying the executable file `kn-plugin-source-kafka` to
-the folder of the `kn` plugins directory. You will be able to invoke it by
-`kn source kafka`.
+Install the plugin by simply copying the executable file
+`kn-plugin-source-kafka` to the folder of the `kn` plugins directory. You will
+be able to invoke it by `kn source kafka`.
 
 ## Usage
 
@@ -53,10 +54,10 @@ Manage Knative kafka eventing sources
 
 #### SEE ALSO
 
-* [kafka create](#kafka-create)	 - Create a kafka source
-* [kafka delete](#kafka-delete)	 - Delete a kafka source
-* [kafka describe](#kafka-describe)	 - Describe a kafka source
-* [kafka list](#kafka-list)	 - List kafka sources
+- [kafka create](#kafka-create) - Create a kafka source
+- [kafka delete](#kafka-delete) - Delete a kafka source
+- [kafka describe](#kafka-describe) - Describe a kafka source
+- [kafka list](#kafka-list) - List kafka sources
 
 ### kafka create
 
@@ -87,7 +88,7 @@ kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc
 
 #### SEE ALSO
 
-* [kafka](#kafka)	 - Knative eventing kafka source plugin
+- [kafka](#kafka) - Knative eventing kafka source plugin
 
 ### kafka delete
 
@@ -114,7 +115,7 @@ kn source kafka delete mykafkasrc
 
 #### SEE ALSO
 
-* [kafka](#kafka)	 - Knative eventing kafka source plugin
+- [kafka](#kafka) - Knative eventing kafka source plugin
 
 ### kafka describe
 
@@ -141,7 +142,7 @@ kn source kafka describe kafka-name
 
 #### SEE ALSO
 
-* [kafka](#kafka)	 - Knative eventing kafka source plugin
+- [kafka](#kafka) - Knative eventing kafka source plugin
 
 ### kafka list
 
@@ -168,10 +169,9 @@ kn source kafka list
 
 #### SEE ALSO
 
-* [kafka](#kafka)	 - Knative eventing kafka source plugin
+- [kafka](#kafka) - Knative eventing kafka source plugin
 
 ## More information
-	
-* [Knative Client](https://github.com/knative/client)
-* [How to contribute a plugin](https://github.com/knative/client-contrib#how-to-contribute-a-plugin)
 
+- [Knative Client](https://github.com/knative/client)
+- [How to contribute a plugin](https://github.com/knative/client-contrib#how-to-contribute-a-plugin)
