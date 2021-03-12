@@ -48,6 +48,8 @@ func (f *kafkaSourceFlagsFactory) CreateFlags() *pflag.FlagSet {
 	flagSet.StringArrayVar(&f.KafkaSourceParams().BootstrapServers, "servers", []string{}, "Kafka bootstrap servers that the consumer will connect to, consist of a hostname plus a port pair, e.g. my-kafka-bootstrap.kafka:9092. Flag can be used multiple times.")
 	flagSet.StringArrayVar(&f.KafkaSourceParams().Topics, "topics", []string{}, "Topics to consume messages from. Flag can be used multiple times.")
 	flagSet.StringVar(&f.KafkaSourceParams().ConsumerGroup, "consumergroup", "", "the consumer group ID")
+	flagSet.StringArrayVar(&f.KafkaSourceParams().CeOverrides, "ce-override", []string{}, "Cloud Event Overrides defines overrides to control the output format \n"+
+		"Example: '--ce-override key=value'")
 	return flagSet
 }
 

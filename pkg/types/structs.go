@@ -24,6 +24,7 @@ type KafkaSourceParams struct {
 	BootstrapServers []string
 	Topics           []string
 	ConsumerGroup    string
+	CeOverrides      []string
 }
 
 func (p *KafkaSourceParams) NewSourcesClient() (*clientv1alpha1.SourcesV1alpha1Client, error) {

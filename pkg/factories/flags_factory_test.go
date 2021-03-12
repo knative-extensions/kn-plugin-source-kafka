@@ -40,6 +40,7 @@ func TestCreateFlags(t *testing.T) {
 	assert.Assert(t, flags.Lookup("servers") != nil)
 	assert.Assert(t, flags.Lookup("consumergroup") != nil)
 	assert.Assert(t, flags.Lookup("topics") != nil)
+	assert.Assert(t, flags.Lookup("ce-override") != nil)
 }
 
 func TestDeleteFlags(t *testing.T) {

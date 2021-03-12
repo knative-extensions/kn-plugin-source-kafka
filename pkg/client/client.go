@@ -157,3 +157,20 @@ func (b *KafkaSourceBuilder) Sink(sink *duckv1.Destination) *KafkaSourceBuilder 
 func (b *KafkaSourceBuilder) Build() *v1alpha1.KafkaSource {
 	return b.kafkaSource
 }
+
+// CloudEventOverrides adds given Cloud Event override extensions map to source spec
+func (b *KafkaSourceBuilder) CloudEventOverrides(ceo map[string]string) *KafkaSourceBuilder {
+	if ceo == nil {
+		return b
+	}
+
+	ceOverrides := b.kafkaSource.Spec.CloudEventOverrides
+	if ceOverrides == nil {
+		ceOverrides = &duckv1.CloudEventOverrides{Extensions: map[string]string{}}
+		b.kafkaSource.Spec.CloudEventOverrides = ceOverrides
+	}
+	for k, v := range ceo {
+		ceOverrides.Extensions[k] = v
+	}
+	return b
+}
