@@ -159,8 +159,8 @@ func (b *KafkaSourceBuilder) Build() *v1alpha1.KafkaSource {
 }
 
 // CloudEventOverrides adds given Cloud Event override extensions map to source spec
-func (b *KafkaSourceBuilder) CloudEventOverrides(ceo map[string]string) *KafkaSourceBuilder {
-	if ceo == nil {
+func (b *KafkaSourceBuilder) CloudEventOverrides(ceo map[string]string, toRemove []string) *KafkaSourceBuilder {
+	if ceo == nil && len(toRemove) == 0 {
 		return b
 	}
 
@@ -172,5 +172,9 @@ func (b *KafkaSourceBuilder) CloudEventOverrides(ceo map[string]string) *KafkaSo
 	for k, v := range ceo {
 		ceOverrides.Extensions[k] = v
 	}
+	for _, r := range toRemove {
+		delete(ceOverrides.Extensions, r)
+	}
+
 	return b
 }

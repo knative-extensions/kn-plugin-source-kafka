@@ -93,6 +93,6 @@ func newKafkaSource(name string) *v1alpha1.KafkaSource {
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).
 		ConsumerGroup("mygroup").
-		CloudEventOverrides(map[string]string{"type": "foo"}).
+		CloudEventOverrides(map[string]string{"type": "foo"}, []string{}).
 		Build()
 }

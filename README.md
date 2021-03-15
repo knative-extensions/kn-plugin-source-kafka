@@ -63,14 +63,18 @@ Manage Knative kafka eventing sources
 Create a kafka source
 
 ```
-kafka create NAME --servers SERVERS --topics TOPICS --consumergroup GROUP --sink SINK --ce-override CE-OVERRIDE [flags]
+kafka create NAME --servers SERVERS --topics TOPICS --sink SINK [flags]
 ```
 
 #### Examples
 
 ```
+# Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' and sends the events to service 'event-display'
+kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --sink svc:event-display
+
 # Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' using the consumer group ID 'test-consumer-group' and sends the events to service 'event-display'
 kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --consumergroup test-consumer-group --sink svc:event-display --ce-override "sink=bound"
+
 ```
 
 #### Options

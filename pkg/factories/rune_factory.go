@@ -107,12 +107,13 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		if err != nil {
 			return err
 		}
+		ceOverridesToRemove := util.ParseMinusSuffix(ceOverridesMap)
 		b := client.NewKafkaSourceBuilder(name).
 			BootstrapServers(f.kafkaSourceFactory.KafkaSourceParams().BootstrapServers).
 			Topics(f.kafkaSourceFactory.KafkaSourceParams().Topics).
 			ConsumerGroup(f.kafkaSourceFactory.KafkaSourceParams().ConsumerGroup).
 			Sink(objectRef).
-			CloudEventOverrides(ceOverridesMap)
+			CloudEventOverrides(ceOverridesMap, ceOverridesToRemove)
 
 		err = f.kafkaSourceClient.CreateKafkaSource(b.Build())
 

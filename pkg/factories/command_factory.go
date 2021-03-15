@@ -53,10 +53,14 @@ func (f *kafkaSourceCommandFactory) SourceCommand() *cobra.Command {
 
 func (f *kafkaSourceCommandFactory) CreateCommand() *cobra.Command {
 	createCmd := f.defaultCommandFactory.CreateCommand()
-	createCmd.Use = "create NAME --servers SERVERS --topics TOPICS --consumergroup GROUP --sink SINK --ce-override CE-OVERRIDE"
+	createCmd.Use = "create NAME --servers SERVERS --topics TOPICS --sink SINK"
 	createCmd.Short = "Create a kafka source"
-	createCmd.Example = `# Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' using the consumer group ID 'test-consumer-group' and sends the events to service 'event-display'
-kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --consumergroup test-consumer-group --sink svc:event-display --ce-override "sink=bound"`
+	createCmd.Example = `# Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' and sends the events to service 'event-display'
+kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --sink svc:event-display
+
+# Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' using the consumer group ID 'test-consumer-group' and sends the events to service 'event-display'
+kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --consumergroup test-consumer-group --sink svc:event-display --ce-override "sink=bound"
+`
 	return createCmd
 }
 
