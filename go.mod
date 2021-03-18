@@ -9,10 +9,10 @@ require (
 	gotest.tools/v3 v3.0.3
 	k8s.io/apimachinery v0.19.7
 	k8s.io/client-go v0.19.7
-	knative.dev/client v0.21.1-0.20210312220900-d68cde6ebe2f
-	knative.dev/eventing-kafka v0.21.1-0.20210311170526-5a79b3b13f13
+	knative.dev/client v0.21.1-0.20210316000941-6a4f308e5e73
+	knative.dev/eventing-kafka v0.21.1-0.20210316174342-cca17c800a6b
 	knative.dev/hack v0.0.0-20210309141825-9b73a256fd9a
-	knative.dev/pkg v0.0.0-20210311174826-40488532be3f
+	knative.dev/pkg v0.0.0-20210315160101-6a33a1ab29ac
 )
 
 replace github.com/go-openapi/spec => github.com/go-openapi/spec v0.19.3
