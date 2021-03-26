@@ -705,7 +705,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.21.1-0.20210316000941-6a4f308e5e73
+# knative.dev/client v0.21.1-0.20210319143953-43b669fe9fb6
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -726,7 +726,7 @@ knative.dev/client/pkg/sources/v1alpha2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.21.1-0.20210312002228-3b427377abe0
+# knative.dev/eventing v0.21.1-0.20210325205419-3ebce0d42aa2
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
 knative.dev/eventing/pkg/apis/duck/v1
@@ -753,7 +753,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/eventing/v1beta1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1beta1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1alpha2
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1alpha2/fake
-# knative.dev/eventing-kafka v0.21.1-0.20210316174342-cca17c800a6b
+# knative.dev/eventing-kafka v0.21.1-0.20210326072819-cf8381199923
 ## explicit
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1alpha1
@@ -768,14 +768,14 @@ knative.dev/eventing-kafka/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake
 knative.dev/eventing-kafka/pkg/common/constants
-# knative.dev/hack v0.0.0-20210309141825-9b73a256fd9a
+# knative.dev/hack v0.0.0-20210325223819-b6ab329907d3
 ## explicit
 knative.dev/hack
-# knative.dev/networking v0.0.0-20210311190926-430a689490e6
+# knative.dev/networking v0.0.0-20210326014619-6a77ca6c8f69
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
-# knative.dev/pkg v0.0.0-20210315160101-6a33a1ab29ac
+# knative.dev/pkg v0.0.0-20210326074119-78ca0709a410
 ## explicit
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
