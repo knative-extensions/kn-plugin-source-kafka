@@ -103,19 +103,11 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 				"cannot create kafka '%s' in namespace '%s' "+
 					"because: %s", name, f.kafkaSourceClient.Namespace(), err)
 		}
-		ceOverridesMap, err := util.MapFromArrayAllowingSingles(f.kafkaSourceFactory.KafkaSourceParams().CeOverrides, "=")
+		obj, err := createKafkaSource(name, f.kafkaSourceFactory.KafkaSourceParams(), objectRef)
 		if err != nil {
 			return err
 		}
-		ceOverridesToRemove := util.ParseMinusSuffix(ceOverridesMap)
-		b := client.NewKafkaSourceBuilder(name).
-			BootstrapServers(f.kafkaSourceFactory.KafkaSourceParams().BootstrapServers).
-			Topics(f.kafkaSourceFactory.KafkaSourceParams().Topics).
-			ConsumerGroup(f.kafkaSourceFactory.KafkaSourceParams().ConsumerGroup).
-			Sink(objectRef).
-			CloudEventOverrides(ceOverridesMap, ceOverridesToRemove)
-
-		err = f.kafkaSourceClient.CreateKafkaSource(b.Build())
+		err = f.kafkaSourceClient.CreateKafkaSource(obj)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -126,6 +118,21 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' created in namespace '%s'.\n", name, f.kafkaSourceClient.Namespace())
 		return nil
 	}
+}
+
+func createKafkaSource(name string, params *types.KafkaSourceParams, sink *duckv1.Destination) (*v1alpha1.KafkaSource, error) {
+	ceOverridesMap, err := util.MapFromArrayAllowingSingles(params.CeOverrides, "=")
+	if err != nil {
+		return nil, err
+	}
+	ceOverridesToRemove := util.ParseMinusSuffix(ceOverridesMap)
+	b := client.NewKafkaSourceBuilder(name).
+		BootstrapServers(params.BootstrapServers).
+		Topics(params.Topics).
+		ConsumerGroup(params.ConsumerGroup).
+		Sink(sink).
+		CloudEventOverrides(ceOverridesMap, ceOverridesToRemove)
+	return b.Build(), nil
 }
 
 func (f *kafkaSourceRunEFactory) DeleteRunE() sourcetypes.RunE {

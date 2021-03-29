@@ -108,6 +108,31 @@ func TestTrunc(t *testing.T) {
 	assert.Check(t, util.ContainsAll(truncStr, str))
 }
 
+func TestCreateKafkaSource(t *testing.T) {
+	t.Run("duplicate key error", func(t *testing.T) {
+		runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
+		runEFactory.KafkaSourceFactory().KafkaSourceParams().CeOverrides = []string{"type=foo", "type=bar"}
+		sink := &v1.Destination{}
+		_, err := createKafkaSource("ksrc", runEFactory.KafkaSourceFactory().KafkaSourceParams(), sink)
+		assert.ErrorContains(t, err, "The key \"type\" has been duplicate in [type=foo type=bar]")
+	})
+
+	t.Run("create kafka source", func(t *testing.T) {
+		runEFactory := NewFakeKafkaSourceRunEFactory("fake_namespace")
+		runEFactory.KafkaSourceFactory().KafkaSourceParams().BootstrapServers = []string{"test.server.org"}
+		runEFactory.KafkaSourceFactory().KafkaSourceParams().Topics = []string{"topic"}
+		runEFactory.KafkaSourceFactory().KafkaSourceParams().CeOverrides = []string{"type=foo"}
+		runEFactory.KafkaSourceFactory().KafkaSourceParams().ConsumerGroup = "mygroup"
+		sink := &v1.Destination{Ref: &v1.KReference{Name: "mysvc", Kind: "Service"}}
+		out, err := createKafkaSource("ksrc", runEFactory.KafkaSourceFactory().KafkaSourceParams(), sink)
+		assert.NilError(t, err)
+		assert.Check(t, util.ContainsAll(fmt.Sprint(out.Spec), "test.server.org", "topic", "mygroup"))
+		assert.Check(t, util.ContainsAll(fmt.Sprint(out.Spec.CloudEventOverrides), "type:foo"))
+		assert.Check(t, util.ContainsAll(fmt.Sprint(out.Spec.Sink.Ref.Name), "mysvc"))
+	})
+
+}
+
 func newKafkaSource(name string) *v1alpha1.KafkaSource {
 	return client.NewKafkaSourceBuilder(name).
 		BootstrapServers([]string{"test.server.org"}).
