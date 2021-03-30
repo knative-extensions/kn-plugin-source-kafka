@@ -63,26 +63,31 @@ Manage Knative kafka eventing sources
 Create a kafka source
 
 ```
-kafka create NAME --servers SERVERS --topics TOPICS --consumergroup GROUP --sink SINK [flags]
+kafka create NAME --servers SERVERS --topics TOPICS --sink SINK [flags]
 ```
 
 #### Examples
 
 ```
+# Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' and sends the events to service 'event-display'
+kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --sink svc:event-display
+
 # Create a new kafka source 'mykafkasrc' which subscribes a kafka server 'my-cluster-kafka-bootstrap.kafka.svc:9092' at topic 'test-topic' using the consumer group ID 'test-consumer-group' and sends the events to service 'event-display'
-kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --consumergroup test-consumer-group --sink svc:event-display
+kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc:9092 --topics test-topic --consumergroup test-consumer-group --sink svc:event-display --ce-override "sink=bound"
+
 ```
 
 #### Options
 
 ```
-  -A, --all-namespaces         If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
-      --consumergroup string   the consumer group ID
-  -h, --help                   help for create
-  -n, --namespace string       Specify the namespace to operate in.
-      --servers stringArray    Kafka bootstrap servers that the consumer will connect to, consist of a hostname plus a port pair, e.g. my-kafka-bootstrap.kafka:9092. Flag can be used multiple times.
-  -s, --sink string            Addressable sink for events. You can specify a broker, channel, Knative service or URI. Examples: '--sink broker:nest' for a broker 'nest', '--sink channel:pipe' for a channel 'pipe', '--sink ksvc:mysvc:mynamespace' for a Knative service 'mysvc' in another namespace 'mynamespace', '--sink https://event.receiver.uri' for an URI with an 'http://' or 'https://' schema, '--sink ksvc:receiver' or simply '--sink receiver' for a Knative service 'receiver'. If a prefix is not provided, it is considered as a Knative service.
-      --topics stringArray     Topics to consume messages from. Flag can be used multiple times.
+  -A, --all-namespaces            If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
+      --ce-override stringArray   Cloud Event overrides to apply before sending event to sink. Example: '--ce-override key=value' You may be provide this flag multiple times. To unset, append "-" to the key (e.g. --ce-override key-).
+      --consumergroup string      the consumer group ID
+  -h, --help                      help for create
+  -n, --namespace string          Specify the namespace to operate in.
+      --servers stringArray       Kafka bootstrap servers that the consumer will connect to, consist of a hostname plus a port pair, e.g. my-kafka-bootstrap.kafka:9092. Flag can be used multiple times.
+  -s, --sink string               Addressable sink for events. You can specify a broker, channel, Knative service or URI. Examples: '--sink broker:nest' for a broker 'nest', '--sink channel:pipe' for a channel 'pipe', '--sink ksvc:mysvc:mynamespace' for a Knative service 'mysvc' in another namespace 'mynamespace', '--sink https://event.receiver.uri' for an URI with an 'http://' or 'https://' schema, '--sink ksvc:receiver' or simply '--sink receiver' for a Knative service 'receiver' in the current namespace. If a prefix is not provided, it is considered as a Knative service in the current namespace. If referring to a Knative service in another namespace, 'ksvc:name:namespace' combination must be provided explicitly.
+      --topics stringArray        Topics to consume messages from. Flag can be used multiple times.
 ```
 
 #### SEE ALSO

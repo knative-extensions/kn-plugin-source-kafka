@@ -33,6 +33,7 @@ import (
 	"knative.dev/client/pkg/kn/commands"
 	"knative.dev/client/pkg/kn/commands/flags"
 	"knative.dev/client/pkg/printers"
+	"knative.dev/client/pkg/util"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 )
 
@@ -96,20 +97,17 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		if err != nil {
 			return err
 		}
-		objectRef, err := f.KnSourceParams().SinkFlag.ResolveSink(dynamicClient, f.kafkaSourceClient.Namespace())
+		objectRef, err := f.KnSourceParams().SinkFlag.ResolveSink(cmd.Context(), dynamicClient, f.kafkaSourceClient.Namespace())
 		if err != nil {
 			return fmt.Errorf(
 				"cannot create kafka '%s' in namespace '%s' "+
 					"because: %s", name, f.kafkaSourceClient.Namespace(), err)
 		}
-
-		b := client.NewKafkaSourceBuilder(name).
-			BootstrapServers(f.kafkaSourceFactory.KafkaSourceParams().BootstrapServers).
-			Topics(f.kafkaSourceFactory.KafkaSourceParams().Topics).
-			ConsumerGroup(f.kafkaSourceFactory.KafkaSourceParams().ConsumerGroup).
-			Sink(objectRef)
-
-		err = f.kafkaSourceClient.CreateKafkaSource(b.Build())
+		obj, err := createKafkaSource(name, f.kafkaSourceFactory.KafkaSourceParams(), objectRef)
+		if err != nil {
+			return err
+		}
+		err = f.kafkaSourceClient.CreateKafkaSource(cmd.Context(), obj)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -120,6 +118,21 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		fmt.Fprintf(cmd.OutOrStdout(), "Kafka source '%s' created in namespace '%s'.\n", name, f.kafkaSourceClient.Namespace())
 		return nil
 	}
+}
+
+func createKafkaSource(name string, params *types.KafkaSourceParams, sink *duckv1.Destination) (*v1alpha1.KafkaSource, error) {
+	ceOverridesMap, err := util.MapFromArrayAllowingSingles(params.CeOverrides, "=")
+	if err != nil {
+		return nil, err
+	}
+	ceOverridesToRemove := util.ParseMinusSuffix(ceOverridesMap)
+	b := client.NewKafkaSourceBuilder(name).
+		BootstrapServers(params.BootstrapServers).
+		Topics(params.Topics).
+		ConsumerGroup(params.ConsumerGroup).
+		Sink(sink).
+		CloudEventOverrides(ceOverridesMap, ceOverridesToRemove)
+	return b.Build(), nil
 }
 
 func (f *kafkaSourceRunEFactory) DeleteRunE() sourcetypes.RunE {
@@ -145,7 +158,7 @@ func (f *kafkaSourceRunEFactory) DeleteRunE() sourcetypes.RunE {
 		}
 		name := args[0]
 
-		err = f.kafkaSourceClient.DeleteKafkaSource(name)
+		err = f.kafkaSourceClient.DeleteKafkaSource(cmd.Context(), name)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -188,7 +201,7 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 		}
 		name := args[0]
 
-		kafkaSource, err := f.kafkaSourceClient.GetKafkaSource(name)
+		kafkaSource, err := f.kafkaSourceClient.GetKafkaSource(cmd.Context(), name)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -208,6 +221,13 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 		if kafkaSource.Spec.Sink != nil {
 			writeSink(dw, kafkaSource.Spec.Sink)
 			dw.WriteLine()
+			if err := dw.Flush(); err != nil {
+				return err
+			}
+		}
+
+		if kafkaSource.Spec.CloudEventOverrides != nil {
+			writeCeOverrides(dw, kafkaSource.Spec.CloudEventOverrides.Extensions)
 			if err := dw.Flush(); err != nil {
 				return err
 			}
@@ -238,7 +258,7 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 			return err
 		}
 
-		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources()
+		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources(cmd.Context())
 
 		if err != nil {
 			return fmt.Errorf(
@@ -285,6 +305,18 @@ func writeSink(dw printers.PrefixWriter, sink *duckv1.Destination) {
 	uri := sink.URI
 	if uri != nil {
 		subWriter.WriteAttribute("URI", uri.String())
+	}
+}
+
+func writeCeOverrides(dw printers.PrefixWriter, ceOverrides map[string]string) {
+	subDw := dw.WriteAttribute("CloudEvent Overrides", "")
+	keys := make([]string, 0, len(ceOverrides))
+	for k := range ceOverrides {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	for _, k := range keys {
+		subDw.WriteAttribute(k, ceOverrides[k])
 	}
 }
 

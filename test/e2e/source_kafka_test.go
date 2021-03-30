@@ -33,6 +33,7 @@ const (
 	kafkaClusterName      = "my-cluster"
 	kafkaClusterNamespace = "kafka"
 	kafkaTopic            = "test-topic"
+	ceo                   = "type=foo"
 )
 
 type e2eTest struct {
@@ -77,7 +78,7 @@ func TestSourceKafka(t *testing.T) {
 	e2eTest.knSourceKafkaCreate(t, r, "mykafka1", "sinksvc")
 
 	t.Log("test kn-plugin-source-kafka describe source-name")
-	e2eTest.knSourceKafkaDescribe(t, r, "mykafka1", "sinksvc")
+	e2eTest.knSourceKafkaDescribe(t, r, "mykafka1", "sinksvc", "cloudevent")
 
 	t.Log("test kn-plugin-source-kafka list")
 	e2eTest.knSourceKafkaList(t, r, "mykafka1")
@@ -92,7 +93,7 @@ func TestSourceKafka(t *testing.T) {
 // Private
 
 func (et *e2eTest) knSourceKafkaCreate(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName string) {
-	out := et.it.KnPlugin().Run("create", sourceName, "--servers", kafkaBootstrapUrl, "--topics", kafkaTopic, "--consumergroup", "test-consumer-group", "--sink", sinkName)
+	out := et.it.KnPlugin().Run("create", sourceName, "--servers", kafkaBootstrapUrl, "--topics", kafkaTopic, "--consumergroup", "test-consumer-group", "--sink", sinkName, "--ce-override", ceo)
 	r.AssertNoError(out)
 	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, "create", sourceName))
 }
@@ -103,10 +104,10 @@ func (et *e2eTest) knSourceKafkaDelete(t *testing.T, r *test.KnRunResultCollecto
 	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, "delete", sourceName))
 }
 
-func (et *e2eTest) knSourceKafkaDescribe(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName string) {
+func (et *e2eTest) knSourceKafkaDescribe(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName, cloudEvent string) {
 	out := et.it.KnPlugin().Run("describe", sourceName)
 	r.AssertNoError(out)
-	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, sourceName, sinkName))
+	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, sourceName, sinkName, cloudEvent))
 }
 
 func serviceCreate(r *test.KnRunResultCollector, serviceName string) {
