@@ -15,6 +15,8 @@
 package types
 
 import (
+	"context"
+
 	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
 
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
@@ -24,10 +26,10 @@ import (
 type KafkaSourceClient interface {
 	sourcetypes.KnSourceClient
 	KafkaSourceParams() *KafkaSourceParams
-	CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource) error
-	DeleteKafkaSource(name string) error
-	GetKafkaSource(name string) (*v1alpha1.KafkaSource, error)
-	ListKafkaSources() (*v1alpha1.KafkaSourceList, error)
+	CreateKafkaSource(ctx context.Context, kafkaSource *v1alpha1.KafkaSource) error
+	DeleteKafkaSource(ctx context.Context, name string) error
+	GetKafkaSource(ctx context.Context, name string) (*v1alpha1.KafkaSource, error)
+	ListKafkaSources(ctx context.Context) (*v1alpha1.KafkaSourceList, error)
 }
 
 type KafkaSourceFactory interface {

@@ -97,7 +97,7 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		if err != nil {
 			return err
 		}
-		objectRef, err := f.KnSourceParams().SinkFlag.ResolveSink(dynamicClient, f.kafkaSourceClient.Namespace())
+		objectRef, err := f.KnSourceParams().SinkFlag.ResolveSink(cmd.Context(), dynamicClient, f.kafkaSourceClient.Namespace())
 		if err != nil {
 			return fmt.Errorf(
 				"cannot create kafka '%s' in namespace '%s' "+
@@ -107,7 +107,7 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 		if err != nil {
 			return err
 		}
-		err = f.kafkaSourceClient.CreateKafkaSource(obj)
+		err = f.kafkaSourceClient.CreateKafkaSource(cmd.Context(), obj)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -158,7 +158,7 @@ func (f *kafkaSourceRunEFactory) DeleteRunE() sourcetypes.RunE {
 		}
 		name := args[0]
 
-		err = f.kafkaSourceClient.DeleteKafkaSource(name)
+		err = f.kafkaSourceClient.DeleteKafkaSource(cmd.Context(), name)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -201,7 +201,7 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 		}
 		name := args[0]
 
-		kafkaSource, err := f.kafkaSourceClient.GetKafkaSource(name)
+		kafkaSource, err := f.kafkaSourceClient.GetKafkaSource(cmd.Context(), name)
 
 		if err != nil {
 			return fmt.Errorf(
@@ -258,7 +258,7 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 			return err
 		}
 
-		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources()
+		kafkaSourceList, err := f.kafkaSourceClient.ListKafkaSources(cmd.Context())
 
 		if err != nil {
 			return fmt.Errorf(

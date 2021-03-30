@@ -66,8 +66,8 @@ func (c *kafkaSourceClient) KafkaSourceParams() *types.KafkaSourceParams {
 }
 
 //CreateKafkaSource is used to create an instance of KafkaSource
-func (c *kafkaSourceClient) CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource) error {
-	_, err := c.client.KafkaSources(c.namespace).Create(context.TODO(), kafkaSource, metav1.CreateOptions{})
+func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *v1alpha1.KafkaSource) error {
+	_, err := c.client.KafkaSources(c.namespace).Create(ctx, kafkaSource, metav1.CreateOptions{})
 	if err != nil {
 		return knerrors.GetError(err)
 	}
@@ -76,8 +76,8 @@ func (c *kafkaSourceClient) CreateKafkaSource(kafkaSource *v1alpha1.KafkaSource)
 }
 
 //DeleteKafkaSource is used to create an instance of KafkaSource
-func (c *kafkaSourceClient) DeleteKafkaSource(name string) error {
-	err := c.client.KafkaSources(c.namespace).Delete(context.TODO(), name, metav1.DeleteOptions{})
+func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) error {
+	err := c.client.KafkaSources(c.namespace).Delete(ctx, name, metav1.DeleteOptions{})
 	if err != nil {
 		return knerrors.GetError(err)
 	}
@@ -86,8 +86,8 @@ func (c *kafkaSourceClient) DeleteKafkaSource(name string) error {
 }
 
 //GetKafkaSource is used to create an instance of KafkaSource
-func (c *kafkaSourceClient) GetKafkaSource(name string) (*v1alpha1.KafkaSource, error) {
-	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(context.TODO(), name, metav1.GetOptions{})
+func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v1alpha1.KafkaSource, error) {
+	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(ctx, name, metav1.GetOptions{})
 	if err != nil {
 		return nil, knerrors.GetError(err)
 	}
@@ -96,8 +96,8 @@ func (c *kafkaSourceClient) GetKafkaSource(name string) (*v1alpha1.KafkaSource, 
 }
 
 //ListKafkaSources is used to get all available instance of KafkaSource
-func (c *kafkaSourceClient) ListKafkaSources() (*v1alpha1.KafkaSourceList, error) {
-	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(context.TODO(), metav1.ListOptions{})
+func (c *kafkaSourceClient) ListKafkaSources(ctx context.Context) (*v1alpha1.KafkaSourceList, error) {
+	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
 		return nil, knerrors.GetError(err)
 	}

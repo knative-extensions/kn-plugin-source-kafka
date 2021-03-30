@@ -1335,8 +1335,8 @@ k8s.io/utils v0.0.0-20210111153108-fddb29f9d009/go.mod h1:jPW/WVKK9YHAvNhRxK0md/
 knative.dev/caching v0.0.0-20210215030244-1212288570f0/go.mod h1:rAPalJe9Lx3jHffJpackk5WjZYl3j2QvXUgw0GPllxQ=
 knative.dev/caching v0.0.0-20210311181225-4b366c7a9f99/go.mod h1:OlAEAfCSUjHVetZp/hpMw3lzAGHfTEQyu2a5dgf/7Qo=
 knative.dev/client v0.21.0/go.mod h1:1En9uxMhk62EReWR1d66/d3tnpkot/D3vBRfmuidFNc=
-knative.dev/client v0.21.1-0.20210319143953-43b669fe9fb6 h1:zS2LO8lTGUZrnS4Z2SObsyIKP/XmEyOnFQHRzc+Guu4=
-knative.dev/client v0.21.1-0.20210319143953-43b669fe9fb6/go.mod h1:jNcqeBq5mEJ8Y9c6hQv7Tm/uwLx5T5KRu1da16O2OlY=
+knative.dev/client v0.21.1-0.20210330082320-885f2a9bc996 h1:hzBLtKkSuTw0iveImS1UkM2e98t5ACl8Aw9YBZzeBhM=
+knative.dev/client v0.21.1-0.20210330082320-885f2a9bc996/go.mod h1:jNcqeBq5mEJ8Y9c6hQv7Tm/uwLx5T5KRu1da16O2OlY=
 knative.dev/eventing v0.21.0/go.mod h1:JjbVEOTJJHqo9CTxbTfrMn018hG8fOr3UfBoCJ7KWaA=
 knative.dev/eventing v0.21.1-0.20210312002228-3b427377abe0/go.mod h1:k/F174UcHeY70F00RAExTv2/wg8yUR20EPYX3hlD3+8=
 knative.dev/eventing v0.21.1-0.20210325205419-3ebce0d42aa2 h1:d6aFEshhPxgdE83dLAzv0Rgyx7lfRjIaj56Gg+OJJ4I=
@@ -1362,8 +1362,8 @@ knative.dev/pkg v0.0.0-20210310173525-bbe0bb3eb1e0/go.mod h1:pn/vClSL/iCW40TlFR9
 knative.dev/pkg v0.0.0-20210311174826-40488532be3f/go.mod h1:pn/vClSL/iCW40TlFR91EhtmMmsyPQR2V2LavDAOOMs=
 knative.dev/pkg v0.0.0-20210318052054-dfeeb1817679/go.mod h1:o1aTlbc+h60DP9P6nd/WmP99Ny9Ls3U/JIjL4xMgqpw=
 knative.dev/pkg v0.0.0-20210323202917-b558677ab034/go.mod h1:o1aTlbc+h60DP9P6nd/WmP99Ny9Ls3U/JIjL4xMgqpw=
-knative.dev/pkg v0.0.0-20210326074119-78ca0709a410 h1:vXmDAeefAY0jOIuJ6fJ0QSlJkjTEKKU1gVi9LVTOIUw=
-knative.dev/pkg v0.0.0-20210326074119-78ca0709a410/go.mod h1:PD5g8hUCXq6iR3tILjmZeJBvQfXGnHMPKryq54qHJhg=
+knative.dev/pkg v0.0.0-20210330073320-3b7934e599fb h1:xZ7pyPKZTLiDWN4hBTNde5NzmuPKFaV3NVItE18qRZY=
+knative.dev/pkg v0.0.0-20210330073320-3b7934e599fb/go.mod h1:PD5g8hUCXq6iR3tILjmZeJBvQfXGnHMPKryq54qHJhg=
 knative.dev/reconciler-test v0.0.0-20210216030508-77f50054d024/go.mod h1:RP/K5xJylB72Go6eAsXYEsQHp4zCCNMNjmsqhvq7wko=
 knative.dev/reconciler-test v0.0.0-20210311161026-af80deacbe19/go.mod h1:BqljHB9eQj66yPyxOj62syip0ZZtiG0lw76XrtRe36M=
 knative.dev/reconciler-test v0.0.0-20210323181117-2afde0d529e7/go.mod h1:QSd2hWDDwFh+9AHOkiECsj2ZY2DGJBKnj6aT6LITBuw=
