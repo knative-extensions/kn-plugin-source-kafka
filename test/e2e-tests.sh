@@ -23,8 +23,8 @@ export PATH=$PATH:${REPO_ROOT_DIR}
 # Will create and delete this namespace (used for all tests, modify if you want a different one used)
 export KN_E2E_NAMESPACE=kne2etests
 
-export KNATIVE_EVENTING_VERSION="0.21.0"
-export KNATIVE_SERVING_VERSION="0.21.0"
+export KNATIVE_EVENTING_VERSION="0.22.0"
+export KNATIVE_SERVING_VERSION="0.22.0"
 
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.20.0.yaml"
