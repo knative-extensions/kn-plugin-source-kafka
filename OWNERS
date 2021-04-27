@@ -1,7 +1,9 @@
 approvers:
-- daisy-ycguo
-- dsimansk
-- rhuss
-- navidshaikh
-- maximilien
 - technical-oversight-committee
+- knative-release-leads
+- client-writers
+- kn-plugin-source-kafka-approvers
+
+reviewers:
+- client-writers
+- kn-plugin-source-kafka-approvers
