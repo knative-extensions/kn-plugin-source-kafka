@@ -20,8 +20,8 @@ import (
 	sourceclient "github.com/maximilien/kn-source-pkg/pkg/client"
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	knerrors "knative.dev/client/pkg/errors"
-	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
-	clientv1alpha1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1"
+	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	clientv1beta1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -33,7 +33,7 @@ type kafkaSourceClient struct {
 	namespace         string
 	kafkaSourceParams *types.KafkaSourceParams
 	knSourceClient    sourcetypes.KnSourceClient
-	client            clientv1alpha1.SourcesV1alpha1Interface
+	client            clientv1beta1.SourcesV1beta1Interface
 }
 
 // NewKafkaSourceClient is to create a KafkaSourceClient
@@ -66,7 +66,7 @@ func (c *kafkaSourceClient) KafkaSourceParams() *types.KafkaSourceParams {
 }
 
 //CreateKafkaSource is used to create an instance of KafkaSource
-func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *v1alpha1.KafkaSource) error {
+func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *v1beta1.KafkaSource) error {
 	_, err := c.client.KafkaSources(c.namespace).Create(ctx, kafkaSource, metav1.CreateOptions{})
 	if err != nil {
 		return knerrors.GetError(err)
@@ -86,7 +86,7 @@ func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) 
 }
 
 //GetKafkaSource is used to create an instance of KafkaSource
-func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v1alpha1.KafkaSource, error) {
+func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v1beta1.KafkaSource, error) {
 	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(ctx, name, metav1.GetOptions{})
 	if err != nil {
 		return nil, knerrors.GetError(err)
@@ -96,7 +96,7 @@ func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v
 }
 
 //ListKafkaSources is used to get all available instance of KafkaSource
-func (c *kafkaSourceClient) ListKafkaSources(ctx context.Context) (*v1alpha1.KafkaSourceList, error) {
+func (c *kafkaSourceClient) ListKafkaSources(ctx context.Context) (*v1beta1.KafkaSourceList, error) {
 	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
 		return nil, knerrors.GetError(err)
@@ -112,12 +112,12 @@ func (c *kafkaSourceClient) Namespace() string {
 
 // KafkaSourceBuilder is for building the source
 type KafkaSourceBuilder struct {
-	kafkaSource *v1alpha1.KafkaSource
+	kafkaSource *v1beta1.KafkaSource
 }
 
 // NewKafkaSourceBuilder for building ApiServer source object
 func NewKafkaSourceBuilder(name string) *KafkaSourceBuilder {
-	return &KafkaSourceBuilder{kafkaSource: &v1alpha1.KafkaSource{
+	return &KafkaSourceBuilder{kafkaSource: &v1beta1.KafkaSource{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 		},
@@ -125,7 +125,7 @@ func NewKafkaSourceBuilder(name string) *KafkaSourceBuilder {
 }
 
 // NewKafkaSourceBuilderFromExisting for building the object from existing KafkaSource object
-func NewKafkaSourceBuilderFromExisting(kSource *v1alpha1.KafkaSource) *KafkaSourceBuilder {
+func NewKafkaSourceBuilderFromExisting(kSource *v1beta1.KafkaSource) *KafkaSourceBuilder {
 	return &KafkaSourceBuilder{kafkaSource: kSource.DeepCopy()}
 }
 
@@ -154,7 +154,7 @@ func (b *KafkaSourceBuilder) Sink(sink *duckv1.Destination) *KafkaSourceBuilder 
 }
 
 // Build the KafkaSource object
-func (b *KafkaSourceBuilder) Build() *v1alpha1.KafkaSource {
+func (b *KafkaSourceBuilder) Build() *v1beta1.KafkaSource {
 	return b.kafkaSource
 }
 

@@ -22,7 +22,7 @@ import (
 	"k8s.io/client-go/rest"
 	"knative.dev/client/pkg/printers"
 	"knative.dev/client/pkg/util"
-	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
+	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	v1 "knative.dev/pkg/apis/duck/v1"
 )
@@ -90,7 +90,7 @@ func TestPrintKafkaSource(t *testing.T) {
 func TestPrintKafkaSourceList(t *testing.T) {
 	kafkaSource1 := newKafkaSource("foo")
 	kafkaSource2 := newKafkaSource("bar")
-	obj := &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSource1, *kafkaSource2}}
+	obj := &v1beta1.KafkaSourceList{Items: []v1beta1.KafkaSource{*kafkaSource1, *kafkaSource2}}
 	row, err := printKafkaSourceList(obj, printers.PrintOptions{})
 	assert.NilError(t, err)
 	assert.Assert(t, len(row) == 2)
@@ -133,7 +133,7 @@ func TestCreateKafkaSource(t *testing.T) {
 
 }
 
-func newKafkaSource(name string) *v1alpha1.KafkaSource {
+func newKafkaSource(name string) *v1beta1.KafkaSource {
 	return client.NewKafkaSourceBuilder(name).
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).
