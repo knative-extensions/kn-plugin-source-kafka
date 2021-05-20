@@ -218,7 +218,7 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 			return err
 		}
 
-		if kafkaSource.Spec.Sink != nil {
+		if kafkaSource.Spec.Sink.Ref != nil {
 			writeSink(dw, kafkaSource.Spec.Sink)
 			dw.WriteLine()
 			if err := dw.Flush(); err != nil {
@@ -292,7 +292,7 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 	}
 }
 
-func writeSink(dw printers.PrefixWriter, sink *duckv1.Destination) {
+func writeSink(dw printers.PrefixWriter, sink duckv1.Destination) {
 	subWriter := dw.WriteAttribute("Sink", "")
 	ref := sink.Ref
 	if ref != nil {
@@ -340,7 +340,7 @@ func printKafkaSource(kafkaSource *v1beta1.KafkaSource, options printers.PrintOp
 	row.Cells = append(row.Cells,
 		trunc(kafkaSource.ObjectMeta.Name),
 		commands.Age(kafkaSource.ObjectMeta.CreationTimestamp.Time),
-		trunc(flags.SinkToString(*kafkaSource.Spec.Sink)),
+		trunc(flags.SinkToString(kafkaSource.Spec.Sink)),
 		trunc(strings.Join(kafkaSource.Spec.BootstrapServers, ",")),
 	)
 	return []metav1.TableRow{row}, nil

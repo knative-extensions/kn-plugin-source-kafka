@@ -149,7 +149,7 @@ func (b *KafkaSourceBuilder) ConsumerGroup(consumerGroup string) *KafkaSourceBui
 
 // Sink or destination of the source
 func (b *KafkaSourceBuilder) Sink(sink *duckv1.Destination) *KafkaSourceBuilder {
-	b.kafkaSource.Spec.Sink = sink
+	b.kafkaSource.Spec.Sink = *sink
 	return b
 }
 

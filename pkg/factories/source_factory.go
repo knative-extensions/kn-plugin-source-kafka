@@ -39,7 +39,7 @@ func NewKafkaSourceFactory() types.KafkaSourceFactory {
 }
 
 func NewFakeKafkaSourceFactory(ns string) types.KafkaSourceFactory {
-	fakeClient := fake.FakeSourcesV1beta11{Fake: &client_testing.Fake{}}
+	fakeClient := fake.FakeSourcesV1beta1{Fake: &client_testing.Fake{}}
 	fakeSourceClient := client.NewFakeKafkaSourceClient(&fakeClient, ns)
 	fakeParams := fakeSourceClient.KafkaSourceParams()
 	return &kafkaClientFactory{
