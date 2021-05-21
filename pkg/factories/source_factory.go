@@ -19,7 +19,7 @@ import (
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"k8s.io/client-go/rest"
 	client_testing "k8s.io/client-go/testing"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
+	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
@@ -39,7 +39,7 @@ func NewKafkaSourceFactory() types.KafkaSourceFactory {
 }
 
 func NewFakeKafkaSourceFactory(ns string) types.KafkaSourceFactory {
-	fakeClient := fake.FakeSourcesV1alpha1{Fake: &client_testing.Fake{}}
+	fakeClient := fake.FakeSourcesV1beta1{Fake: &client_testing.Fake{}}
 	fakeSourceClient := client.NewFakeKafkaSourceClient(&fakeClient, ns)
 	fakeParams := fakeSourceClient.KafkaSourceParams()
 	return &kafkaClientFactory{

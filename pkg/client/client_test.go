@@ -22,15 +22,15 @@ import (
 
 	"gotest.tools/v3/assert"
 	"k8s.io/apimachinery/pkg/runtime"
-	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
+	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
 var testNamespace = "fake-namespace"
 
-func setup() (fake.FakeSourcesV1alpha1, types.KafkaSourceClient) {
-	fakeClient := fake.FakeSourcesV1alpha1{Fake: &client_testing.Fake{}}
+func setup() (fake.FakeSourcesV1beta1, types.KafkaSourceClient) {
+	fakeClient := fake.FakeSourcesV1beta1{Fake: &client_testing.Fake{}}
 	knSourceClient := NewFakeKafkaSourceClient(&fakeClient, testNamespace)
 	return fakeClient, knSourceClient
 }
@@ -82,14 +82,14 @@ func TestGetKafkaSources(t *testing.T) {
 		func(action client_testing.Action) (handled bool, ret runtime.Object, err error) {
 			kafkaSrc1 := newKafkaSource("foo")
 			kafkaSrc2 := newKafkaSource("bar")
-			return true, &v1alpha1.KafkaSourceList{Items: []v1alpha1.KafkaSource{*kafkaSrc1, *kafkaSrc2}}, err
+			return true, &v1beta1.KafkaSourceList{Items: []v1beta1.KafkaSource{*kafkaSrc1, *kafkaSrc2}}, err
 		})
 	sources, err := cli.ListKafkaSources(context.Background())
 	assert.NilError(t, err)
 	assert.Assert(t, len(sources.Items) == 2)
 }
 
-func newKafkaSource(name string) *v1alpha1.KafkaSource {
+func newKafkaSource(name string) *v1beta1.KafkaSource {
 	return NewKafkaSourceBuilder(name).
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).

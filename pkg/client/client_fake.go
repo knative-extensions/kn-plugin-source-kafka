@@ -19,12 +19,12 @@ import (
 
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"github.com/maximilien/kn-source-pkg/pkg/types/typesfakes"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1alpha1/fake"
+	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
 // NewFakeKafkaSourceClient is to create a fake KafkaSourceClient to test
-func NewFakeKafkaSourceClient(fakeClientTest *fake.FakeSourcesV1alpha1, ns string) types.KafkaSourceClient {
+func NewFakeKafkaSourceClient(fakeClientTest *fake.FakeSourcesV1beta1, ns string) types.KafkaSourceClient {
 	kafkaParams := NewFakeKafkaSourceParams()
 	knFakeSourceClient := &typesfakes.FakeKnSourceClient{}
 	knFakeSourceClient.KnSourceParamsReturns(kafkaParams.KnSourceParams)

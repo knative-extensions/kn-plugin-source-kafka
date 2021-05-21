@@ -20,7 +20,7 @@ import (
 	"sort"
 	"strings"
 
-	v1alpha1 "knative.dev/eventing-kafka/pkg/apis/sources/v1alpha1"
+	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
@@ -120,7 +120,7 @@ func (f *kafkaSourceRunEFactory) CreateRunE() sourcetypes.RunE {
 	}
 }
 
-func createKafkaSource(name string, params *types.KafkaSourceParams, sink *duckv1.Destination) (*v1alpha1.KafkaSource, error) {
+func createKafkaSource(name string, params *types.KafkaSourceParams, sink *duckv1.Destination) (*v1beta1.KafkaSource, error) {
 	ceOverridesMap, err := util.MapFromArrayAllowingSingles(params.CeOverrides, "=")
 	if err != nil {
 		return nil, err
@@ -218,7 +218,7 @@ func (f *kafkaSourceRunEFactory) DescribeRunE() sourcetypes.RunE {
 			return err
 		}
 
-		if kafkaSource.Spec.Sink != nil {
+		if kafkaSource.Spec.Sink.Ref != nil {
 			writeSink(dw, kafkaSource.Spec.Sink)
 			dw.WriteLine()
 			if err := dw.Flush(); err != nil {
@@ -292,7 +292,7 @@ func (f *kafkaSourceRunEFactory) ListRunE() sourcetypes.RunE {
 	}
 }
 
-func writeSink(dw printers.PrefixWriter, sink *duckv1.Destination) {
+func writeSink(dw printers.PrefixWriter, sink duckv1.Destination) {
 	subWriter := dw.WriteAttribute("Sink", "")
 	ref := sink.Ref
 	if ref != nil {
@@ -320,7 +320,7 @@ func writeCeOverrides(dw printers.PrefixWriter, ceOverrides map[string]string) {
 	}
 }
 
-func writeKafkaSource(dw printers.PrefixWriter, source *v1alpha1.KafkaSource) {
+func writeKafkaSource(dw printers.PrefixWriter, source *v1beta1.KafkaSource) {
 	commands.WriteMetadata(dw, &source.ObjectMeta, true)
 	dw.WriteAttribute("BootstrapServers", strings.Join(source.Spec.BootstrapServers, ", "))
 	dw.WriteAttribute("Topics", strings.Join(source.Spec.Topics, ","))
@@ -328,7 +328,7 @@ func writeKafkaSource(dw printers.PrefixWriter, source *v1alpha1.KafkaSource) {
 }
 
 // printKafkaSource populates a single row of kafka source list table
-func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintOptions) ([]metav1.TableRow, error) {
+func printKafkaSource(kafkaSource *v1beta1.KafkaSource, options printers.PrintOptions) ([]metav1.TableRow, error) {
 	row := metav1.TableRow{
 		Object: runtime.RawExtension{Object: kafkaSource},
 	}
@@ -340,14 +340,14 @@ func printKafkaSource(kafkaSource *v1alpha1.KafkaSource, options printers.PrintO
 	row.Cells = append(row.Cells,
 		trunc(kafkaSource.ObjectMeta.Name),
 		commands.Age(kafkaSource.ObjectMeta.CreationTimestamp.Time),
-		trunc(flags.SinkToString(*kafkaSource.Spec.Sink)),
+		trunc(flags.SinkToString(kafkaSource.Spec.Sink)),
 		trunc(strings.Join(kafkaSource.Spec.BootstrapServers, ",")),
 	)
 	return []metav1.TableRow{row}, nil
 }
 
 // printKafkaSourceList populates the kafka source list table rows
-func printKafkaSourceList(sourceList *v1alpha1.KafkaSourceList, options printers.PrintOptions) ([]metav1.TableRow, error) {
+func printKafkaSourceList(sourceList *v1beta1.KafkaSourceList, options printers.PrintOptions) ([]metav1.TableRow, error) {
 	rows := make([]metav1.TableRow, 0, len(sourceList.Items))
 
 	sort.SliceStable(sourceList.Items, func(i, j int) bool {
