@@ -23,9 +23,6 @@ export PATH=$PATH:${REPO_ROOT_DIR}
 # Will create and delete this namespace (used for all tests, modify if you want a different one used)
 export KN_E2E_NAMESPACE=kne2etests
 
-export KNATIVE_EVENTING_VERSION="0.22.0"
-export KNATIVE_SERVING_VERSION="0.22.0"
-
 # Strimzi installation config template used for starting up Kafka clusters.
 readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.20.0.yaml"
 # Strimzi installation config.
@@ -41,12 +38,14 @@ readonly KAFKA_CRD_CONFIG_TEMPLATE_DIR="kafka/channel/config"
 readonly KAFKA_CRD_CONFIG_TEMPLATE="400-kafka-config.yaml"
 # Real Kafka channel CRD config , generated from the template directory and modified template file.
 readonly KAFKA_CRD_CONFIG_DIR="$(mktemp -d)"
-# Kafka channel CRD config template directory.
-readonly KAFKA_SOURCE_CRD_YAML="https://github.com/knative-sandbox/eventing-kafka/releases/download/v0.22.0/source.yaml"
+# Resolve the latest release eventing-kafka source.yaml file
+# Nightly is used for 'main' branch, for any 'release-*' branch the corresponding eventing-kafka released version
+readonly KAFKA_SOURCE_CRD_YAML="$(get_latest_knative_yaml_source "eventing-kafka" "source")"
+
 
 run() {
   # Create cluster
-  initialize $@
+  initialize $@ --skip-istio-addon
 
   # Kafka setup
   eval plugin_test_setup || fail_test
