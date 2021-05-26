@@ -80,11 +80,14 @@ function knative_setup() {
   # Defined by knative/hack/library.sh
   kubectl apply --filename ${KNATIVE_SERVING_RELEASE_CRDS}
   kubectl apply --filename ${KNATIVE_SERVING_RELEASE_CORE}
+  wait_until_pods_running knative-serving || return 1
 
+  local eventing_version=${KNATIVE_EVENTING_VERSION:-latest}
   header "Installing Knative Eventing"
   # Defined by knative/hack/library.sh
   kubectl apply --filename ${KNATIVE_EVENTING_RELEASE}
   kubectl apply --filename ${KNATIVE_EVENTING_SUGAR_CONTROLLER_RELEASE}
+  wait_until_pods_running knative-eventing || return 1
 }
 
 function kafka_setup() {
