@@ -80,6 +80,7 @@ function knative_setup() {
   # Defined by knative/hack/library.sh
   kubectl apply --filename ${KNATIVE_SERVING_RELEASE_CRDS}
   kubectl apply --filename ${KNATIVE_SERVING_RELEASE_CORE}
+  kubectl apply --filename ${KNATIVE_NET_ISTIO_RELEASE}
   wait_until_pods_running knative-serving || return 1
 
   local eventing_version=${KNATIVE_EVENTING_VERSION:-latest}
