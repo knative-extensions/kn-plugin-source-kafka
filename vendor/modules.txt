@@ -775,7 +775,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.23.1-0.20210617144222-e23b4d626e7a
+# knative.dev/client v0.23.1-0.20210618090750-a54abbdfa1a2
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -799,7 +799,7 @@ knative.dev/client/pkg/sources/v1beta2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.23.1-0.20210616164922-6adafe56e55e
+# knative.dev/eventing v0.23.1-0.20210621164716-b312f0e1c8e5
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
 knative.dev/eventing/pkg/apis/duck/v1
@@ -821,7 +821,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.23.1-0.20210617090523-5abaa90a7197
+# knative.dev/eventing-kafka v0.23.1-0.20210622065127-98b1b1aa5960
 ## explicit
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -838,11 +838,11 @@ knative.dev/eventing-kafka/pkg/common/constants
 # knative.dev/hack v0.0.0-20210614141220-66ab1a098940
 ## explicit
 knative.dev/hack
-# knative.dev/networking v0.0.0-20210615114921-e291c8011a20
+# knative.dev/networking v0.0.0-20210618141751-9b6da1991d38
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
-# knative.dev/pkg v0.0.0-20210616195222-841aa7369ca1
+# knative.dev/pkg v0.0.0-20210618060751-f454995ff92b
 ## explicit
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
