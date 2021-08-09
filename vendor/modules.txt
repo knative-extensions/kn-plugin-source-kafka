@@ -687,7 +687,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.24.1-0.20210802094843-4470416f445d
+# knative.dev/client v0.24.1-0.20210806165720-1bf6c1207467
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -711,7 +711,7 @@ knative.dev/client/pkg/sources/v1beta2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.24.1-0.20210802063843-a8a30634681b
+# knative.dev/eventing v0.24.1-0.20210806092320-e7445c5583e7
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
 knative.dev/eventing/pkg/apis/duck/v1
@@ -734,7 +734,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.24.1-0.20210802205247-604eeb3fcf76
+# knative.dev/eventing-kafka v0.24.1-0.20210809070111-ca074b4d236a
 ## explicit
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -751,7 +751,7 @@ knative.dev/eventing-kafka/pkg/common/constants
 # knative.dev/hack v0.0.0-20210622141627-e28525d8d260
 ## explicit
 knative.dev/hack
-# knative.dev/networking v0.0.0-20210802043343-0f2f50944c03
+# knative.dev/networking v0.0.0-20210803181815-acdfd41c575c
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
@@ -800,7 +800,7 @@ knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/unstructured
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.24.1-0.20210730215204-4dc9fc69f5b7
+# knative.dev/serving v0.24.1-0.20210803152115-ac8d05d5cebd
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
 knative.dev/serving/pkg/apis/config
