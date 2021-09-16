@@ -138,6 +138,6 @@ func newKafkaSource(name string) *v1beta1.KafkaSource {
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).
 		ConsumerGroup("mygroup").
-		Sink(&v1.Destination{Ref: &v1.KReference{Name: "mysvc", Kind: "Service"}}).
+		Sink(&v1.Destination{Ref: &v1.KReference{Name: "mysvc", Kind: "Service", APIVersion: "serving.knative.dev/v1"}}).
 		Build()
 }
