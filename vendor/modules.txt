@@ -725,7 +725,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.25.1-0.20210918075132-e89bdc7d51d6
+# knative.dev/client v0.25.1-0.20210920074934-d66911115173
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -839,7 +839,7 @@ knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/unstructured
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.25.1-0.20210913112533-33aeffc6c9e2
+# knative.dev/serving v0.25.1-0.20210917135332-2858ef6185db
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
 knative.dev/serving/pkg/apis/config
