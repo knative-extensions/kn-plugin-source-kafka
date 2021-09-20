@@ -27,7 +27,8 @@ import (
 // Placeable is a list of podName and virtual replicas pairs.
 // Each pair represents the assignment of virtual replicas to a pod
 type Placeable struct {
-	Placement []Placement `json:"placements,omitempty"`
+	MaxAllowedVReplicas *int32      `json:"maxAllowedVReplicas,omitempty"`
+	Placement           []Placement `json:"placements,omitempty"`
 }
 
 // PlaceableType is a skeleton type wrapping Placeable in the manner we expect
@@ -49,9 +50,6 @@ type PlaceableStatus struct {
 type Placement struct {
 	// PodName is the name of the pod where the resource is placed
 	PodName string `json:"podName,omitempty"`
-
-	// ZoneName is the name of the zone where the pod is located
-	ZoneName string `json:"zoneName,omitempty"`
 
 	// VReplicas is the number of virtual replicas assigned to in the pod
 	VReplicas int32 `json:"vreplicas,omitempty"`
