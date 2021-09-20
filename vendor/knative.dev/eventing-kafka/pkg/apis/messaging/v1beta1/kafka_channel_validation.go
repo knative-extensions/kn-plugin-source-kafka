@@ -20,16 +20,18 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/google/go-cmp/cmp/cmpopts"
 	"knative.dev/eventing/pkg/apis/eventing"
 	"knative.dev/pkg/apis"
+	"knative.dev/pkg/kmp"
 )
 
-func (c *KafkaChannel) Validate(ctx context.Context) *apis.FieldError {
-	errs := c.Spec.Validate(ctx).ViaField("spec")
+func (kc *KafkaChannel) Validate(ctx context.Context) *apis.FieldError {
+	errs := kc.Spec.Validate(ctx).ViaField("spec")
 
 	// Validate annotations
-	if c.Annotations != nil {
-		if scope, ok := c.Annotations[eventing.ScopeAnnotationKey]; ok {
+	if kc.Annotations != nil {
+		if scope, ok := kc.Annotations[eventing.ScopeAnnotationKey]; ok {
 			if scope != "namespace" && scope != "cluster" {
 				iv := apis.ErrInvalidValue(scope, "")
 				iv.Details = "expected either 'cluster' or 'namespace'"
@@ -38,23 +40,34 @@ func (c *KafkaChannel) Validate(ctx context.Context) *apis.FieldError {
 		}
 	}
 
+	if apis.IsInUpdate(ctx) {
+		original := apis.GetBaseline(ctx).(*KafkaChannel)
+		errs = errs.Also(kc.CheckImmutableFields(ctx, original))
+	}
+
 	return errs
 }
 
-func (cs *KafkaChannelSpec) Validate(ctx context.Context) *apis.FieldError {
+func (kcs *KafkaChannelSpec) Validate(ctx context.Context) *apis.FieldError {
 	var errs *apis.FieldError
 
-	if cs.NumPartitions <= 0 {
-		fe := apis.ErrInvalidValue(cs.NumPartitions, "numPartitions")
+	if kcs.NumPartitions <= 0 {
+		fe := apis.ErrInvalidValue(kcs.NumPartitions, "numPartitions")
 		errs = errs.Also(fe)
 	}
 
-	if cs.ReplicationFactor <= 0 {
-		fe := apis.ErrInvalidValue(cs.ReplicationFactor, "replicationFactor")
+	if kcs.ReplicationFactor <= 0 {
+		fe := apis.ErrInvalidValue(kcs.ReplicationFactor, "replicationFactor")
 		errs = errs.Also(fe)
 	}
 
-	for i, subscriber := range cs.SubscribableSpec.Subscribers {
+	retentionDuration, err := kcs.ParseRetentionDuration()
+	if retentionDuration < 0 || err != nil {
+		fe := apis.ErrInvalidValue(kcs.RetentionDuration, "retentionDuration")
+		errs = errs.Also(fe)
+	}
+
+	for i, subscriber := range kcs.SubscribableSpec.Subscribers {
 		if subscriber.ReplyURI == nil && subscriber.SubscriberURI == nil {
 			fe := apis.ErrMissingField("replyURI", "subscriberURI")
 			fe.Details = "expected at least one of, got none"
@@ -62,4 +75,27 @@ func (cs *KafkaChannelSpec) Validate(ctx context.Context) *apis.FieldError {
 		}
 	}
 	return errs
+}
+
+func (kc *KafkaChannel) CheckImmutableFields(_ context.Context, original *KafkaChannel) *apis.FieldError {
+	if original == nil {
+		return nil
+	}
+
+	ignoreArguments := cmpopts.IgnoreFields(KafkaChannelSpec{}, "ChannelableSpec")
+	if diff, err := kmp.ShortDiff(original.Spec, kc.Spec, ignoreArguments); err != nil {
+		return &apis.FieldError{
+			Message: "Failed to diff KafkaChannel",
+			Paths:   []string{"spec"},
+			Details: err.Error(),
+		}
+	} else if diff != "" {
+		return &apis.FieldError{
+			Message: "Immutable fields changed (-old +new)",
+			Paths:   []string{"spec"},
+			Details: diff,
+		}
+	}
+
+	return nil
 }

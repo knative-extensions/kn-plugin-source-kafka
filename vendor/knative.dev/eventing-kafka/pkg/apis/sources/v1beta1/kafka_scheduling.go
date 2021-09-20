@@ -32,6 +32,11 @@ func (k *KafkaSource) GetVReplicas() int32 {
 	if k.Spec.Consumers == nil {
 		return 1
 	}
+	if k.Status.MaxAllowedVReplicas != nil {
+		if *k.Spec.Consumers > *k.Status.MaxAllowedVReplicas {
+			return *k.Status.MaxAllowedVReplicas
+		}
+	}
 	return *k.Spec.Consumers
 }
 
@@ -40,4 +45,8 @@ func (k *KafkaSource) GetPlacements() []v1alpha1.Placement {
 		return nil
 	}
 	return k.Status.Placeable.Placement
+}
+
+func (k *KafkaSource) GetResourceVersion() string {
+	return k.ObjectMeta.ResourceVersion
 }
