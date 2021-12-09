@@ -1,5 +1,7 @@
 # kn-plugin-source-kafka
 
+**[This component is GA](https://github.com/knative/community/tree/main/mechanics/MATURITY-LEVELS.md)**
+
 `kn-plugin-source-kafka` is a plugin of Knative Client, for management of kafka event
 source interactively from the command line.
 
