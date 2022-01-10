@@ -7,10 +7,10 @@ require (
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
 	gotest.tools/v3 v3.0.3
-	k8s.io/apimachinery v0.21.4
-	k8s.io/client-go v0.21.4
-	knative.dev/client v0.28.1-0.20220104123133-63142983acd3
-	knative.dev/eventing-kafka v0.28.1-0.20220104114830-15a64fb7261f
+	k8s.io/apimachinery v0.22.5
+	k8s.io/client-go v0.22.5
+	knative.dev/client v0.28.1-0.20220110123359-c6997da944bd
+	knative.dev/eventing-kafka v0.28.1-0.20220110121359-948216c3d32c
 	knative.dev/hack v0.0.0-20211222071919-abd085fc43de
-	knative.dev/pkg v0.0.0-20211216142117-79271798f696
+	knative.dev/pkg v0.0.0-20220105211333-96f18522d78d
 )
