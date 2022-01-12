@@ -71,7 +71,7 @@ github.com/go-kit/log
 github.com/go-kit/log/level
 # github.com/go-logfmt/logfmt v0.5.0
 github.com/go-logfmt/logfmt
-# github.com/go-logr/logr v0.4.0
+# github.com/go-logr/logr v1.2.2
 github.com/go-logr/logr
 # github.com/go-openapi/jsonpointer v0.19.5
 github.com/go-openapi/jsonpointer
@@ -729,9 +729,7 @@ k8s.io/client-go/util/jsonpath
 k8s.io/client-go/util/keyutil
 k8s.io/client-go/util/retry
 k8s.io/client-go/util/workqueue
-# k8s.io/klog v1.0.0
-k8s.io/klog
-# k8s.io/klog/v2 v2.9.0
+# k8s.io/klog/v2 v2.40.1
 k8s.io/klog/v2
 # k8s.io/kube-openapi v0.0.0-20211109043538-20434351676c
 k8s.io/kube-openapi/pkg/util/proto
@@ -803,14 +801,14 @@ knative.dev/eventing-kafka/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
 knative.dev/eventing-kafka/pkg/common/constants
-# knative.dev/hack v0.0.0-20220110200259-f08cb0dcdee7
+# knative.dev/hack v0.0.0-20220111151514-59b0cf17578e
 ## explicit
 knative.dev/hack
 # knative.dev/networking v0.0.0-20220107020122-0dbedcd88acf
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
-# knative.dev/pkg v0.0.0-20220111134415-80b253f23023
+# knative.dev/pkg v0.0.0-20220112074250-c568527ffc5b
 ## explicit
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
