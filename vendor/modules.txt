@@ -738,7 +738,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.28.1-0.20220113144412-0f30f0583333
+# knative.dev/client v0.28.1-0.20220114130644-a96ecf55f6de
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -763,7 +763,7 @@ knative.dev/client/pkg/sources/v1beta2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.28.1-0.20220111105413-b5603c0ad63d
+# knative.dev/eventing v0.28.1-0.20220113075012-61d97d366c26
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
 knative.dev/eventing/pkg/apis/duck/v1
@@ -787,7 +787,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.28.1-0.20220113122112-9376ea462462
+# knative.dev/eventing-kafka v0.28.1-0.20220114075342-c97cbe0e8448
 ## explicit
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -804,7 +804,7 @@ knative.dev/eventing-kafka/pkg/common/constants
 # knative.dev/hack v0.0.0-20220111151514-59b0cf17578e
 ## explicit
 knative.dev/hack
-# knative.dev/networking v0.0.0-20220107020122-0dbedcd88acf
+# knative.dev/networking v0.0.0-20220112013650-eac673fb5c49
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
@@ -853,7 +853,7 @@ knative.dev/pkg/tracing/propagation
 knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.28.1-0.20220107170125-03091748d279
+# knative.dev/serving v0.28.1-0.20220113203312-9073261f9b89
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
 knative.dev/serving/pkg/apis/config
