@@ -24,11 +24,11 @@ export PATH=$PATH:${REPO_ROOT_DIR}
 export KN_E2E_NAMESPACE=kne2etests
 
 # Strimzi installation config template used for starting up Kafka clusters.
-readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.20.0.yaml"
+readonly STRIMZI_INSTALLATION_CONFIG_TEMPLATE="${REPO_ROOT_DIR}/test/config/100-strimzi-cluster-operator-0.27.0.yaml"
 # Strimzi installation config.
 readonly STRIMZI_INSTALLATION_CONFIG="$(mktemp)"
 # Kafka cluster CR config file.
-readonly KAFKA_INSTALLATION_CONFIG="${REPO_ROOT_DIR}/test/config/100-kafka-ephemeral-triple-2.6.0.yaml"
+readonly KAFKA_INSTALLATION_CONFIG="${REPO_ROOT_DIR}/test/config/100-kafka-ephemeral-triple-3.0.0.yaml"
 readonly KAFKA_TOPIC_INSTALLATION_CONFIG="${REPO_ROOT_DIR}/test/config/100-kafka-topic.yaml"
 # Kafka cluster URL for our installation
 readonly KAFKA_CLUSTER_URL="my-cluster-kafka-bootstrap.kafka:9092"
