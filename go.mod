@@ -9,8 +9,8 @@ require (
 	gotest.tools/v3 v3.0.3
 	k8s.io/apimachinery v0.22.5
 	k8s.io/client-go v0.22.5
-	knative.dev/client v0.29.1-0.20220215151759-24b6184341b7
-	knative.dev/eventing-kafka v0.28.1-0.20220210052605-59a3a1c55de3
-	knative.dev/hack v0.0.0-20220215185059-b9cb1983b600
+	knative.dev/client v0.29.1-0.20220217100713-af052088caa5
+	knative.dev/eventing-kafka v0.28.1-0.20220217082312-7e15b864e492
+	knative.dev/hack v0.0.0-20220216040439-0456e8bf6547
 	knative.dev/pkg v0.0.0-20220215153400-3c00bb0157b9
 )
