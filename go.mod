@@ -10,7 +10,7 @@ require (
 	k8s.io/apimachinery v0.22.5
 	k8s.io/client-go v0.22.5
 	knative.dev/client v0.29.1-0.20220217100713-af052088caa5
-	knative.dev/eventing-kafka v0.28.1-0.20220217082312-7e15b864e492
-	knative.dev/hack v0.0.0-20220216040439-0456e8bf6547
-	knative.dev/pkg v0.0.0-20220215153400-3c00bb0157b9
+	knative.dev/eventing-kafka v0.28.1-0.20220223060938-48016078ba89
+	knative.dev/hack v0.0.0-20220222192704-cf8cbc0e9165
+	knative.dev/pkg v0.0.0-20220222211204-80c511aa340f
 )
