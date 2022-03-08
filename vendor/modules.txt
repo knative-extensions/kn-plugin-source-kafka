@@ -743,7 +743,7 @@ k8s.io/utils/buffer
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.29.1-0.20220302114843-ad863f3f37eb
+# knative.dev/client v0.29.1-0.20220304172736-d12d4cda9244
 ## explicit
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -794,7 +794,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.28.1-0.20220301141742-f4dfb14938b1
+# knative.dev/eventing-kafka v0.28.1-0.20220304062435-fb7769ca5216
 ## explicit
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
