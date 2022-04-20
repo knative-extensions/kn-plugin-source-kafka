@@ -11,8 +11,8 @@ require (
 	gotest.tools/v3 v3.1.0
 	k8s.io/apimachinery v0.23.5
 	k8s.io/client-go v0.23.5
-	knative.dev/client v0.30.2-0.20220414141510-76f17f686f4a
-	knative.dev/eventing-kafka v0.30.1-0.20220413084008-de4d7b979fe0
+	knative.dev/client v0.31.0
+	knative.dev/eventing-kafka v0.31.0
 	knative.dev/hack v0.0.0-20220411131823-6ffd8417de7c
 	knative.dev/pkg v0.0.0-20220412134708-e325df66cb51
 )
@@ -52,7 +52,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/btree v1.0.1 // indirect
 	github.com/google/go-cmp v0.5.7 // indirect
-	github.com/google/go-containerregistry v0.8.1-0.20220219142810-1571d7fdc46e // indirect
+	github.com/google/go-containerregistry v0.8.1-0.20220414143355-892d7a808387 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/google/uuid v1.3.0 // indirect
@@ -70,7 +70,7 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kelseyhightower/envconfig v1.4.0 // indirect
-	github.com/klauspost/compress v1.14.2 // indirect
+	github.com/klauspost/compress v1.14.4 // indirect
 	github.com/liggitt/tabwriter v0.0.0-20181228230101-89fcab3d43de // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
@@ -89,7 +89,7 @@ require (
 	github.com/prometheus/client_golang v1.11.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.32.1 // indirect
-	github.com/prometheus/procfs v0.6.0 // indirect
+	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/prometheus/statsd_exporter v0.21.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rickb777/date v1.13.0 // indirect
@@ -120,7 +120,7 @@ require (
 	gomodules.xyz/jsonpatch/v2 v2.2.0 // indirect
 	google.golang.org/api v0.70.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20220222213610-43724f9ea8cf // indirect
+	google.golang.org/genproto v0.0.0-20220301145929-1ac2ace0dbf7 // indirect
 	google.golang.org/grpc v1.44.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
@@ -133,9 +133,9 @@ require (
 	k8s.io/klog/v2 v2.60.1-0.20220317184644-43cc75f9ae89 // indirect
 	k8s.io/kube-openapi v0.0.0-20220124234850-424119656bbf // indirect
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9 // indirect
-	knative.dev/eventing v0.30.1-0.20220413070808-1b90ef335226 // indirect
+	knative.dev/eventing v0.31.0 // indirect
 	knative.dev/networking v0.0.0-20220412163509-1145ec58c8be // indirect
-	knative.dev/serving v0.30.1-0.20220413003907-2de1474b55ba // indirect
+	knative.dev/serving v0.31.0 // indirect
 	sigs.k8s.io/json v0.0.0-20211208200746-9f7c6b3444d2 // indirect
 	sigs.k8s.io/kustomize/api v0.10.1 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.13.0 // indirect
