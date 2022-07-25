@@ -11,10 +11,10 @@ require (
 	gotest.tools/v3 v3.1.0
 	k8s.io/apimachinery v0.23.8
 	k8s.io/client-go v0.23.8
-	knative.dev/client v0.33.0
-	knative.dev/eventing-kafka v0.33.0
-	knative.dev/hack v0.0.0-20220701014203-65c463ac8c98
-	knative.dev/pkg v0.0.0-20220705130606-e60d250dc637
+	knative.dev/client v0.33.1-0.20220721162119-2f1eefe6f1dc
+	knative.dev/eventing-kafka v0.33.1-0.20220725094023-fb47d6839dbf
+	knative.dev/hack v0.0.0-20220725145124-782bbaabb8a1
+	knative.dev/pkg v0.0.0-20220725182823-ed7ab1d18a8b
 )
 
 require (
@@ -133,7 +133,7 @@ require (
 	k8s.io/klog/v2 v2.60.1-0.20220317184644-43cc75f9ae89 // indirect
 	k8s.io/kube-openapi v0.0.0-20220124234850-424119656bbf // indirect
 	k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9 // indirect
-	knative.dev/eventing v0.33.0 // indirect
+	knative.dev/eventing v0.33.1-0.20220722122720-c8435ed74ba8 // indirect
 	knative.dev/networking v0.0.0-20220705142707-f087178076e4 // indirect
 	knative.dev/serving v0.33.0 // indirect
 	sigs.k8s.io/json v0.0.0-20211208200746-9f7c6b3444d2 // indirect
