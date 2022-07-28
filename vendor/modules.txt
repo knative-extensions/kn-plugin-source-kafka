@@ -454,7 +454,7 @@ golang.org/x/oauth2/google/internal/externalaccount
 golang.org/x/oauth2/internal
 golang.org/x/oauth2/jws
 golang.org/x/oauth2/jwt
-# golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+# golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4
 ## explicit
 golang.org/x/sync/errgroup
 golang.org/x/sync/semaphore
@@ -877,7 +877,7 @@ k8s.io/utils/lru
 k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.33.1-0.20220721162119-2f1eefe6f1dc
+# knative.dev/client v0.33.1-0.20220728013938-526d680cf6f9
 ## explicit; go 1.17
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -929,7 +929,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.33.1-0.20220725094023-fb47d6839dbf
+# knative.dev/eventing-kafka v0.33.1-0.20220728014236-370ca7327986
 ## explicit; go 1.16
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -943,10 +943,10 @@ knative.dev/eventing-kafka/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1
 knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
 knative.dev/eventing-kafka/pkg/common/constants
-# knative.dev/hack v0.0.0-20220725145124-782bbaabb8a1
+# knative.dev/hack v0.0.0-20220728013938-9dabf7cf62e3
 ## explicit; go 1.17
 knative.dev/hack
-# knative.dev/networking v0.0.0-20220705142707-f087178076e4
+# knative.dev/networking v0.0.0-20220723000421-cddb0ff95789
 ## explicit; go 1.17
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
@@ -958,7 +958,7 @@ knative.dev/networking/pkg/http/probe
 knative.dev/networking/pkg/http/proxy
 knative.dev/networking/pkg/http/stats
 knative.dev/networking/pkg/k8s
-# knative.dev/pkg v0.0.0-20220725182823-ed7ab1d18a8b
+# knative.dev/pkg v0.0.0-20220728013737-449f7e6dab63
 ## explicit; go 1.18
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
@@ -1003,7 +1003,7 @@ knative.dev/pkg/tracing/propagation
 knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.33.0
+# knative.dev/serving v0.33.1-0.20220725225524-63523f9d0e97
 ## explicit; go 1.17
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
