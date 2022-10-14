@@ -65,7 +65,7 @@ func (c *kafkaSourceClient) KafkaSourceParams() *types.KafkaSourceParams {
 	return c.kafkaSourceParams
 }
 
-//CreateKafkaSource is used to create an instance of KafkaSource
+// CreateKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *v1beta1.KafkaSource) error {
 	_, err := c.client.KafkaSources(c.namespace).Create(ctx, kafkaSource, metav1.CreateOptions{})
 	if err != nil {
@@ -75,7 +75,7 @@ func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *
 	return nil
 }
 
-//DeleteKafkaSource is used to create an instance of KafkaSource
+// DeleteKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) error {
 	err := c.client.KafkaSources(c.namespace).Delete(ctx, name, metav1.DeleteOptions{})
 	if err != nil {
@@ -85,7 +85,7 @@ func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) 
 	return nil
 }
 
-//GetKafkaSource is used to create an instance of KafkaSource
+// GetKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v1beta1.KafkaSource, error) {
 	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(ctx, name, metav1.GetOptions{})
 	if err != nil {
@@ -95,7 +95,7 @@ func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v
 	return kafkaSource, nil
 }
 
-//ListKafkaSources is used to get all available instance of KafkaSource
+// ListKafkaSources is used to get all available instance of KafkaSource
 func (c *kafkaSourceClient) ListKafkaSources(ctx context.Context) (*v1beta1.KafkaSourceList, error) {
 	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
@@ -150,6 +150,18 @@ func (b *KafkaSourceBuilder) ConsumerGroup(consumerGroup string) *KafkaSourceBui
 // Sink or destination of the source
 func (b *KafkaSourceBuilder) Sink(sink *duckv1.Destination) *KafkaSourceBuilder {
 	b.kafkaSource.Spec.Sink = *sink
+	return b
+}
+
+// Labels to set metadata.labels
+func (b *KafkaSourceBuilder) Labels(labels map[string]string) *KafkaSourceBuilder {
+	b.kafkaSource.SetLabels(labels)
+	return b
+}
+
+// Annotations to set metadata.annotations
+func (b *KafkaSourceBuilder) Annotations(annotations map[string]string) *KafkaSourceBuilder {
+	b.kafkaSource.SetAnnotations(annotations)
 	return b
 }
 

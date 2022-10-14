@@ -52,6 +52,12 @@ func (f *kafkaSourceFlagsFactory) CreateFlags() *pflag.FlagSet {
 		"Example: '--ce-override key=value' "+
 		"You may be provide this flag multiple times. "+
 		"To unset, append \"-\" to the key (e.g. --ce-override key-).")
+	flagSet.StringArrayVarP(&f.KafkaSourceParams().Labels, "label", "l", []string{}, "Metadata labels to set on the resources. "+
+		"Example: '--label key=value' "+
+		"You may be provide this flag multiple times.")
+	flagSet.StringArrayVarP(&f.KafkaSourceParams().Annotations, "annotation", "a", []string{}, "Metadata annotations to set on the resources. "+
+		"Example: '--annotation key=value' "+
+		"You may be provide this flag multiple times.")
 	return flagSet
 }
 

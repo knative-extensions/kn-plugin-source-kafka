@@ -18,6 +18,7 @@
 package e2e
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
@@ -40,7 +41,7 @@ type e2eTest struct {
 	it *testcommon.E2ETest
 }
 
-func newE2ETest(t *testing.T) *e2eTest {
+func newE2ETest() *e2eTest {
 	currentDir, err := os.Getwd()
 	if err != nil {
 		return nil
@@ -60,7 +61,7 @@ func newE2ETest(t *testing.T) *e2eTest {
 func TestSourceKafka(t *testing.T) {
 	t.Parallel()
 
-	e2eTest := newE2ETest(t)
+	e2eTest := newE2ETest()
 	assert.Assert(t, e2eTest != nil)
 	defer func() {
 		assert.NilError(t, e2eTest.it.KnTest().Teardown())
@@ -71,29 +72,76 @@ func TestSourceKafka(t *testing.T) {
 
 	err := e2eTest.it.KnPlugin().Install()
 	assert.NilError(t, err)
+	defer func() {
+		err = e2eTest.it.KnPlugin().Uninstall()
+		assert.NilError(t, err)
+	}()
 
 	serviceCreate(r, "sinksvc")
 
-	t.Log("test kn-plugin-source-kafka create source-name")
-	e2eTest.knSourceKafkaCreate(t, r, "mykafka1", "sinksvc")
+	for name, tc := range map[string]struct {
+		name        string
+		labels      map[string]string
+		annotations map[string]string
+	}{
+		"test-source-kafka": {
+			name: "mykafka1",
+		},
+		"test-source-kafka-labels": {
+			name: "mykafka-labels",
+			labels: map[string]string{
+				"app":  "e2e",
+				"role": "labels",
+			},
+		},
+		"test-source-kafka-annotations": {
+			name: "mykafka-annotations",
+			annotations: map[string]string{
+				"app":  "e2e",
+				"role": "annotations",
+			},
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			t.Logf("test kn-plugin-source-kafka create %s", tc.name)
+			e2eTest.knSourceKafkaCreate(t, r, tc.name, "sinksvc", tc.labels, tc.annotations)
 
-	t.Log("test kn-plugin-source-kafka describe source-name")
-	e2eTest.knSourceKafkaDescribe(t, r, "mykafka1", "sinksvc", "cloudevent")
+			t.Logf("test kn-plugin-source-kafka describe %s", tc.name)
+			e2eTest.knSourceKafkaDescribe(t, r, tc.name, "sinksvc", "cloudevent")
 
-	t.Log("test kn-plugin-source-kafka list")
-	e2eTest.knSourceKafkaList(t, r, "mykafka1")
+			t.Log("test kn-plugin-source-kafka list")
+			e2eTest.knSourceKafkaList(t, r, tc.name)
 
-	t.Log("test kn-plugin-source-kafka delete source-name")
-	e2eTest.knSourceKafkaDelete(t, r, "mykafka1")
-
-	err = e2eTest.it.KnPlugin().Uninstall()
-	assert.NilError(t, err)
+			t.Logf("test kn-plugin-source-kafka delete %s", tc.name)
+			e2eTest.knSourceKafkaDelete(t, r, tc.name)
+		})
+	}
 }
 
 // Private
 
-func (et *e2eTest) knSourceKafkaCreate(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName string) {
-	out := et.it.KnPlugin().Run("create", sourceName, "--servers", kafkaBootstrapUrl, "--topics", kafkaTopic, "--consumergroup", "test-consumer-group", "--sink", sinkName, "--ce-override", ceo)
+func (et *e2eTest) knSourceKafkaCreate(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName string, labels map[string]string, annotations map[string]string) {
+	additionalFlags = []string{}
+	if labels != nil {
+		for k, v := range labels {
+			additionalFlags = append(additionalFlags, "--label", fmt.Sprintf("%s=%s", k, v))
+		}
+	}
+	if annotations != nil {
+		for k, v := range annotations {
+			additionalFlags = append(additionalFlags, "--annotation", fmt.Sprintf("%s=%s", k, v))
+		}
+	}
+
+	out := et.it.KnPlugin().Run(
+		"create", sourceName,
+		"--servers", kafkaBootstrapUrl,
+		"--topics", kafkaTopic,
+		"--consumergroup", "test-consumer-group",
+		"--sink", sinkName,
+		"--ce-override", ceo,
+		additionalFlags...,
+	)
 	r.AssertNoError(out)
 	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, "create", sourceName))
 }
