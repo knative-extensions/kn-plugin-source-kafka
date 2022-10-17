@@ -83,9 +83,11 @@ kn source kafka create mykafkasrc --servers my-cluster-kafka-bootstrap.kafka.svc
 
 ```
   -A, --all-namespaces            If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
+  -a, --annotation stringArray    Metadata annotations to set on the resources. Example: '--annotation key=value' You may be provide this flag multiple times.
       --ce-override stringArray   Cloud Event overrides to apply before sending event to sink. Example: '--ce-override key=value' You may be provide this flag multiple times. To unset, append "-" to the key (e.g. --ce-override key-).
       --consumergroup string      the consumer group ID
   -h, --help                      help for create
+  -l, --label stringArray         Metadata labels to set on the resources. Example: '--label key=value' You may be provide this flag multiple times.
   -n, --namespace string          Specify the namespace to operate in.
       --servers stringArray       Kafka bootstrap servers that the consumer will connect to, consist of a hostname plus a port pair, e.g. my-kafka-bootstrap.kafka:9092. Flag can be used multiple times.
   -s, --sink string               Addressable sink for events. You can specify a broker, channel, Knative service or URI. Examples: '--sink broker:nest' for a broker 'nest', '--sink channel:pipe' for a channel 'pipe', '--sink ksvc:mysvc:mynamespace' for a Knative service 'mysvc' in another namespace 'mynamespace', '--sink https://event.receiver.uri' for an URI with an 'http://' or 'https://' schema, '--sink ksvc:receiver' or simply '--sink receiver' for a Knative service 'receiver' in the current namespace. If a prefix is not provided, it is considered as a Knative service in the current namespace. If referring to a Knative service in another namespace, 'ksvc:name:namespace' combination must be provided explicitly.

@@ -49,6 +49,7 @@ func TestNamespace(t *testing.T) {
 	_, knSourceClient := setup()
 	assert.Equal(t, knSourceClient.Namespace(), testNamespace)
 }
+
 func TestCreateKafka(t *testing.T) {
 	_, cli := setup()
 	objNew := newKafkaSource("samplekafka")
@@ -65,12 +66,29 @@ func TestDeleteKafka(t *testing.T) {
 	assert.NilError(t, err)
 }
 
+func TestCreateKafkaMultipleLabels(t *testing.T) {
+	_, cli := setup()
+	objNew := newKafkaSourceBuilder("samplekafka").
+		Labels(map[string]string{"app": "foo", "role": "bar"}).
+		Build()
+	err := cli.CreateKafkaSource(context.Background(), objNew)
+	assert.NilError(t, err)
+}
+
+func TestCreateKafkaMultipleAnnotations(t *testing.T) {
+	_, cli := setup()
+	objNew := newKafkaSourceBuilder("samplekafka").
+		Annotations(map[string]string{"custom": "foo", "custom2": "bar"}).
+		Build()
+	err := cli.CreateKafkaSource(context.Background(), objNew)
+	assert.NilError(t, err)
+}
+
 func TestCreateKafkaMultipleTopicsServers(t *testing.T) {
 	_, cli := setup()
-	objNew := NewKafkaSourceBuilder("samplekafka").
+	objNew := newKafkaSourceBuilder("samplekafka").
 		BootstrapServers([]string{"test.server.org", "foo.server.org"}).
 		Topics([]string{"foo", "bar"}).
-		ConsumerGroup("mygroup").
 		Build()
 	err := cli.CreateKafkaSource(context.Background(), objNew)
 	assert.NilError(t, err)
@@ -90,10 +108,16 @@ func TestGetKafkaSources(t *testing.T) {
 }
 
 func newKafkaSource(name string) *v1beta1.KafkaSource {
+	return newKafkaSourceBuilder(name).
+		Build()
+}
+
+func newKafkaSourceBuilder(name string) *KafkaSourceBuilder {
 	return NewKafkaSourceBuilder(name).
 		BootstrapServers([]string{"test.server.org"}).
 		Topics([]string{"topic"}).
 		ConsumerGroup("mygroup").
 		CloudEventOverrides(map[string]string{"type": "foo"}, []string{}).
-		Build()
+		Labels(map[string]string{"app.kubernetes.io/name": "foo"}).
+		Annotations(map[string]string{"deployment.kubernetes.io/revision": "1"})
 }

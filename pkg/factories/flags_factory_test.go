@@ -41,6 +41,10 @@ func TestCreateFlags(t *testing.T) {
 	assert.Assert(t, flags.Lookup("consumergroup") != nil)
 	assert.Assert(t, flags.Lookup("topics") != nil)
 	assert.Assert(t, flags.Lookup("ce-override") != nil)
+	assert.Assert(t, flags.Lookup("label") != nil)
+	assert.Assert(t, flags.ShorthandLookup("l") != nil)
+	assert.Assert(t, flags.Lookup("annotation") != nil)
+	assert.Assert(t, flags.ShorthandLookup("a") != nil)
 }
 
 func TestDeleteFlags(t *testing.T) {
