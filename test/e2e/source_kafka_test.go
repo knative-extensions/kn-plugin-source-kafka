@@ -121,27 +121,24 @@ func TestSourceKafka(t *testing.T) {
 // Private
 
 func (et *e2eTest) knSourceKafkaCreate(t *testing.T, r *test.KnRunResultCollector, sourceName, sinkName string, labels map[string]string, annotations map[string]string) {
-	additionalFlags = []string{}
-	if labels != nil {
-		for k, v := range labels {
-			additionalFlags = append(additionalFlags, "--label", fmt.Sprintf("%s=%s", k, v))
-		}
-	}
-	if annotations != nil {
-		for k, v := range annotations {
-			additionalFlags = append(additionalFlags, "--annotation", fmt.Sprintf("%s=%s", k, v))
-		}
-	}
-
-	out := et.it.KnPlugin().Run(
-		"create", sourceName,
+	flags := []string{"create", sourceName,
 		"--servers", kafkaBootstrapUrl,
 		"--topics", kafkaTopic,
 		"--consumergroup", "test-consumer-group",
 		"--sink", sinkName,
 		"--ce-override", ceo,
-		additionalFlags...,
-	)
+	}
+	if labels != nil {
+		for k, v := range labels {
+			flags = append(flags, "--label", fmt.Sprintf("%s=%s", k, v))
+		}
+	}
+	if annotations != nil {
+		for k, v := range annotations {
+			flags = append(flags, "--annotation", fmt.Sprintf("%s=%s", k, v))
+		}
+	}
+	out := et.it.KnPlugin().Run(flags...)
 	r.AssertNoError(out)
 	assert.Check(t, util.ContainsAllIgnoreCase(out.Stdout, "create", sourceName))
 }
