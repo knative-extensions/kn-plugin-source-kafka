@@ -25,8 +25,8 @@ import (
 
 	testcommon "github.com/maximilien/kn-source-pkg/test/e2e"
 	"gotest.tools/v3/assert"
-	"knative.dev/client/lib/test"
-	"knative.dev/client/pkg/util"
+	"knative.dev/client-pkg/pkg/util"
+	"knative.dev/client-pkg/pkg/util/lib/test"
 )
 
 const (

@@ -20,8 +20,8 @@ import (
 
 	"gotest.tools/v3/assert"
 	"k8s.io/client-go/rest"
-	"knative.dev/client/pkg/printers"
-	"knative.dev/client/pkg/util"
+	"knative.dev/client-pkg/pkg/printers"
+	"knative.dev/client-pkg/pkg/util"
 	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	v1 "knative.dev/pkg/apis/duck/v1"

@@ -30,10 +30,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
-	"knative.dev/client/pkg/kn/commands"
-	"knative.dev/client/pkg/kn/commands/flags"
-	"knative.dev/client/pkg/printers"
-	"knative.dev/client/pkg/util"
+	"knative.dev/client-pkg/pkg/kn/commands"
+	"knative.dev/client-pkg/pkg/kn/commands/flags"
+	"knative.dev/client-pkg/pkg/printers"
+	"knative.dev/client-pkg/pkg/util"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 )
 

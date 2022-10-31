@@ -19,7 +19,7 @@ import (
 
 	sourceclient "github.com/maximilien/kn-source-pkg/pkg/client"
 	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
-	knerrors "knative.dev/client/pkg/errors"
+	knerrors "knative.dev/client-pkg/pkg/errors"
 	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 	clientv1beta1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"

@@ -12,25 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:build !windows
-// +build !windows
+package errors
 
-package plugin
+import api_errors "k8s.io/apimachinery/pkg/api/errors"
 
-// This file doesn't compile for Windows platform, therefor a second stat_windows.go is
-// added with a no-op
-
-import (
-	"fmt"
-	"os"
-	"syscall"
-)
-
-func statFileOwner(fileInfo os.FileInfo) (uint32, uint32, error) {
-	var sys *syscall.Stat_t
-	var ok bool
-	if sys, ok = fileInfo.Sys().(*syscall.Stat_t); !ok {
-		return 0, 0, fmt.Errorf("cannot check owner/group of file %s", fileInfo.Name())
-	}
-	return sys.Uid, sys.Gid, nil
+type KNError struct {
+	Status api_errors.APIStatus
+	msg    string
 }

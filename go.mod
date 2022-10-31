@@ -11,7 +11,7 @@ require (
 	gotest.tools/v3 v3.3.0
 	k8s.io/apimachinery v0.25.2
 	k8s.io/client-go v0.25.2
-	knative.dev/client v0.34.1-0.20221024014916-4a545d07fb1f
+	knative.dev/client-pkg v0.0.0-20221024182755-6cf1b33013ed
 	knative.dev/eventing-kafka v0.35.0
 	knative.dev/hack v0.0.0-20221024013916-9d2ae47c16b2
 	knative.dev/pkg v0.0.0-20221024013716-9823d960ed40
@@ -27,7 +27,7 @@ require (
 	github.com/blendle/zapdriver v1.3.1 // indirect
 	github.com/census-instrumentation/opencensus-proto v0.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
-	github.com/cloudevents/sdk-go/sql/v2 v2.0.0-20220930150014-52b12276cc4a // indirect
+	github.com/cloudevents/sdk-go/sql/v2 v2.8.0 // indirect
 	github.com/cloudevents/sdk-go/v2 v2.12.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -132,6 +132,7 @@ require (
 	k8s.io/klog/v2 v2.70.2-0.20220707122935-0990e81f1a8f // indirect
 	k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1 // indirect
 	k8s.io/utils v0.0.0-20220728103510-ee6ede2d64ed // indirect
+	knative.dev/client v0.34.1-0.20221024014916-4a545d07fb1f // indirect
 	knative.dev/eventing v0.35.0 // indirect
 	knative.dev/networking v0.0.0-20221012062251-58f3e6239b4f // indirect
 	knative.dev/serving v0.35.0 // indirect

@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package plugin
+package errors
 
-import (
-	"os"
-)
+func NewKNError(msg string) *KNError {
+	return &KNError{
+		msg: msg,
+	}
+}
 
-// statFileOwner is a no-op on windows
-func statFileOwner(fileInfo os.FileInfo) (uint32, uint32, error) {
-	return 0, 0, nil
+func (kne *KNError) Error() string {
+	return kne.msg
 }

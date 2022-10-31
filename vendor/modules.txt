@@ -30,8 +30,8 @@ github.com/census-instrumentation/opencensus-proto/gen-go/trace/v1
 # github.com/cespare/xxhash/v2 v2.1.2
 ## explicit; go 1.11
 github.com/cespare/xxhash/v2
-# github.com/cloudevents/sdk-go/sql/v2 v2.0.0-20220930150014-52b12276cc4a
-## explicit; go 1.17
+# github.com/cloudevents/sdk-go/sql/v2 v2.8.0
+## explicit; go 1.14
 github.com/cloudevents/sdk-go/sql/v2
 github.com/cloudevents/sdk-go/sql/v2/expression
 github.com/cloudevents/sdk-go/sql/v2/function
@@ -914,7 +914,6 @@ knative.dev/client/pkg/kn/commands
 knative.dev/client/pkg/kn/commands/flags
 knative.dev/client/pkg/kn/config
 knative.dev/client/pkg/kn/flags
-knative.dev/client/pkg/kn/plugin
 knative.dev/client/pkg/messaging/v1
 knative.dev/client/pkg/printers
 knative.dev/client/pkg/serving
@@ -925,6 +924,18 @@ knative.dev/client/pkg/sources/v1beta2
 knative.dev/client/pkg/util
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/wait
+# knative.dev/client-pkg v0.0.0-20221024182755-6cf1b33013ed
+## explicit; go 1.16
+knative.dev/client-pkg/pkg/dynamic
+knative.dev/client-pkg/pkg/errors
+knative.dev/client-pkg/pkg/kn/commands
+knative.dev/client-pkg/pkg/kn/commands/flags
+knative.dev/client-pkg/pkg/kn/config
+knative.dev/client-pkg/pkg/kn/plugin
+knative.dev/client-pkg/pkg/printers
+knative.dev/client-pkg/pkg/util
+knative.dev/client-pkg/pkg/util/lib/test
+knative.dev/client-pkg/pkg/util/mock
 # knative.dev/eventing v0.35.0
 ## explicit; go 1.18
 knative.dev/eventing/pkg/apis/config
