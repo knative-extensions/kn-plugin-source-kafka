@@ -40,32 +40,42 @@ func isEmptyConfigError(err error) bool {
 	return strings.Contains(err.Error(), "no configuration has been provided")
 }
 
-//Retrieves a custom error struct based on the original error APIStatus struct
-//Returns the original error struct in case it can't identify the kind of APIStatus error
+func isStatusError(err error) bool {
+	var errAPIStatus api_errors.APIStatus
+	return errors.As(err, &errAPIStatus)
+}
+
+func newStatusError(err error) error {
+	var errAPIStatus api_errors.APIStatus
+	errors.As(err, &errAPIStatus)
+
+	if errAPIStatus.Status().Details == nil {
+		return err
+	}
+	var knerr *KNError
+	if isCRDError(errAPIStatus) {
+		knerr = NewInvalidCRD(errAPIStatus.Status().Details.Group)
+		knerr.Status = errAPIStatus
+		return knerr
+	}
+	return err
+}
+
+// Retrieves a custom error struct based on the original error APIStatus struct
+// Returns the original error struct in case it can't identify the kind of APIStatus error
 func GetError(err error) error {
 	if err == nil {
 		return nil
 	}
 
 	switch {
+	case isStatusError(err):
+		return newStatusError(err)
 	case isEmptyConfigError(err):
 		return newNoKubeConfig(err.Error())
 	case isNoRouteToHostError(err):
 		return newNoRouteToHost(err.Error())
 	default:
-		var errAPIStatus api_errors.APIStatus
-		if !errors.As(err, &errAPIStatus) {
-			return err
-		}
-		if errAPIStatus.Status().Details == nil {
-			return err
-		}
-		var knerr *KNError
-		if isCRDError(errAPIStatus) {
-			knerr = newInvalidCRD(errAPIStatus.Status().Details.Group)
-			knerr.Status = errAPIStatus
-			return knerr
-		}
 		return err
 	}
 }
