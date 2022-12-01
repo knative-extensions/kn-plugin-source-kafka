@@ -24,7 +24,7 @@ import (
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

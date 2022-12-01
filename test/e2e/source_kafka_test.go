@@ -23,8 +23,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	testcommon "github.com/maximilien/kn-source-pkg/test/e2e"
 	"gotest.tools/v3/assert"
+	testcommon "knative.dev/client-pkg/pkg/kn-source-pkg/test/e2e"
 	"knative.dev/client-pkg/pkg/util"
 	"knative.dev/client-pkg/pkg/util/lib/test"
 )

@@ -17,8 +17,8 @@ package client
 import (
 	"k8s.io/client-go/rest"
 
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
-	"github.com/maximilien/kn-source-pkg/pkg/types/typesfakes"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types/typesfakes"
 	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
