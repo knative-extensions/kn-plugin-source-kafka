@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/maximilien/kn-source-pkg/pkg/core"
-	"github.com/maximilien/kn-source-pkg/pkg/util"
+	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/core"
+	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/util"
 	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )
 

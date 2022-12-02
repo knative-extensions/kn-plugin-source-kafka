@@ -19,8 +19,8 @@ import (
 
 	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"k8s.io/client-go/rest"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 )
 
 type KafkaSourceClient interface {

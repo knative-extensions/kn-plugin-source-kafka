@@ -15,7 +15,7 @@
 package types
 
 import (
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 	clientv1beta1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1"
 )
 

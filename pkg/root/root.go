@@ -15,8 +15,8 @@
 package root
 
 import (
-	"github.com/maximilien/kn-source-pkg/pkg/core"
 	"github.com/spf13/cobra"
+	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/core"
 
 	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )

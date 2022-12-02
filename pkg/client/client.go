@@ -17,9 +17,9 @@ package client
 import (
 	"context"
 
-	sourceclient "github.com/maximilien/kn-source-pkg/pkg/client"
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
-	knerrors "knative.dev/client/pkg/errors"
+	knerrors "knative.dev/client-pkg/pkg/errors"
+	sourceclient "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/client"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
 	clientv1beta1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"

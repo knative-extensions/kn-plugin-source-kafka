@@ -15,8 +15,8 @@
 package factories
 
 import (
-	sourcetypes "github.com/maximilien/kn-source-pkg/pkg/types"
 	"k8s.io/client-go/rest"
+	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 

@@ -19,7 +19,7 @@ import (
 
 	"knative.dev/kn-plugin-source-kafka/pkg/root"
 
-	"knative.dev/client/pkg/kn/plugin"
+	"knative.dev/client-pkg/pkg/kn/plugin"
 )
 
 func init() {
