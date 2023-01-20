@@ -22,23 +22,23 @@ import (
 	"strings"
 
 	homedir "github.com/mitchellh/go-homedir"
-	"knative.dev/client-pkg/pkg/util/lib/test"
+	test2 "knative.dev/client-pkg/pkg/util/test"
 )
 
 type knPlugin struct {
-	kn         test.Kn
+	kn         test2.Kn
 	pluginName string
 	pluginPath string
 	install    bool
 }
 
 // Run the KnPlugin returning a KnRunResult
-func (kp *knPlugin) Run(args ...string) test.KnRunResult {
+func (kp *knPlugin) Run(args ...string) test2.KnRunResult {
 	if kp.install {
 		err := kp.Install()
 		if err != nil {
 			fmt.Printf("error installing kn plugin: %s\n", err.Error())
-			return test.KnRunResult{}
+			return test2.KnRunResult{}
 		}
 		defer kp.Uninstall()
 	}
@@ -46,7 +46,7 @@ func (kp *knPlugin) Run(args ...string) test.KnRunResult {
 }
 
 // Kn object to run `kn`
-func (kp *knPlugin) Kn() test.Kn {
+func (kp *knPlugin) Kn() test2.Kn {
 	return kp.kn
 }
 
@@ -153,9 +153,9 @@ func pluginArgs(pluginName string) []string {
 	return pluginParts[1:]
 }
 
-func RunKnPlugin(namespace string, pluginName string, args []string) test.KnRunResult {
+func RunKnPlugin(namespace string, pluginName string, args []string) test2.KnRunResult {
 	pluginArgs := pluginArgs(pluginName)
 	args = append(args, []string{"--namespace", namespace}...)
 	argsWithPlugin := append(pluginArgs, args...)
-	return test.RunKn(namespace, argsWithPlugin)
+	return test2.RunKn(namespace, argsWithPlugin)
 }
