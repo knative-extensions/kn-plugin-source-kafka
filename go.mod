@@ -10,8 +10,8 @@ require (
 	gotest.tools/v3 v3.3.0
 	k8s.io/apimachinery v0.25.4
 	k8s.io/client-go v0.25.4
-	knative.dev/client-pkg v0.0.0-20230116083953-6ff91414f220
-	knative.dev/eventing-kafka v0.35.1-0.20230113020453-fa2dab81f526
+	knative.dev/client-pkg v0.0.0-20230120062501-d4ab4e492526
+	knative.dev/eventing-kafka v0.35.1-0.20230120133505-e8a523bdfaea
 	knative.dev/hack v0.0.0-20230113013652-c7cfcb062de9
 	knative.dev/pkg v0.0.0-20230117181655-247510c00e9d
 )
@@ -26,8 +26,8 @@ require (
 	github.com/blendle/zapdriver v1.3.1 // indirect
 	github.com/census-instrumentation/opencensus-proto v0.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
-	github.com/cloudevents/sdk-go/sql/v2 v2.0.0-20220930150014-52b12276cc4a // indirect
-	github.com/cloudevents/sdk-go/v2 v2.12.0 // indirect
+	github.com/cloudevents/sdk-go/sql/v2 v2.13.0 // indirect
+	github.com/cloudevents/sdk-go/v2 v2.13.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
@@ -131,9 +131,9 @@ require (
 	k8s.io/klog/v2 v2.80.2-0.20221028030830-9ae4992afb54 // indirect
 	k8s.io/kube-openapi v0.0.0-20220803162953-67bda5d908f1 // indirect
 	k8s.io/utils v0.0.0-20221108210102-8e77b1f39fe2 // indirect
-	knative.dev/eventing v0.35.1-0.20221216111651-57da6ae64e79 // indirect
-	knative.dev/networking v0.0.0-20221117015040-9b791e24e63a // indirect
-	knative.dev/serving v0.35.1-0.20221124201144-2ba44995fe72 // indirect
+	knative.dev/eventing v0.35.1-0.20230118083600-9417125b1468 // indirect
+	knative.dev/networking v0.0.0-20230118220600-e9d3a55facee // indirect
+	knative.dev/serving v0.35.1-0.20230120014100-04df00a2050d // indirect
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
 	sigs.k8s.io/kustomize/api v0.12.1 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.13.9 // indirect

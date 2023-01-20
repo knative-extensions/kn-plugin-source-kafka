@@ -30,7 +30,7 @@ github.com/census-instrumentation/opencensus-proto/gen-go/trace/v1
 # github.com/cespare/xxhash/v2 v2.1.2
 ## explicit; go 1.11
 github.com/cespare/xxhash/v2
-# github.com/cloudevents/sdk-go/sql/v2 v2.0.0-20220930150014-52b12276cc4a
+# github.com/cloudevents/sdk-go/sql/v2 v2.13.0
 ## explicit; go 1.17
 github.com/cloudevents/sdk-go/sql/v2
 github.com/cloudevents/sdk-go/sql/v2/expression
@@ -39,7 +39,7 @@ github.com/cloudevents/sdk-go/sql/v2/gen
 github.com/cloudevents/sdk-go/sql/v2/parser
 github.com/cloudevents/sdk-go/sql/v2/runtime
 github.com/cloudevents/sdk-go/sql/v2/utils
-# github.com/cloudevents/sdk-go/v2 v2.12.0
+# github.com/cloudevents/sdk-go/v2 v2.13.0
 ## explicit; go 1.17
 github.com/cloudevents/sdk-go/v2
 github.com/cloudevents/sdk-go/v2/binding
@@ -889,7 +889,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/strings/slices
 k8s.io/utils/trace
-# knative.dev/client-pkg v0.0.0-20230116083953-6ff91414f220
+# knative.dev/client-pkg v0.0.0-20230120062501-d4ab4e492526
 ## explicit; go 1.18
 knative.dev/client-pkg/pkg/apis/client
 knative.dev/client-pkg/pkg/apis/client/v1alpha1
@@ -923,7 +923,7 @@ knative.dev/client-pkg/pkg/util
 knative.dev/client-pkg/pkg/util/mock
 knative.dev/client-pkg/pkg/util/test
 knative.dev/client-pkg/pkg/wait
-# knative.dev/eventing v0.35.1-0.20221216111651-57da6ae64e79
+# knative.dev/eventing v0.35.1-0.20230118083600-9417125b1468
 ## explicit; go 1.18
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
@@ -949,7 +949,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.35.1-0.20230113020453-fa2dab81f526
+# knative.dev/eventing-kafka v0.35.1-0.20230120133505-e8a523bdfaea
 ## explicit; go 1.18
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -966,7 +966,7 @@ knative.dev/eventing-kafka/pkg/common/constants
 # knative.dev/hack v0.0.0-20230113013652-c7cfcb062de9
 ## explicit; go 1.18
 knative.dev/hack
-# knative.dev/networking v0.0.0-20221117015040-9b791e24e63a
+# knative.dev/networking v0.0.0-20230118220600-e9d3a55facee
 ## explicit; go 1.18
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
@@ -1023,7 +1023,7 @@ knative.dev/pkg/tracing/propagation
 knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.35.1-0.20221124201144-2ba44995fe72
+# knative.dev/serving v0.35.1-0.20230120014100-04df00a2050d
 ## explicit; go 1.18
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
