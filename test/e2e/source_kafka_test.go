@@ -26,7 +26,7 @@ import (
 	"gotest.tools/v3/assert"
 	testcommon "knative.dev/client-pkg/pkg/kn-source-pkg/test/e2e"
 	"knative.dev/client-pkg/pkg/util"
-	"knative.dev/client-pkg/pkg/util/lib/test"
+	"knative.dev/client-pkg/pkg/util/test"
 )
 
 const (
