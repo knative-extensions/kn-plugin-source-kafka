@@ -2572,8 +2572,8 @@ k8s.io/utils v0.0.0-20220210201930-3a6ce19ff2f9/go.mod h1:jPW/WVKK9YHAvNhRxK0md/
 knative.dev/caching v0.0.0-20210215030244-1212288570f0/go.mod h1:rAPalJe9Lx3jHffJpackk5WjZYl3j2QvXUgw0GPllxQ=
 knative.dev/caching v0.0.0-20220818010648-9df7bb739739/go.mod h1:q5//FJ59aFRK42YiLSaxgBzH18DBhrtSc7UWapwXT9Q=
 knative.dev/client v0.21.0/go.mod h1:1En9uxMhk62EReWR1d66/d3tnpkot/D3vBRfmuidFNc=
-knative.dev/client v0.34.0 h1:CY62Bd/sodq8aeL6dYGYnDCvpe39qiPGXJHtR4Rktbk=
-knative.dev/client v0.34.0/go.mod h1:mquhJiwkZytOKzLjRu3K+5HWRM6YAplWfvGUbCFZI4M=
+knative.dev/client v0.34.1 h1:TfZd+Yt54n9YEgA1O+yFfNg0hrC/Erc5iw1IthXQ6oM=
+knative.dev/client v0.34.1/go.mod h1:mquhJiwkZytOKzLjRu3K+5HWRM6YAplWfvGUbCFZI4M=
 knative.dev/control-protocol v0.0.0-20220818153549-f18dbde7d9bd/go.mod h1:vO3Xc0k0h6fFVsVG9kNMUMcVKG7MAx7jMbZDvgSuzwI=
 knative.dev/eventing v0.21.0/go.mod h1:JjbVEOTJJHqo9CTxbTfrMn018hG8fOr3UfBoCJ7KWaA=
 knative.dev/eventing v0.34.1 h1:r6QuQmDCmmSANdTRLdbKb6YcYaJoeNpEuFfS8Bq0ZgQ=
@@ -2592,8 +2592,9 @@ knative.dev/networking v0.0.0-20220818010248-e51df7cdf571/go.mod h1:m3ataWRwmbHj
 knative.dev/pkg v0.0.0-20210212203835-448ae657fb5f/go.mod h1:TJSdebQOWX5N2bszohOYVi0H1QtXbtlYLuMghAFBMhY=
 knative.dev/pkg v0.0.0-20210215165523-84c98f3c3e7a/go.mod h1:TJSdebQOWX5N2bszohOYVi0H1QtXbtlYLuMghAFBMhY=
 knative.dev/pkg v0.0.0-20210216013737-584933f8280b/go.mod h1:TJSdebQOWX5N2bszohOYVi0H1QtXbtlYLuMghAFBMhY=
-knative.dev/pkg v0.0.0-20220818004048-4a03844c0b15 h1:GNmzHVaUo3zoi/wtIN71LPQaWy6DdoYzmb+GIq2s4fw=
 knative.dev/pkg v0.0.0-20220818004048-4a03844c0b15/go.mod h1:YLjXbkQLlGHok+u0FLfMbBHFzY9WGu3GHhnrptoAy8I=
+knative.dev/pkg v0.0.0-20221123011941-9d7bd235ceed h1:Xk4DRdbRdI7Ky8vOGQK4S3nUHTRRpTjRMsK+9Zif94s=
+knative.dev/pkg v0.0.0-20221123011941-9d7bd235ceed/go.mod h1:M+Amt1YZl5Nkl6+5FDFVIPaivsk2o5K/cIzOVq6Nsg0=
 knative.dev/reconciler-test v0.0.0-20210216030508-77f50054d024/go.mod h1:RP/K5xJylB72Go6eAsXYEsQHp4zCCNMNjmsqhvq7wko=
 knative.dev/reconciler-test v0.0.0-20220818122349-177f8264c28c/go.mod h1:A437yxlDVDVKQv779WlB9Nj9lWAMoOKHQXFXls24Sps=
 knative.dev/serving v0.21.0/go.mod h1:PU9k1Y6YMG27XQldEu5agNkcebvSafUXKXPircQYCsE=

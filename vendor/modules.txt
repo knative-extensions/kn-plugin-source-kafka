@@ -879,7 +879,7 @@ k8s.io/utils/lru
 k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# knative.dev/client v0.34.0
+# knative.dev/client v0.34.1
 ## explicit; go 1.18
 knative.dev/client/lib/test
 knative.dev/client/pkg/apis/client
@@ -960,7 +960,7 @@ knative.dev/networking/pkg/http/probe
 knative.dev/networking/pkg/http/proxy
 knative.dev/networking/pkg/http/stats
 knative.dev/networking/pkg/k8s
-# knative.dev/pkg v0.0.0-20220818004048-4a03844c0b15
+# knative.dev/pkg v0.0.0-20221123011941-9d7bd235ceed
 ## explicit; go 1.18
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
