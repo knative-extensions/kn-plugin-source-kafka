@@ -65,7 +65,7 @@ func (c *kafkaSourceClient) KafkaSourceParams() *types.KafkaSourceParams {
 	return c.kafkaSourceParams
 }
 
-//CreateKafkaSource is used to create an instance of KafkaSource
+// CreateKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *v1beta1.KafkaSource) error {
 	_, err := c.client.KafkaSources(c.namespace).Create(ctx, kafkaSource, metav1.CreateOptions{})
 	if err != nil {
@@ -75,7 +75,7 @@ func (c *kafkaSourceClient) CreateKafkaSource(ctx context.Context, kafkaSource *
 	return nil
 }
 
-//DeleteKafkaSource is used to create an instance of KafkaSource
+// DeleteKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) error {
 	err := c.client.KafkaSources(c.namespace).Delete(ctx, name, metav1.DeleteOptions{})
 	if err != nil {
@@ -85,7 +85,7 @@ func (c *kafkaSourceClient) DeleteKafkaSource(ctx context.Context, name string) 
 	return nil
 }
 
-//GetKafkaSource is used to create an instance of KafkaSource
+// GetKafkaSource is used to create an instance of KafkaSource
 func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v1beta1.KafkaSource, error) {
 	kafkaSource, err := c.client.KafkaSources(c.namespace).Get(ctx, name, metav1.GetOptions{})
 	if err != nil {
@@ -95,7 +95,7 @@ func (c *kafkaSourceClient) GetKafkaSource(ctx context.Context, name string) (*v
 	return kafkaSource, nil
 }
 
-//ListKafkaSources is used to get all available instance of KafkaSource
+// ListKafkaSources is used to get all available instance of KafkaSource
 func (c *kafkaSourceClient) ListKafkaSources(ctx context.Context) (*v1beta1.KafkaSourceList, error) {
 	kafkaSourceList, err := c.client.KafkaSources(c.namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
