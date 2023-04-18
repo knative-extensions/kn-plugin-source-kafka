@@ -38,9 +38,10 @@ readonly KAFKA_CRD_CONFIG_TEMPLATE_DIR="kafka/channel/config"
 readonly KAFKA_CRD_CONFIG_TEMPLATE="400-kafka-config.yaml"
 # Real Kafka channel CRD config , generated from the template directory and modified template file.
 readonly KAFKA_CRD_CONFIG_DIR="$(mktemp -d)"
-# Resolve the latest release eventing-kafka source.yaml file
+# Resolve the latest release eventing-kafka-broker resources
 # Nightly is used for 'main' branch, for any 'release-*' branch the corresponding eventing-kafka released version
-readonly KAFKA_SOURCE_CRD_YAML="$(get_latest_knative_yaml_source "eventing-kafka" "source-crd ")"
+readonly KAFKA_SOURCE_CONTROLLER_YAML="$(get_latest_knative_yaml_source "eventing-kafka-broker" "eventing-kafka-controller")"
+readonly KAFKA_SOURCE_YAML="$(get_latest_knative_yaml_source "eventing-kafka-broker" "eventing-kafka-source")"
 
 
 run() {
