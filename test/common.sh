@@ -104,7 +104,8 @@ function kafka_setup() {
 
 function install_sources_crds() {
   subheader "Installing Kafka Source CRD"
-  kubectl apply -f ${KAFKA_SOURCE_CRD_YAML}
+  kubectl apply -f ${KAFKA_SOURCE_CONTROLLER_YAML}
+  kubectl apply -f ${KAFKA_SOURCE_YAML}
   wait_until_pods_running knative-eventing || fail_test "Failed to install the Kafka Source CRD"
 }
 
@@ -116,7 +117,8 @@ function plugin_test_setup() {
 
 function uninstall_sources_crds() {
   echo "Uninstalling Kafka Source CRD"
-  kubectl delete -f ${KAFKA_SOURCE_CRD_YAML}
+  kubectl delete -f ${KAFKA_SOURCE_YAML}
+  kubectl delete -f ${KAFKA_SOURCE_CONTROLLER_YAML}
 }
 
 function kafka_teardown() {
