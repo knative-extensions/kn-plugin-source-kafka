@@ -40,15 +40,11 @@ function cluster_setup() {
 # https://github.com/knative/serving/blob/main/test/e2e-networking-library.sh#L17
 function install_istio() {
   if [[ -z "${ISTIO_VERSION:-}" ]]; then
-    readonly ISTIO_VERSION="stable"
+    readonly ISTIO_VERSION="latest"
   fi
   header "Installing Istio ${ISTIO_VERSION}"
-# TODO: fix after 1.0 release
-#  LATEST_NET_ISTIO_RELEASE_VERSION=$(
-#  curl -L --silent "https://api.github.com/repos/knative/net-istio/releases" | grep '"tag_name"' \
-#    | cut -f2 -d: | sed "s/[^v0-9.]//g" | sort | tail -n1)
-  LATEST_NET_ISTIO_RELEASE_VERSION="knative-v1.0.0"
-
+  local LATEST_NET_ISTIO_RELEASE_VERSION=$(curl -L --silent "https://api.github.com/repos/knative/net-istio/releases" | \
+    jq -r '[.[].tag_name] | sort_by( sub("knative-";"") | sub("v";"") | split(".") | map(tonumber) ) | reverse[0]')
   # And checkout the setup script based on that release
   local NET_ISTIO_DIR=$(mktemp -d)
   (
