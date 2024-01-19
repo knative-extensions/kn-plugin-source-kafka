@@ -689,6 +689,8 @@ k8s.io/client-go/discovery/cached/disk
 k8s.io/client-go/discovery/cached/memory
 k8s.io/client-go/dynamic
 k8s.io/client-go/dynamic/fake
+k8s.io/client-go/informers/core/v1
+k8s.io/client-go/informers/internalinterfaces
 k8s.io/client-go/kubernetes
 k8s.io/client-go/kubernetes/scheme
 k8s.io/client-go/kubernetes/typed/admissionregistration/v1
@@ -742,6 +744,7 @@ k8s.io/client-go/kubernetes/typed/scheduling/v1beta1
 k8s.io/client-go/kubernetes/typed/storage/v1
 k8s.io/client-go/kubernetes/typed/storage/v1alpha1
 k8s.io/client-go/kubernetes/typed/storage/v1beta1
+k8s.io/client-go/listers/core/v1
 k8s.io/client-go/openapi
 k8s.io/client-go/openapi/cached
 k8s.io/client-go/openapi3
@@ -816,7 +819,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/strings/slices
 k8s.io/utils/trace
-# knative.dev/client-pkg v0.0.0-20240111150014-bd92d6cf86e5
+# knative.dev/client-pkg v0.0.0-20240119015145-1d8f5e551c38
 ## explicit; go 1.21
 knative.dev/client-pkg/pkg/apis/client
 knative.dev/client-pkg/pkg/apis/client/v1alpha1
@@ -850,7 +853,7 @@ knative.dev/client-pkg/pkg/util
 knative.dev/client-pkg/pkg/util/mock
 knative.dev/client-pkg/pkg/util/test
 knative.dev/client-pkg/pkg/wait
-# knative.dev/eventing v0.39.1-0.20240110084326-429bbaa8a182
+# knative.dev/eventing v0.39.1-0.20240118155414-fb9be2b67bf6
 ## explicit; go 1.19
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
@@ -878,7 +881,8 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/messaging/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
-# knative.dev/eventing-kafka v0.39.1-0.20240115014855-537789bb9781
+knative.dev/eventing/pkg/eventingtls
+# knative.dev/eventing-kafka v0.39.1-0.20240119015351-9427f59a448b
 ## explicit; go 1.19
 knative.dev/eventing-kafka/pkg/apis/bindings
 knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
@@ -890,7 +894,7 @@ knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/
 # knative.dev/hack v0.0.0-20240111013919-e89096d74d85
 ## explicit; go 1.18
 knative.dev/hack
-# knative.dev/networking v0.0.0-20240103144957-a34a5c563a3a
+# knative.dev/networking v0.0.0-20240115131931-22485740979e
 ## explicit; go 1.18
 knative.dev/networking/pkg
 knative.dev/networking/pkg/apis/networking
@@ -947,7 +951,7 @@ knative.dev/pkg/tracing/propagation
 knative.dev/pkg/tracing/propagation/tracecontextb3
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.39.1-0.20240109142101-b6552f9caa54
+# knative.dev/serving v0.39.1-0.20240117204608-9a867e117c4b
 ## explicit; go 1.21
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
