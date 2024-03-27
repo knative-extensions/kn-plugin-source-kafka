@@ -1,4 +1,4 @@
-// Copyright © 2020 The Knative Authors
+// Copyright © 2019 The Knative Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,27 +11,26 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
-// go:generate go run github.com/maxbrunsfeld/counterfeiter/v6 -generate
 
-package types
+//go:build !windows
+// +build !windows
+
+package plugin
+
+// This file doesn't compile for Windows platform, therefor a second stat_windows.go is
+// added with a no-op
 
 import (
-	"github.com/spf13/cobra"
-	"knative.dev/client-pkg/pkg/commands"
-	"knative.dev/client-pkg/pkg/commands/flags"
+	"fmt"
+	"os"
+	"syscall"
 )
 
-type KnSourceParams struct {
-	commands.KnParams
-
-	SinkFlag flags.SinkFlags
-}
-
-func (p *KnSourceParams) AddCommonFlags(cmd *cobra.Command) {
-	commands.AddNamespaceFlags(cmd.Flags(), true)
-}
-
-func (p *KnSourceParams) AddCreateUpdateFlags(cmd *cobra.Command) {
-	p.SinkFlag.Add(cmd)
+func statFileOwner(fileInfo os.FileInfo) (uint32, uint32, error) {
+	var sys *syscall.Stat_t
+	var ok bool
+	if sys, ok = fileInfo.Sys().(*syscall.Stat_t); !ok {
+		return 0, 0, fmt.Errorf("cannot check owner/group of file %s", fileInfo.Name())
+	}
+	return sys.Uid, sys.Gid, nil
 }

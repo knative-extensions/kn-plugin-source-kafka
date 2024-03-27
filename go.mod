@@ -10,10 +10,10 @@ require (
 	gotest.tools/v3 v3.3.0
 	k8s.io/apimachinery v0.29.2
 	k8s.io/client-go v0.29.2
-	knative.dev/client-pkg v0.0.0-20240313113642-ca457df5ea78
+	knative.dev/client-pkg v0.0.0-20240327121233-6984d81a90ec
 	knative.dev/eventing-kafka v0.40.1-0.20240207142533-d23eb248d3ac
-	knative.dev/hack v0.0.0-20240318013248-424e75ed769a
-	knative.dev/pkg v0.0.0-20240318073042-db6f3b074e8c
+	knative.dev/hack v0.0.0-20240327150553-47368d631660
+	knative.dev/pkg v0.0.0-20240327140624-1ca1f09c329e
 )
 
 require (
@@ -75,7 +75,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.19.0 // indirect
 	github.com/prometheus/client_model v0.6.0 // indirect
-	github.com/prometheus/common v0.50.0 // indirect
+	github.com/prometheus/common v0.51.1 // indirect
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/prometheus/statsd_exporter v0.22.8 // indirect
 	github.com/rickb777/date v1.20.0 // indirect
@@ -100,10 +100,10 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
-	google.golang.org/api v0.170.0 // indirect
+	google.golang.org/api v0.171.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20240304161311-37d4d3c04a78 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240311132316-a219d84964c2 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20240311132316-a219d84964c2 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
 	google.golang.org/grpc v1.62.1 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
@@ -116,9 +116,9 @@ require (
 	k8s.io/klog/v2 v2.120.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20231010175941-2dd684a91f00 // indirect
 	k8s.io/utils v0.0.0-20240102154912-e7106e64919e // indirect
-	knative.dev/eventing v0.40.1-0.20240312170432-bbb9051e9fd0 // indirect
-	knative.dev/networking v0.0.0-20240311132944-3252e63e3239 // indirect
-	knative.dev/serving v0.40.1-0.20240312204407-a194cb210d5e // indirect
+	knative.dev/eventing v0.40.1-0.20240325205050-ff32fbeefd03 // indirect
+	knative.dev/networking v0.0.0-20240318132715-69566347ab2a // indirect
+	knative.dev/serving v0.40.1-0.20240326200454-231db15d2a1e // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/kustomize/api v0.13.5-0.20230601165947-6ce0bf390ce3 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.14.3-0.20230601165947-6ce0bf390ce3 // indirect
