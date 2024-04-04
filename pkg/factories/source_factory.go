@@ -19,7 +19,7 @@ import (
 	client_testing "k8s.io/client-go/testing"
 	sourcefactories "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/factories"
 	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
+	"knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )

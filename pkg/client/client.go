@@ -20,8 +20,8 @@ import (
 	knerrors "knative.dev/client-pkg/pkg/errors"
 	sourceclient "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/client"
 	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
-	clientv1beta1 "knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
+	clientv1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

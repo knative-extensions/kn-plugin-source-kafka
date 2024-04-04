@@ -20,7 +20,7 @@ import (
 	"sort"
 	"strings"
 
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
@@ -30,8 +30,8 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
-	"knative.dev/client-pkg/pkg/kn/commands"
-	"knative.dev/client-pkg/pkg/kn/commands/flags"
+	"knative.dev/client-pkg/pkg/commands"
+	"knative.dev/client-pkg/pkg/commands/flags"
 	"knative.dev/client-pkg/pkg/printers"
 	"knative.dev/client-pkg/pkg/util"
 	duckv1 "knative.dev/pkg/apis/duck/v1"

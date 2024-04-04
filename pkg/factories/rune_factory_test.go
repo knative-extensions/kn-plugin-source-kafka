@@ -22,7 +22,7 @@ import (
 	"k8s.io/client-go/rest"
 	"knative.dev/client-pkg/pkg/printers"
 	"knative.dev/client-pkg/pkg/util"
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	v1 "knative.dev/pkg/apis/duck/v1"
 )

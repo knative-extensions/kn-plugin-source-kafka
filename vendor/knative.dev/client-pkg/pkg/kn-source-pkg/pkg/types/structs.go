@@ -18,8 +18,8 @@ package types
 
 import (
 	"github.com/spf13/cobra"
-	"knative.dev/client-pkg/pkg/kn/commands"
-	"knative.dev/client-pkg/pkg/kn/commands/flags"
+	"knative.dev/client-pkg/pkg/commands"
+	"knative.dev/client-pkg/pkg/commands/flags"
 )
 
 type KnSourceParams struct {
