@@ -22,8 +22,8 @@ import (
 
 	"gotest.tools/v3/assert"
 	"k8s.io/apimachinery/pkg/runtime"
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
+	"knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 

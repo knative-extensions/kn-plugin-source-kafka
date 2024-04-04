@@ -17,7 +17,7 @@ package types
 import (
 	"context"
 
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 
 	"k8s.io/client-go/rest"
 	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"

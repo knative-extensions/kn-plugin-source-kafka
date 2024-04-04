@@ -19,7 +19,7 @@ import (
 
 	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types/typesfakes"
-	"knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
+	"knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 

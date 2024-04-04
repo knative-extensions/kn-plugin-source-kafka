@@ -20,7 +20,7 @@ import (
 	"sort"
 	"strings"
 
-	v1beta1 "knative.dev/eventing-kafka/pkg/apis/sources/v1beta1"
+	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 

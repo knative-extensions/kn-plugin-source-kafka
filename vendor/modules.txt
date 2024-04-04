@@ -859,7 +859,7 @@ knative.dev/client-pkg/pkg/util
 knative.dev/client-pkg/pkg/util/mock
 knative.dev/client-pkg/pkg/util/test
 knative.dev/client-pkg/pkg/wait
-# knative.dev/eventing v0.40.1-0.20240403191148-19202359a232
+# knative.dev/eventing v0.40.1-0.20240404013432-ce5b77fc2d0c
 ## explicit; go 1.21
 knative.dev/eventing/pkg/apis/config
 knative.dev/eventing/pkg/apis/duck
@@ -888,15 +888,19 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka v0.40.1-0.20240207142533-d23eb248d3ac
+# knative.dev/eventing-kafka-broker v0.40.1-0.20240404103253-551691cda348
 ## explicit; go 1.21
-knative.dev/eventing-kafka/pkg/apis/bindings
-knative.dev/eventing-kafka/pkg/apis/bindings/v1beta1
-knative.dev/eventing-kafka/pkg/apis/sources/config
-knative.dev/eventing-kafka/pkg/apis/sources/v1beta1
-knative.dev/eventing-kafka/pkg/client/clientset/versioned/scheme
-knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1
-knative.dev/eventing-kafka/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1beta1
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/eventing
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/eventing/v1alpha1
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/messaging
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/messaging/v1beta1
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/config
+knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1
+knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/scheme
+knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1
+knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
 # knative.dev/hack v0.0.0-20240404013450-1133b37da8d7
 ## explicit; go 1.18
 knative.dev/hack
