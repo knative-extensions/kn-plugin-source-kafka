@@ -1,4 +1,6 @@
 # kn-plugin-source-kafka
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fknative-extensions%2Fkn-plugin-source-kafka.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fknative-extensions%2Fkn-plugin-source-kafka?ref=badge_shield)
+
 
 **[This component is GA](https://github.com/knative/community/tree/main/mechanics/MATURITY-LEVELS.md)**
 
@@ -184,3 +186,7 @@ kn source kafka list
 * [Knative Client](https://github.com/knative/client)
 * [How to contribute a plugin](https://github.com/knative/client-contrib#how-to-contribute-a-plugin)
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fknative-extensions%2Fkn-plugin-source-kafka.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fknative-extensions%2Fkn-plugin-source-kafka?ref=badge_large)
