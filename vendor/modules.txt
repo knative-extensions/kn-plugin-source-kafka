@@ -967,7 +967,7 @@ k8s.io/utils/pointer
 k8s.io/utils/ptr
 k8s.io/utils/strings/slices
 k8s.io/utils/trace
-# knative.dev/client-pkg v0.0.0-20250109131824-afd7c8d9de7b
+# knative.dev/client-pkg v0.0.0-20250123014150-0acf80a54bc4
 ## explicit; go 1.22.0
 knative.dev/client-pkg/pkg/apis/client
 knative.dev/client-pkg/pkg/apis/client/v1alpha1
@@ -1035,7 +1035,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
 knative.dev/eventing/pkg/crossnamespace
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka-broker v0.43.1-0.20250117084905-eea9a6a67723
+# knative.dev/eventing-kafka-broker v0.43.1-0.20250123115933-b4d2bc267937
 ## explicit; go 1.22.7
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1
