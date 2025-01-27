@@ -895,7 +895,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1beta2
 knative.dev/eventing/pkg/crossnamespace
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka-broker v0.43.0
+# knative.dev/eventing-kafka-broker v0.43.1
 ## explicit; go 1.22.0
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1
@@ -912,7 +912,7 @@ knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
-# knative.dev/hack v0.0.0-20241010131451-05b2fb30cb4d
+# knative.dev/hack v0.0.0-20250114120502-30344aeba756
 ## explicit; go 1.21
 knative.dev/hack
 # knative.dev/networking v0.0.0-20241022012959-60e29ff520dc
