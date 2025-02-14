@@ -6,15 +6,15 @@ require (
 	github.com/hashicorp/golang-lru v1.0.2
 	github.com/hashicorp/hcl v1.0.1-vault-5
 	github.com/spf13/cobra v1.8.1
-	github.com/spf13/pflag v1.0.5
+	github.com/spf13/pflag v1.0.6
 	gotest.tools/v3 v3.3.0
 	k8s.io/apimachinery v0.31.4
 	k8s.io/client-go v0.31.4
-	knative.dev/client-pkg v0.0.0-20250123181933-2a69ed741513
-	knative.dev/client/pkg v0.0.0-20250122145611-f73472454667
-	knative.dev/eventing-kafka-broker v0.44.0
-	knative.dev/hack v0.0.0-20250116150306-c142b4835bc5
-	knative.dev/pkg v0.0.0-20250117084104-c43477f0052b
+	knative.dev/client-pkg v0.0.0-20250128014339-b25413c351fe
+	knative.dev/client/pkg v0.0.0-20250128014102-7dc2a9249f56
+	knative.dev/eventing-kafka-broker v0.43.1-0.20250214124052-aed6672d6d58
+	knative.dev/hack v0.0.0-20250128013659-5f7f0f50e9de
+	knative.dev/pkg v0.0.0-20250211185550-c8bea7c326ff
 )
 
 require (
@@ -32,7 +32,7 @@ require (
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/emicklei/go-restful/v3 v3.12.1 // indirect
 	github.com/evanphx/json-patch v5.9.0+incompatible // indirect
-	github.com/evanphx/json-patch/v5 v5.9.0 // indirect
+	github.com/evanphx/json-patch/v5 v5.9.11 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
@@ -96,18 +96,18 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/oauth2 v0.23.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
+	golang.org/x/oauth2 v0.24.0 // indirect
+	golang.org/x/sync v0.11.0 // indirect
 	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/term v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
 	google.golang.org/api v0.198.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20241015192408-796eee8c2d53 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53 // indirect
-	google.golang.org/grpc v1.69.4 // indirect
-	google.golang.org/protobuf v1.36.3 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20241202173237-19429a94021a // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241202173237-19429a94021a // indirect
+	google.golang.org/grpc v1.70.0 // indirect
+	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/evanphx/json-patch.v4 v4.12.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
@@ -120,7 +120,7 @@ require (
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20240903163716-9e1beecbcb38 // indirect
 	k8s.io/utils v0.0.0-20240921022957-49e7df575cb6 // indirect
-	knative.dev/eventing v0.44.0 // indirect
+	knative.dev/eventing v0.44.1-0.20250213150852-75195a587329 // indirect
 	knative.dev/networking v0.0.0-20250117155906-67d1c274ba6a // indirect
 	knative.dev/serving v0.44.0 // indirect
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
