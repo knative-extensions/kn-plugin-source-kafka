@@ -1,8 +1,9 @@
 module knative.dev/kn-plugin-source-kafka
 
-go 1.22.7
+go 1.23
 
 require (
+	github.com/dsimansk/license-mock v0.0.0-20250206091931-f6f2bf16afd5
 	github.com/hashicorp/golang-lru v1.0.2
 	github.com/hashicorp/hcl v1.0.1-vault-5
 	github.com/spf13/cobra v1.8.1
