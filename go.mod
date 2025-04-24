@@ -12,7 +12,7 @@ require (
 	k8s.io/client-go v0.32.2
 	knative.dev/client-pkg v0.0.0-20250423152824-1f0bd17aa32b
 	knative.dev/client/pkg v0.0.0-20250423184323-96721e598f77
-	knative.dev/eventing-kafka-broker v0.43.1-0.20250423200025-a5c7f94a542f
+	knative.dev/eventing-kafka-broker v0.45.0
 	knative.dev/hack v0.0.0-20250331013814-c577ed9f7775
 	knative.dev/pkg v0.0.0-20250415155312-ed3e2158b883
 )
