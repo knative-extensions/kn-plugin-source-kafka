@@ -16,11 +16,11 @@ package factories
 
 import (
 	"k8s.io/client-go/rest"
-	client_testing "k8s.io/client-go/testing"
-	sourcefactories "knative.dev/kn-plugin-source-kafka/pkg/common/factories"
-	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
+	clienttesting "k8s.io/client-go/testing"
 	"knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake"
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
+	sourcefactories "knative.dev/kn-plugin-source-kafka/pkg/common/factories"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
@@ -39,7 +39,7 @@ func NewKafkaSourceFactory() types.KafkaSourceFactory {
 }
 
 func NewFakeKafkaSourceFactory(ns string) types.KafkaSourceFactory {
-	fakeClient := fake.FakeSourcesV1beta1{Fake: &client_testing.Fake{}}
+	fakeClient := fake.FakeSourcesV1beta1{Fake: &clienttesting.Fake{}}
 	fakeSourceClient := client.NewFakeKafkaSourceClient(&fakeClient, ns)
 	fakeParams := fakeSourceClient.KafkaSourceParams()
 	return &kafkaClientFactory{
