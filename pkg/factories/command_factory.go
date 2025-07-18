@@ -17,8 +17,8 @@ package factories
 import (
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
-	sourcefactories "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/factories"
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	sourcefactories "knative.dev/kn-plugin-source-kafka/pkg/common/factories"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 
 	"github.com/spf13/cobra"
 )

@@ -16,7 +16,7 @@ package root
 
 import (
 	"github.com/spf13/cobra"
-	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/core"
+	"knative.dev/kn-plugin-source-kafka/pkg/common/core"
 
 	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )

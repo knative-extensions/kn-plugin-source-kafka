@@ -15,7 +15,7 @@
 package types
 
 import (
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 	clientv1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1"
 )
 

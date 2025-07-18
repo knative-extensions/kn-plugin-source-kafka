@@ -20,7 +20,7 @@ import (
 	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 
 	"k8s.io/client-go/rest"
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 )
 
 type KafkaSourceClient interface {

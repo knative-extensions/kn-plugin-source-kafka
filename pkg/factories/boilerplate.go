@@ -16,7 +16,7 @@ package factories
 
 import (
 	"k8s.io/client-go/rest"
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 )
 
