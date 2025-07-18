@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"os"
 
-	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/core"
-	"knative.dev/client-pkg/pkg/kn-source-pkg/pkg/util"
+	"knative.dev/kn-plugin-source-kafka/pkg/common/core"
+	"knative.dev/kn-plugin-source-kafka/pkg/common/util"
 	"knative.dev/kn-plugin-source-kafka/pkg/factories"
 )
 

@@ -15,8 +15,9 @@
 package types
 
 import (
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
 	clientv1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1"
+
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 )
 
 type KafkaSourceParams struct {

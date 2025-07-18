@@ -17,11 +17,11 @@ package client
 import (
 	"context"
 
-	knerrors "knative.dev/client-pkg/pkg/errors"
-	sourceclient "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/client"
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	knerrors "knative.dev/client/pkg/errors"
 	v1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1"
 	clientv1beta1 "knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1"
+	sourceclient "knative.dev/kn-plugin-source-kafka/pkg/common/client"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

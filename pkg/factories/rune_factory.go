@@ -24,16 +24,16 @@ import (
 	"knative.dev/kn-plugin-source-kafka/pkg/client"
 	"knative.dev/kn-plugin-source-kafka/pkg/types"
 
-	sourcetypes "knative.dev/client-pkg/pkg/kn-source-pkg/pkg/types"
+	sourcetypes "knative.dev/kn-plugin-source-kafka/pkg/common/types"
 
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/rest"
-	"knative.dev/client-pkg/pkg/commands"
-	"knative.dev/client-pkg/pkg/commands/flags"
-	"knative.dev/client-pkg/pkg/printers"
-	"knative.dev/client-pkg/pkg/util"
+	"knative.dev/client/pkg/commands"
+	"knative.dev/client/pkg/commands/flags"
+	"knative.dev/client/pkg/printers"
+	"knative.dev/client/pkg/util"
 	duckv1 "knative.dev/pkg/apis/duck/v1"
 )
 

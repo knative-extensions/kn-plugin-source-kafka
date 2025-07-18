@@ -24,9 +24,8 @@ import (
 	"testing"
 
 	"gotest.tools/v3/assert"
-	testcommon "knative.dev/client-pkg/pkg/kn-source-pkg/test/e2e"
-	"knative.dev/client-pkg/pkg/util"
-	"knative.dev/client-pkg/pkg/util/test"
+	"knative.dev/client/pkg/util"
+	"knative.dev/client/pkg/util/test"
 )
 
 const (
@@ -38,7 +37,7 @@ const (
 )
 
 type e2eTest struct {
-	it *testcommon.E2ETest
+	it *E2ETest
 }
 
 func newE2ETest() *e2eTest {
@@ -47,7 +46,7 @@ func newE2ETest() *e2eTest {
 		return nil
 	}
 
-	it, err := testcommon.NewE2ETest("kn-source-kafka", filepath.Join(currentDir, "../.."), false)
+	it, err := NewE2ETest("kn-source-kafka", filepath.Join(currentDir, "../.."), false)
 	if err != nil {
 		return nil
 	}
