@@ -82,7 +82,7 @@ func (cg *ConsumerGroup) GetPlacements() []eventingduckv1alpha1.Placement {
 }
 
 func (cg *ConsumerGroup) GetResourceVersion() string {
-	return cg.ObjectMeta.ResourceVersion
+	return cg.ResourceVersion
 }
 
 type ConsumerGroupSpec struct {
@@ -232,12 +232,24 @@ func (cg *ConsumerGroup) IsNotScheduled() bool {
 	return cond.IsFalse() || cond.IsUnknown()
 }
 
+func (cg *ConsumerGroup) IsAutoscalerNotDisabled() bool {
+	condition := cg.Status.GetCondition(ConditionAutoscaling)
+
+	// If condition doesn't exist or is not true, it's not in "disabled" state
+	if condition == nil || condition.Status != corev1.ConditionTrue {
+		return true
+	}
+
+	// If condition is True but reason is not "autoscaler is disabled", then it's actively enabled
+	return condition.Reason != AutoscalerDisabled
+}
+
 func (cg *ConsumerGroup) HasDeadLetterSink() bool {
 	return hasDeadLetterSink(cg.Spec.Template.Spec.Delivery)
 }
 
 func hasDeadLetterSink(d *DeliverySpec) bool {
 	return d != nil && d.DeliverySpec != nil &&
-		d.DeliverySpec.DeadLetterSink != nil &&
-		(d.DeliverySpec.DeadLetterSink.Ref != nil || d.DeliverySpec.DeadLetterSink.URI != nil)
+		d.DeadLetterSink != nil &&
+		(d.DeadLetterSink.Ref != nil || d.DeadLetterSink.URI != nil)
 }
