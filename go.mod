@@ -12,7 +12,7 @@ require (
 	k8s.io/api v0.33.4
 	k8s.io/apimachinery v0.33.4
 	k8s.io/client-go v0.33.4
-	knative.dev/client/pkg v0.0.0-20250908140348-a01fc2fb038c
+	knative.dev/client/pkg v0.0.0-20250909022336-7058e965bbf7
 	knative.dev/eventing-kafka-broker v0.46.1-0.20250908122347-20212a58b91a
 	knative.dev/hack v0.0.0-20250902153942-1499de21e119
 	knative.dev/pkg v0.0.0-20250909010931-8c9c1d368e4b
@@ -108,7 +108,7 @@ require (
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
 	knative.dev/eventing v0.46.1-0.20250908062745-c9cfca897068 // indirect
 	knative.dev/networking v0.0.0-20250903015244-1dd9be99b5c9 // indirect
-	knative.dev/serving v0.46.1-0.20250905135143-6bab56591b55 // indirect
+	knative.dev/serving v0.46.1-0.20250908164532-12777f672fea // indirect
 	sigs.k8s.io/gateway-api v1.1.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/kustomize/api v0.13.5-0.20230601165947-6ce0bf390ce3 // indirect
