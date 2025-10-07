@@ -15,7 +15,7 @@ require (
 	knative.dev/client/pkg v0.0.0-20251003022507-339674b963ca
 	knative.dev/eventing-kafka-broker v0.46.1-0.20250930122203-de6a2fa1a297
 	knative.dev/hack v0.0.0-20250902153942-1499de21e119
-	knative.dev/pkg v0.0.0-20251001003403-1e71536171b9
+	knative.dev/pkg v0.0.0-20251007000110-e53fcbb06907
 )
 
 require (
