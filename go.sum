@@ -751,8 +751,8 @@ knative.dev/client/pkg v0.0.0-20251007022612-79bd2e100065 h1:myUyFpRzAVaME1LKz47
 knative.dev/client/pkg v0.0.0-20251007022612-79bd2e100065/go.mod h1:U6Kx0zEHzOCfS/khJeP2H1MYUX/OWPKGVrOITGeeS/E=
 knative.dev/eventing v0.46.1-0.20251002211605-5828b491e837 h1:YPS9wXY/roM6DZBp75rLqKZ9hDcsgijlj/hjIESpQZw=
 knative.dev/eventing v0.46.1-0.20251002211605-5828b491e837/go.mod h1:HRusNPXiJsv2USQLE9i0gPm/cnUZo0jVTlkVdBTcfC8=
-knative.dev/eventing-kafka-broker v0.46.1-0.20251007150512-bd08c0cfffeb h1:WZsZXVHO3mKw5uAap1Ua7K4XTBfqwMtjK08p92qvM18=
-knative.dev/eventing-kafka-broker v0.46.1-0.20251007150512-bd08c0cfffeb/go.mod h1:B/JHSrzVgnZ2wAmY+YXJXepUXC7KwHL2wfS++GLrWbw=
+knative.dev/eventing-kafka-broker v0.46.1-0.20251008072414-150a9bd7ba81 h1:VbtuCiN4mrxSr7PwHleOUvmdRr04pqCnsA/iNwiul0g=
+knative.dev/eventing-kafka-broker v0.46.1-0.20251008072414-150a9bd7ba81/go.mod h1:xRMZKfycxPVjb4/hhq9DDHTXxcXlYJ+fL921nT1ijnY=
 knative.dev/hack v0.0.0-20250902153942-1499de21e119 h1:NbQvjnFK1tL489LN0qAybWy0E17Jpziwcv/XIHwfp6M=
 knative.dev/hack v0.0.0-20250902153942-1499de21e119/go.mod h1:R0ritgYtjLDO9527h5vb5X6gfvt5LCrJ55BNbVDsWiY=
 knative.dev/networking v0.0.0-20250916015400-8cc248b445a0 h1:OG6rRbmXMDh369o/puixTc8dv9YihZr964S9rt6EURo=
