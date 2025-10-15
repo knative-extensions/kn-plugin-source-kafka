@@ -855,7 +855,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/ptr
 k8s.io/utils/trace
-# knative.dev/client/pkg v0.0.0-20251014140635-c04b6091d9e5
+# knative.dev/client/pkg v0.0.0-20251015022635-a57e38d8224c
 ## explicit; go 1.24.0
 knative.dev/client/pkg/apis/client
 knative.dev/client/pkg/apis/client/v1alpha1
@@ -934,8 +934,8 @@ knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
-# knative.dev/hack v0.0.0-20251013111017-49bc1be5f373
-## explicit; go 1.21
+# knative.dev/hack v0.0.0-20251015104416-f3f2ddfc1eac
+## explicit; go 1.24
 knative.dev/hack
 # knative.dev/networking v0.0.0-20251013133419-607d0f0c1b4c
 ## explicit; go 1.24.0
@@ -950,7 +950,7 @@ knative.dev/networking/pkg/http/proxy
 knative.dev/networking/pkg/http/stats
 knative.dev/networking/pkg/ingress
 knative.dev/networking/pkg/k8s
-# knative.dev/pkg v0.0.0-20251014184739-27b61c2839a4
+# knative.dev/pkg v0.0.0-20251015132924-aadc6f6a1012
 ## explicit; go 1.24.0
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
@@ -996,7 +996,7 @@ knative.dev/pkg/test/logging
 knative.dev/pkg/test/spoof
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.46.1-0.20251014122132-a40675998016
+# knative.dev/serving v0.46.1-0.20251014203032-93ea13008a96
 ## explicit; go 1.24.0
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
