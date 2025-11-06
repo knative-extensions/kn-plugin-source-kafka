@@ -101,6 +101,8 @@ function kafka_setup() {
 function install_sources_crds() {
   subheader "Installing Kafka Source CRD"
   kubectl apply -f ${KAFKA_SOURCE_CONTROLLER_YAML}
+  # The next apply needs the webhook rules to be populated to properly validate/mutate the resources
+  kubectl wait --for=jsonpath='{.webhooks[0].rules[0]}' mutatingwebhookconfiguration/pods.defaulting.webhook.kafka.eventing.knative.dev --timeout=60s
   kubectl apply -f ${KAFKA_SOURCE_YAML}
   wait_until_pods_running knative-eventing || fail_test "Failed to install the Kafka Source CRD"
 }
