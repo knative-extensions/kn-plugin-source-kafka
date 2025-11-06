@@ -46,7 +46,7 @@ readonly KAFKA_SOURCE_YAML="$(get_latest_knative_yaml_source "eventing-kafka-bro
 
 run() {
   # Create cluster
-  initialize $@ --skip-istio-addon
+  initialize $@
 
   # Kafka setup
   eval plugin_test_setup || fail_test
