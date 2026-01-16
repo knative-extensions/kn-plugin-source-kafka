@@ -842,7 +842,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/ptr
 k8s.io/utils/trace
-# knative.dev/client/pkg v0.0.0-20251126014234-e6a799d3b455
+# knative.dev/client/pkg v0.0.0-20260114015056-e46abb4d1df8
 ## explicit; go 1.24.2
 knative.dev/client/pkg/apis/client
 knative.dev/client/pkg/apis/client/v1alpha1
@@ -869,7 +869,7 @@ knative.dev/client/pkg/util/errors
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/util/test
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.47.1-0.20251126013633-47e18d46cb6c
+# knative.dev/eventing v0.47.1-0.20260112075438-3dac6b71bcd1
 ## explicit; go 1.24.0
 knative.dev/eventing/pkg/apis/common/integration/v1alpha1
 knative.dev/eventing/pkg/apis/config
@@ -903,7 +903,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/crossnamespace
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka-broker v0.47.1-0.20251205082612-42935d0bec5e
+# knative.dev/eventing-kafka-broker v0.47.1-0.20260116125349-d2f2614f7238
 ## explicit; go 1.24.0
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1
@@ -921,7 +921,7 @@ knative.dev/eventing-kafka-broker/control-plane/pkg/apis/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/scheme
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1
 knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/typed/sources/v1beta1/fake
-# knative.dev/hack v0.0.0-20251126013634-1484a9e9b641
+# knative.dev/hack v0.0.0-20260114013932-ee8a1b2d08eb
 ## explicit; go 1.24
 knative.dev/hack
 # knative.dev/networking v0.0.0-20251103014656-7d4a19889854
@@ -937,7 +937,7 @@ knative.dev/networking/pkg/http/proxy
 knative.dev/networking/pkg/http/stats
 knative.dev/networking/pkg/ingress
 knative.dev/networking/pkg/k8s
-# knative.dev/pkg v0.0.0-20251216153728-9c8140b780d1
+# knative.dev/pkg v0.0.0-20260114161248-8c840449eed2
 ## explicit; go 1.24.0
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
