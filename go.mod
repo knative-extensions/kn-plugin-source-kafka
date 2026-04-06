@@ -9,13 +9,13 @@ require (
 	github.com/spf13/cobra v1.10.0
 	github.com/spf13/pflag v1.0.10
 	gotest.tools/v3 v3.5.2
-	k8s.io/api v0.35.2
-	k8s.io/apimachinery v0.35.2
-	k8s.io/client-go v0.35.2
-	knative.dev/client/pkg v0.0.0-20260317023652-a71f4839798c
-	knative.dev/eventing-kafka-broker v0.48.1-0.20260316040123-da0a579e5ece
-	knative.dev/hack v0.0.0-20260310014051-c448fdb867e2
-	knative.dev/pkg v0.0.0-20260317082650-91e176852006
+	k8s.io/api v0.35.3
+	k8s.io/apimachinery v0.35.3
+	k8s.io/client-go v0.35.3
+	knative.dev/client/pkg v0.0.0-20260406024359-c74b246e522c
+	knative.dev/eventing-kafka-broker v0.48.1-0.20260403130556-c5827b0f32c6
+	knative.dev/hack v0.0.0-20260318014029-7eede7fdcbad
+	knative.dev/pkg v0.0.0-20260406140200-cb58ae50e894
 )
 
 require (
@@ -77,12 +77,12 @@ require (
 	github.com/xlab/treeprint v1.2.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0 // indirect
-	go.opentelemetry.io/otel v1.42.0 // indirect
-	go.opentelemetry.io/otel/metric v1.42.0 // indirect
-	go.opentelemetry.io/otel/trace v1.42.0 // indirect
+	go.opentelemetry.io/otel v1.43.0 // indirect
+	go.opentelemetry.io/otel/metric v1.43.0 // indirect
+	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.1 // indirect
-	go.yaml.in/yaml/v2 v2.4.3 // indirect
+	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/net v0.52.0 // indirect
 	golang.org/x/oauth2 v0.35.0 // indirect
@@ -96,15 +96,15 @@ require (
 	gopkg.in/evanphx/json-patch.v4 v4.13.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apiextensions-apiserver v0.35.2 // indirect
-	k8s.io/apiserver v0.35.2 // indirect
+	k8s.io/apiextensions-apiserver v0.35.3 // indirect
+	k8s.io/apiserver v0.35.3 // indirect
 	k8s.io/cli-runtime v0.34.1 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912 // indirect
 	k8s.io/utils v0.0.0-20251002143259-bc988d571ff4 // indirect
-	knative.dev/eventing v0.48.1-0.20260316031422-ce3fe6b62f97 // indirect
-	knative.dev/networking v0.0.0-20260316020026-a339c355a2b2 // indirect
-	knative.dev/serving v0.48.1-0.20260316224151-10d950c3a0d7 // indirect
+	knative.dev/eventing v0.48.1-0.20260402142557-263a3a52c638 // indirect
+	knative.dev/networking v0.0.0-20260405224958-4d3f1a4897bc // indirect
+	knative.dev/serving v0.48.1-0.20260405234958-722ed8568f9a // indirect
 	sigs.k8s.io/gateway-api v1.1.0 // indirect
 	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
 	sigs.k8s.io/kustomize/api v0.20.1 // indirect
