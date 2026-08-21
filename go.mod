@@ -12,8 +12,8 @@ require (
 	k8s.io/api v0.35.7
 	k8s.io/apimachinery v0.35.7
 	k8s.io/client-go v0.35.7
-	knative.dev/client/pkg v0.0.0-20260820141721-ca5d6c8df0d6
-	knative.dev/eventing-kafka-broker v0.50.1-0.20260820155120-e835254ce4ad
+	knative.dev/client/pkg v0.0.0-20260821023028-cf7412af6fef
+	knative.dev/eventing-kafka-broker v0.50.1-0.20260821122527-cd73e04ef589
 	knative.dev/hack v0.0.0-20260428014158-b2a37f1b6e7b
 	knative.dev/pkg v0.0.0-20260820190123-c9015f8bfdea
 )
