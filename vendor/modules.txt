@@ -1,7 +1,7 @@
 # emperror.dev/errors v0.8.1
 ## explicit; go 1.12
 emperror.dev/errors
-# github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161
+# github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c
 ## explicit; go 1.16
 github.com/Azure/go-ansiterm
 github.com/Azure/go-ansiterm/winterm
@@ -14,8 +14,8 @@ github.com/blang/semver/v4
 # github.com/blendle/zapdriver v1.3.1
 ## explicit; go 1.12
 github.com/blendle/zapdriver
-# github.com/cert-manager/cert-manager v1.16.3
-## explicit; go 1.22.0
+# github.com/cert-manager/cert-manager v1.20.3
+## explicit; go 1.25.0
 github.com/cert-manager/cert-manager/pkg/apis/acme
 github.com/cert-manager/cert-manager/pkg/apis/acme/v1
 github.com/cert-manager/cert-manager/pkg/apis/certmanager
@@ -34,7 +34,7 @@ github.com/cloudevents/sdk-go/sql/v2/gen
 github.com/cloudevents/sdk-go/sql/v2/parser
 github.com/cloudevents/sdk-go/sql/v2/runtime
 github.com/cloudevents/sdk-go/sql/v2/utils
-# github.com/cloudevents/sdk-go/v2 v2.16.1
+# github.com/cloudevents/sdk-go/v2 v2.16.2
 ## explicit; go 1.23.0
 github.com/cloudevents/sdk-go/v2
 github.com/cloudevents/sdk-go/v2/binding
@@ -56,7 +56,7 @@ github.com/cpuguy83/go-md2man/v2/md2man
 # github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc
 ## explicit
 github.com/davecgh/go-spew/spew
-# github.com/emicklei/go-restful/v3 v3.12.2
+# github.com/emicklei/go-restful/v3 v3.13.0
 ## explicit; go 1.13
 github.com/emicklei/go-restful/v3
 github.com/emicklei/go-restful/v3/log
@@ -67,11 +67,11 @@ github.com/evanphx/json-patch/v5/internal/json
 # github.com/felixge/httpsnoop v1.1.0
 ## explicit; go 1.25
 github.com/felixge/httpsnoop
-# github.com/fsnotify/fsnotify v1.9.0
-## explicit; go 1.17
+# github.com/fsnotify/fsnotify v1.10.0
+## explicit; go 1.23
 github.com/fsnotify/fsnotify
 github.com/fsnotify/fsnotify/internal
-# github.com/fxamacker/cbor/v2 v2.9.0
+# github.com/fxamacker/cbor/v2 v2.9.1
 ## explicit; go 1.20
 github.com/fxamacker/cbor/v2
 # github.com/go-errors/errors v1.4.2
@@ -84,16 +84,52 @@ github.com/go-logr/logr/funcr
 # github.com/go-logr/stdr v1.2.2
 ## explicit; go 1.16
 github.com/go-logr/stdr
-# github.com/go-openapi/jsonpointer v0.21.0
-## explicit; go 1.20
+# github.com/go-openapi/jsonpointer v0.23.1
+## explicit; go 1.25.0
 github.com/go-openapi/jsonpointer
-# github.com/go-openapi/jsonreference v0.21.0
-## explicit; go 1.20
+# github.com/go-openapi/jsonreference v0.21.5
+## explicit; go 1.24.0
 github.com/go-openapi/jsonreference
 github.com/go-openapi/jsonreference/internal
-# github.com/go-openapi/swag v0.23.0
-## explicit; go 1.20
+# github.com/go-openapi/swag v0.26.0
+## explicit; go 1.25.0
 github.com/go-openapi/swag
+# github.com/go-openapi/swag/cmdutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/cmdutils
+# github.com/go-openapi/swag/conv v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/conv
+# github.com/go-openapi/swag/fileutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/fileutils
+# github.com/go-openapi/swag/jsonname v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/jsonname
+# github.com/go-openapi/swag/jsonutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/jsonutils
+github.com/go-openapi/swag/jsonutils/adapters
+github.com/go-openapi/swag/jsonutils/adapters/ifaces
+github.com/go-openapi/swag/jsonutils/adapters/stdlib/json
+# github.com/go-openapi/swag/loading v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/loading
+# github.com/go-openapi/swag/mangling v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/mangling
+# github.com/go-openapi/swag/netutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/netutils
+# github.com/go-openapi/swag/stringutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/stringutils
+# github.com/go-openapi/swag/typeutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/typeutils
+# github.com/go-openapi/swag/yamlutils v0.26.0
+## explicit; go 1.25.0
+github.com/go-openapi/swag/yamlutils
 # github.com/go-viper/mapstructure/v2 v2.4.0
 ## explicit; go 1.18
 github.com/go-viper/mapstructure/v2
@@ -101,7 +137,7 @@ github.com/go-viper/mapstructure/v2/internal/errors
 # github.com/google/btree v1.1.3
 ## explicit; go 1.18
 github.com/google/btree
-# github.com/google/gnostic-models v0.7.0
+# github.com/google/gnostic-models v0.7.1
 ## explicit; go 1.22
 github.com/google/gnostic-models/compiler
 github.com/google/gnostic-models/extensions
@@ -129,7 +165,7 @@ github.com/gregjones/httpcache
 ## explicit; go 1.12
 github.com/hashicorp/golang-lru
 github.com/hashicorp/golang-lru/simplelru
-# github.com/hashicorp/hcl v1.0.1-vault-5
+# github.com/hashicorp/hcl v1.0.1-vault-7
 ## explicit; go 1.15
 github.com/hashicorp/hcl/hcl/ast
 github.com/hashicorp/hcl/hcl/parser
@@ -142,9 +178,6 @@ github.com/hashicorp/hcl/json/token
 # github.com/inconshreveable/mousetrap v1.1.0
 ## explicit; go 1.18
 github.com/inconshreveable/mousetrap
-# github.com/josharian/intern v1.0.0
-## explicit; go 1.5
-github.com/josharian/intern
 # github.com/json-iterator/go v1.1.12
 ## explicit; go 1.12
 github.com/json-iterator/go
@@ -154,11 +187,6 @@ github.com/kelseyhightower/envconfig
 # github.com/liggitt/tabwriter v0.0.0-20181228230101-89fcab3d43de
 ## explicit
 github.com/liggitt/tabwriter
-# github.com/mailru/easyjson v0.9.0
-## explicit; go 1.20
-github.com/mailru/easyjson/buffer
-github.com/mailru/easyjson/jlexer
-github.com/mailru/easyjson/jwriter
 # github.com/mitchellh/go-homedir v1.1.0
 ## explicit
 github.com/mitchellh/go-homedir
@@ -222,7 +250,7 @@ github.com/spf13/afero/mem
 ## explicit; go 1.21.0
 github.com/spf13/cast
 github.com/spf13/cast/internal
-# github.com/spf13/cobra v1.10.0
+# github.com/spf13/cobra v1.10.2
 ## explicit; go 1.15
 github.com/spf13/cobra
 github.com/spf13/cobra/doc
@@ -338,8 +366,8 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# golang.org/x/time v0.12.0
-## explicit; go 1.23.0
+# golang.org/x/time v0.15.0
+## explicit; go 1.25.0
 golang.org/x/time/rate
 # gomodules.xyz/jsonpatch/v2 v2.5.0
 ## explicit; go 1.20
@@ -381,9 +409,6 @@ gopkg.in/evanphx/json-patch.v4
 # gopkg.in/inf.v0 v0.9.1
 ## explicit
 gopkg.in/inf.v0
-# gopkg.in/yaml.v3 v3.0.1
-## explicit
-gopkg.in/yaml.v3
 # gotest.tools/v3 v3.5.2
 ## explicit; go 1.17
 gotest.tools/v3/assert
@@ -392,7 +417,7 @@ gotest.tools/v3/internal/assert
 gotest.tools/v3/internal/difflib
 gotest.tools/v3/internal/format
 gotest.tools/v3/internal/source
-# k8s.io/api v0.35.7
+# k8s.io/api v0.36.0 => k8s.io/api v0.35.8
 ## explicit; go 1.25.0
 k8s.io/api/admissionregistration/v1
 k8s.io/api/admissionregistration/v1alpha1
@@ -451,11 +476,11 @@ k8s.io/api/storage/v1
 k8s.io/api/storage/v1alpha1
 k8s.io/api/storage/v1beta1
 k8s.io/api/storagemigration/v1beta1
-# k8s.io/apiextensions-apiserver v0.35.7
+# k8s.io/apiextensions-apiserver v0.36.0 => k8s.io/apiextensions-apiserver v0.35.8
 ## explicit; go 1.25.0
 k8s.io/apiextensions-apiserver/pkg/apis/apiextensions
 k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1
-# k8s.io/apimachinery v0.35.7
+# k8s.io/apimachinery v0.36.0 => k8s.io/apimachinery v0.35.8
 ## explicit; go 1.25.0
 k8s.io/apimachinery/pkg/api/apitesting/fuzzer
 k8s.io/apimachinery/pkg/api/equality
@@ -521,7 +546,7 @@ k8s.io/apimachinery/pkg/version
 k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/third_party/forked/golang/json
 k8s.io/apimachinery/third_party/forked/golang/reflect
-# k8s.io/apiserver v0.35.7
+# k8s.io/apiserver v0.36.0 => k8s.io/apiserver v0.35.8
 ## explicit; go 1.25.0
 k8s.io/apiserver/pkg/storage/names
 # k8s.io/cli-runtime v0.34.1
@@ -530,7 +555,7 @@ k8s.io/cli-runtime/pkg/genericclioptions
 k8s.io/cli-runtime/pkg/genericiooptions
 k8s.io/cli-runtime/pkg/printers
 k8s.io/cli-runtime/pkg/resource
-# k8s.io/client-go v0.35.7
+# k8s.io/client-go v1.5.2 => k8s.io/client-go v0.35.8
 ## explicit; go 1.25.0
 k8s.io/client-go/applyconfigurations/admissionregistration/v1
 k8s.io/client-go/applyconfigurations/admissionregistration/v1alpha1
@@ -779,6 +804,8 @@ k8s.io/client-go/pkg/apis/clientauthentication/install
 k8s.io/client-go/pkg/apis/clientauthentication/v1
 k8s.io/client-go/pkg/apis/clientauthentication/v1beta1
 k8s.io/client-go/pkg/version
+k8s.io/client-go/plugin/pkg/client/auth
+k8s.io/client-go/plugin/pkg/client/auth/azure
 k8s.io/client-go/plugin/pkg/client/auth/exec
 k8s.io/client-go/plugin/pkg/client/auth/gcp
 k8s.io/client-go/plugin/pkg/client/auth/oidc
@@ -814,8 +841,8 @@ k8s.io/client-go/util/keyutil
 k8s.io/client-go/util/retry
 k8s.io/client-go/util/watchlist
 k8s.io/client-go/util/workqueue
-# k8s.io/klog/v2 v2.130.1
-## explicit; go 1.18
+# k8s.io/klog/v2 v2.140.0
+## explicit; go 1.21
 k8s.io/klog/v2
 k8s.io/klog/v2/internal/buffer
 k8s.io/klog/v2/internal/clock
@@ -823,7 +850,7 @@ k8s.io/klog/v2/internal/dbg
 k8s.io/klog/v2/internal/serialize
 k8s.io/klog/v2/internal/severity
 k8s.io/klog/v2/internal/sloghandler
-# k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912
+# k8s.io/kube-openapi v0.0.0-20260427204847-8949caaa1199
 ## explicit; go 1.23.0
 k8s.io/kube-openapi/pkg/cached
 k8s.io/kube-openapi/pkg/common
@@ -835,8 +862,8 @@ k8s.io/kube-openapi/pkg/spec3
 k8s.io/kube-openapi/pkg/util
 k8s.io/kube-openapi/pkg/util/proto
 k8s.io/kube-openapi/pkg/validation/spec
-# k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
-## explicit; go 1.18
+# k8s.io/utils v0.0.0-20260319190234-28399d86e0b5
+## explicit; go 1.23
 k8s.io/utils/buffer
 k8s.io/utils/clock
 k8s.io/utils/internal/third_party/forked/golang/golang-lru
@@ -846,7 +873,7 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/ptr
 k8s.io/utils/trace
-# knative.dev/client/pkg v0.0.0-20260821023028-cf7412af6fef
+# knative.dev/client/pkg v0.0.0-20260907141345-931c46c98efb
 ## explicit; go 1.25.0
 knative.dev/client/pkg/apis/client
 knative.dev/client/pkg/apis/client/v1alpha1
@@ -873,7 +900,7 @@ knative.dev/client/pkg/util/errors
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/util/test
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.50.1-0.20260820115420-72ec4f420db1
+# knative.dev/eventing v0.50.1-0.20260907114944-07b1e8ab96e5
 ## explicit; go 1.25.0
 knative.dev/eventing/pkg/apis/common/integration/v1alpha1
 knative.dev/eventing/pkg/apis/config
@@ -907,8 +934,8 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/crossnamespace
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka-broker v0.50.1-0.20260821122527-cd73e04ef589
-## explicit; go 1.25.0
+# knative.dev/eventing-kafka-broker v0.50.1-0.20260909123306-897a44bb095e
+## explicit; go 1.26.0
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1beta1
@@ -928,14 +955,14 @@ knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/t
 # knative.dev/hack v0.0.0-20260428014158-b2a37f1b6e7b
 ## explicit; go 1.24
 knative.dev/hack
-# knative.dev/networking v0.0.0-20260727162500-c7a7b772cac9
+# knative.dev/networking v0.0.0-20260821014922-17b28c62e1cb
 ## explicit; go 1.25.0
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
 knative.dev/networking/pkg/config
 knative.dev/networking/pkg/http/header
 knative.dev/networking/pkg/ingress
-# knative.dev/pkg v0.0.0-20260820190123-c9015f8bfdea
+# knative.dev/pkg v0.0.0-20260825072334-d2a153acc00c
 ## explicit; go 1.25.0
 knative.dev/pkg/apis
 knative.dev/pkg/apis/duck
@@ -982,7 +1009,7 @@ knative.dev/pkg/test/logging
 knative.dev/pkg/test/spoof
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.50.1-0.20260819122420-ffaaaf78b938
+# knative.dev/serving v0.50.1-0.20260825144834-618b0c275af1
 ## explicit; go 1.25.0
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
@@ -1004,8 +1031,8 @@ knative.dev/serving/pkg/reconciler/route/resources/labels
 knative.dev/serving/pkg/reconciler/route/resources/names
 knative.dev/serving/pkg/reconciler/service/resources/names
 knative.dev/serving/pkg/testing/v1
-# sigs.k8s.io/gateway-api v1.1.0
-## explicit; go 1.22.0
+# sigs.k8s.io/gateway-api v1.5.0
+## explicit; go 1.25.0
 sigs.k8s.io/gateway-api/apis/v1
 # sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730
 ## explicit; go 1.23
@@ -1093,7 +1120,7 @@ sigs.k8s.io/kustomize/kyaml/yaml/walk
 ## explicit; go 1.18
 sigs.k8s.io/randfill
 sigs.k8s.io/randfill/bytesource
-# sigs.k8s.io/structured-merge-diff/v6 v6.3.0
+# sigs.k8s.io/structured-merge-diff/v6 v6.4.0
 ## explicit; go 1.23
 sigs.k8s.io/structured-merge-diff/v6/fieldpath
 sigs.k8s.io/structured-merge-diff/v6/merge
@@ -1104,3 +1131,8 @@ sigs.k8s.io/structured-merge-diff/v6/value
 ## explicit; go 1.22
 sigs.k8s.io/yaml
 sigs.k8s.io/yaml/kyaml
+# k8s.io/api => k8s.io/api v0.35.8
+# k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.35.8
+# k8s.io/apimachinery => k8s.io/apimachinery v0.35.8
+# k8s.io/apiserver => k8s.io/apiserver v0.35.8
+# k8s.io/client-go => k8s.io/client-go v0.35.8
