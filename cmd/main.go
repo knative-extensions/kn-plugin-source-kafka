@@ -20,8 +20,7 @@ import (
 
 	pkg "knative.dev/kn-plugin-source-kafka/pkg/root"
 
-	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
-	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
+	_ "k8s.io/client-go/plugin/pkg/client/auth"
 )
 
 func main() {
