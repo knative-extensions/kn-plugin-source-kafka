@@ -12,10 +12,10 @@ require (
 	k8s.io/api v0.36.0
 	k8s.io/apimachinery v0.36.0
 	k8s.io/client-go v1.5.2
-	knative.dev/client/pkg v0.0.0-20260907141345-931c46c98efb
-	knative.dev/eventing-kafka-broker v0.50.1-0.20260909123306-897a44bb095e
+	knative.dev/client/pkg v0.0.0-20260917124127-5e89c92787e5
+	knative.dev/eventing-kafka-broker v0.50.1-0.20260918212129-bc0e08289f60
 	knative.dev/hack v0.0.0-20260428014158-b2a37f1b6e7b
-	knative.dev/pkg v0.0.0-20260825072334-d2a153acc00c
+	knative.dev/pkg v0.0.0-20260918182429-5dc1978f0042
 )
 
 require (
