@@ -320,12 +320,12 @@ knative.dev/eventing v0.50.1-0.20260921114233-7c892cfc4d72 h1:eT0rciFNUOQzmXL1Ql
 knative.dev/eventing v0.50.1-0.20260921114233-7c892cfc4d72/go.mod h1:sCPnAi4eWe+w1dOZ6HLTf1H3vz5MpJMde4EU+NXCWzI=
 knative.dev/eventing-kafka-broker v0.50.1-0.20260928151321-a3fc6517f0cd h1:zHd1Te3F7dBqUu868C6XKEfQyHkBe77TiMvWLY7UPFM=
 knative.dev/eventing-kafka-broker v0.50.1-0.20260928151321-a3fc6517f0cd/go.mod h1:ABa1AgYg7Wn+weeDPjih5yvYkfR3SFesTAwrJf6wHdk=
-knative.dev/hack v0.0.0-20261013205032-c7ef19b7f274 h1:w/K53tSwQ8LaTA8RDJIVc06+5Fg1rM9EeqIrYaZ4tj0=
-knative.dev/hack v0.0.0-20261013205032-c7ef19b7f274/go.mod h1:L5RzHgbvam0u8QFHfzCX6MKxu/a/gIGEdaRBqNiVbl0=
+knative.dev/hack v0.0.0-20261021112836-4b87852b7bf9 h1:uaPRs09Sa6A48PBeBEx5YhL3EIYmvKh92r3iJLAgUrM=
+knative.dev/hack v0.0.0-20261021112836-4b87852b7bf9/go.mod h1:L5RzHgbvam0u8QFHfzCX6MKxu/a/gIGEdaRBqNiVbl0=
 knative.dev/networking v0.0.0-20260921014731-e39778429a0f h1:UlGFLpBcHSpflvRuv0MT4yLREEaKfyV8xMAqAA/7CF8=
 knative.dev/networking v0.0.0-20260921014731-e39778429a0f/go.mod h1:gXw+OOZbTVBdd+6eZxDsBUvIGO3qHgOAZJwUAy/di1I=
-knative.dev/pkg v0.0.0-20261013193643-0795cb87d2bd h1:z6f9oaPeMBaxQSbqLix2xF0AR0CxhHhR+Npqh/1KSTA=
-knative.dev/pkg v0.0.0-20261013193643-0795cb87d2bd/go.mod h1:Y0IP1sZCnEcIrKXcM9tSqO0a5326ISSngHWc/iCbzlo=
+knative.dev/pkg v0.0.0-20261021131637-a9cb74f8504a h1:STmijx29RzKWIu/rkfMhp+9716VJMRD0yrH3y8oVLNc=
+knative.dev/pkg v0.0.0-20261021131637-a9cb74f8504a/go.mod h1:/UqTWhk3p2S4BAeJal7uenkZ/tJiItoyxHlawuSEyEE=
 knative.dev/serving v0.50.1-0.20260921122632-47ddb67c5cf2 h1:0t+e8eJVTp24jmI8lviLIu5s47nK4RtZRIVfZRsJwNQ=
 knative.dev/serving v0.50.1-0.20260921122632-47ddb67c5cf2/go.mod h1:b8OvQc3buMBvxpXGFv262ToljNisIDmq1BHmUCNvRfI=
 sigs.k8s.io/gateway-api v1.5.0 h1:duoo14Ky/fJXpjpmyMISE2RTBGnfCg8zICfTYLTnBJA=
