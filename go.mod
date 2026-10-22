@@ -13,9 +13,9 @@ require (
 	k8s.io/apimachinery v0.36.5
 	k8s.io/client-go v1.5.2
 	knative.dev/client/pkg v0.0.0-20261013205133-d27cf9fd671b
-	knative.dev/eventing-kafka-broker v0.50.1-0.20261022013338-5da040e4baf0
+	knative.dev/eventing-kafka-broker v0.50.1-0.20261022123236-aaf6f2777651
 	knative.dev/hack v0.0.0-20261021112836-4b87852b7bf9
-	knative.dev/pkg v0.0.0-20261021162845-59e0d2425bdb
+	knative.dev/pkg v0.0.0-20261022132244-2a1a4a3ea290
 )
 
 require (
@@ -85,10 +85,11 @@ require (
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xlab/treeprint v1.2.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0 // indirect
-	go.opentelemetry.io/otel v1.46.0 // indirect
-	go.opentelemetry.io/otel/metric v1.46.0 // indirect
-	go.opentelemetry.io/otel/trace v1.46.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.72.0 // indirect
+	go.opentelemetry.io/otel v1.47.0 // indirect
+	go.opentelemetry.io/otel/log v1.47.0 // indirect
+	go.opentelemetry.io/otel/metric v1.47.0 // indirect
+	go.opentelemetry.io/otel/trace v1.47.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.28.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
