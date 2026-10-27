@@ -131,7 +131,7 @@ github.com/go-openapi/swag/typeutils
 # github.com/go-openapi/swag/yamlutils v0.29.1
 ## explicit; go 1.25.0
 github.com/go-openapi/swag/yamlutils
-# github.com/go-viper/mapstructure/v2 v2.4.0
+# github.com/go-viper/mapstructure/v2 v2.5.0
 ## explicit; go 1.18
 github.com/go-viper/mapstructure/v2
 github.com/go-viper/mapstructure/v2/internal/errors
@@ -883,8 +883,8 @@ k8s.io/utils/net
 k8s.io/utils/pointer
 k8s.io/utils/ptr
 k8s.io/utils/trace
-# knative.dev/client/pkg v0.0.0-20261023133654-82489f8f9847
-## explicit; go 1.25.0
+# knative.dev/client/pkg v0.0.0-20261027123410-169cc43d51a5
+## explicit; go 1.26.0
 knative.dev/client/pkg/apis/client
 knative.dev/client/pkg/apis/client/v1alpha1
 knative.dev/client/pkg/commands
@@ -910,7 +910,7 @@ knative.dev/client/pkg/util/errors
 knative.dev/client/pkg/util/mock
 knative.dev/client/pkg/util/test
 knative.dev/client/pkg/wait
-# knative.dev/eventing v0.50.1-0.20261026111529-23211b7206ad
+# knative.dev/eventing v0.51.0
 ## explicit; go 1.26.0
 knative.dev/eventing/pkg/apis/common/integration/v1alpha1
 knative.dev/eventing/pkg/apis/config
@@ -944,7 +944,7 @@ knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1
 knative.dev/eventing/pkg/client/clientset/versioned/typed/sources/v1/fake
 knative.dev/eventing/pkg/crossnamespace
 knative.dev/eventing/pkg/eventingtls
-# knative.dev/eventing-kafka-broker v0.50.1-0.20261026162857-1cb1128b032a
+# knative.dev/eventing-kafka-broker v0.50.1-0.20261027122910-934878467812
 ## explicit; go 1.26.0
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings
 knative.dev/eventing-kafka-broker/control-plane/pkg/apis/bindings/v1
@@ -965,8 +965,8 @@ knative.dev/eventing-kafka-broker/control-plane/pkg/client/clientset/versioned/t
 # knative.dev/hack v0.0.0-20261023132104-4a15c76c8f70
 ## explicit; go 1.24
 knative.dev/hack
-# knative.dev/networking v0.0.0-20260921014731-e39778429a0f
-## explicit; go 1.25.0
+# knative.dev/networking v0.0.0-20261026130131-cfc431598730
+## explicit; go 1.26.0
 knative.dev/networking/pkg/apis/networking
 knative.dev/networking/pkg/apis/networking/v1alpha1
 knative.dev/networking/pkg/config
@@ -1019,8 +1019,8 @@ knative.dev/pkg/test/logging
 knative.dev/pkg/test/spoof
 knative.dev/pkg/tracker
 knative.dev/pkg/webhook/resourcesemantics
-# knative.dev/serving v0.50.1-0.20260921122632-47ddb67c5cf2
-## explicit; go 1.25.0
+# knative.dev/serving v0.51.0
+## explicit; go 1.26.0
 knative.dev/serving/pkg/apis/autoscaling
 knative.dev/serving/pkg/apis/autoscaling/v1alpha1
 knative.dev/serving/pkg/apis/config
